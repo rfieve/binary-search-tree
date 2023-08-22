@@ -1,0 +1,28 @@
+{
+    "name": "@rfieve/binary-tree",
+    "version": "1.0.0",
+    "description": "",
+    "main": "lib/index.js",
+    "types": "lib/index.d.ts",
+    "files": [
+        "lib"
+    ],
+    "scripts": {
+        "prepublish": "tsc"
+    },
+    "author": "rfieve",
+    "license": "ISC",
+    "keywords": [
+        "typescript",
+        "binary-tree",
+        "utility"
+    ],
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/rfieve/binary-tree.git"
+    },
+    "devDependencies": {
+        "prettier": "^3.0.2",
+        "typescript": "^5.1.6"
+    }
+}
