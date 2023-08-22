@@ -12,7 +12,6 @@
         "strict": true,
         "skipLibCheck": true,
         "baseUrl": ".",
-        "paths": { "@/*": ["./src/*"] },
         "allowJs": true,
         "noEmit": true,
         "resolveJsonModule": true,
