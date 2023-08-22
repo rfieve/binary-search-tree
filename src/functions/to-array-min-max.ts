@@ -10,6 +10,12 @@ function loop<T>(tree?: BinaryTree<T>, nodes = [] as T[]): T[] {
     return nodes;
 }
 
+/**
+ * Converts the given binary tree to an array, with the elements sorted from min to max.
+ *
+ * @param tree The source binary tree
+ * @returns The array sorted from min to max.
+ */
 export function toArrayMinMax<T>(tree?: BinaryTree<T>) {
     const nodes: T[] = [];
 
