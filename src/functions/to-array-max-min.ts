@@ -1,10 +1,10 @@
 import { BinaryTree } from 'src/types';
 
-function loop<T>(tree?: BinaryTree<T>, nodes = [] as T[]): T[] {
+function loop<T>(nodes: T[], tree?: BinaryTree<T>): T[] {
     if (tree?.data) {
-        loop(tree.max, nodes);
+        loop(nodes, tree.max);
         nodes.push(tree.data);
-        loop(tree.min, nodes);
+        loop(nodes, tree.min);
     }
 
     return nodes;
@@ -19,5 +19,5 @@ function loop<T>(tree?: BinaryTree<T>, nodes = [] as T[]): T[] {
 export function toArrayMaxMin<T>(tree?: BinaryTree<T>) {
     const nodes: T[] = [];
 
-    return loop(tree, nodes);
+    return loop(nodes, tree);
 }
