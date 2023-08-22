@@ -1,0 +1,76 @@
+{
+    "extends": ["plugin:@typescript-eslint/recommended", "plugin:unicorn/recommended"],
+    "plugins": [
+        "unicorn",
+        "simple-import-sort",
+        "import",
+        "no-relative-import-paths",
+        "typescript-sort-keys"
+    ],
+    "parser": "@typescript-eslint/parser",
+    "parserOptions": {
+        "tsconfigRootDir": ".",
+        "project": ["./tsconfig.json"]
+    },
+    "rules": {
+        "curly": "error",
+        "padding-line-between-statements": "error",
+        "@typescript-eslint/no-unused-vars": [
+            "error",
+            {
+                "argsIgnorePattern": "^_"
+            }
+        ],
+        "@typescript-eslint/no-shadow": ["error"],
+        "@typescript-eslint/no-use-before-define": ["error"],
+        "@typescript-eslint/adjacent-overload-signatures": "error",
+        "@typescript-eslint/consistent-indexed-object-style": "error",
+        "@typescript-eslint/consistent-type-definitions": ["error", "type"],
+        "@typescript-eslint/method-signature-style": ["error", "property"],
+        "@typescript-eslint/member-ordering": "error",
+        "@typescript-eslint/prefer-optional-chain": "error",
+        "@typescript-eslint/sort-type-constituents": "error",
+        "@typescript-eslint/unified-signatures": "error",
+        "@typescript-eslint/member-delimiter-style": "error",
+        "unicorn/custom-error-definition": "off",
+        "unicorn/filename-case": "off",
+        "unicorn/no-array-for-each": "off",
+        "unicorn/no-array-reduce": "off",
+        "unicorn/no-null": "off",
+        "unicorn/no-unsafe-regex": "error",
+        "unicorn/prevent-abbreviations": "off",
+        "unicorn/no-useless-undefined": "off",
+        "unicorn/prefer-spread": "off",
+        "unicorn/no-nested-ternary": "off",
+        "unicorn/prefer-logical-operator-over-ternary": "off",
+        "unicorn/prefer-native-coercion-functions": "off",
+        "simple-import-sort/imports": "error",
+        "simple-import-sort/exports": "error",
+        "typescript-sort-keys/interface": "error",
+        "typescript-sort-keys/string-enum": "error",
+        "no-duplicate-imports": "error",
+        "no-relative-import-paths/no-relative-import-paths": [
+            "warn",
+            {
+                "allowSameFolder": false,
+                "rootDir": "",
+                "prefix": ""
+            }
+        ],
+        "key-spacing": "off",
+        "@typescript-eslint/key-spacing": [
+            2,
+            {
+                "singleLine": {
+                    "beforeColon": false,
+                    "afterColon": true
+                },
+                "multiLine": {
+                    "beforeColon": true,
+                    "afterColon": true,
+                    "align": "colon"
+                }
+            }
+        ]
+    }
+}
