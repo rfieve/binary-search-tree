@@ -29,3 +29,7 @@ export const mockedTree: BinaryTree<number> = {
         },
     },
 };
+
+export const mockedLeaf = (mockedTree.min as BinaryTree<number>).max;
+export const mockedStrictMinLeaf = (mockedTree.max as BinaryTree<number>).max;
+export const mockedStrictMaxLeaf = mockedTree.min;

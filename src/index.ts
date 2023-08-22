@@ -1,7 +1,10 @@
 export { addNode, makeAddNode } from 'src/functions/add-node';
 export { findMax } from 'src/functions/find-max';
 export { findMin } from 'src/functions/find-min';
+export { isBranch } from 'src/functions/is-branch';
 export { isLeaf } from 'src/functions/is-leaf';
+export { isMaxBranch } from 'src/functions/is-max-branch';
+export { isMinBranch } from 'src/functions/is-min-branch';
 export { toArrayMaxMin } from 'src/functions/to-array-max-min';
 export { toArrayMinMax } from 'src/functions/to-array-min-max';
 export { toBinaryTree } from 'src/functions/to-binary-tree';

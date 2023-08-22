@@ -1,9 +1,9 @@
 import { isLeaf } from 'src/functions/is-leaf';
-import { mockedTree } from 'src/functions/tests/_mocks';
+import { mockedLeaf, mockedTree } from 'src/functions/tests/_mocks';
 
 describe('isLeaf', () => {
     it('should return true when the given tree is a leaf', () => {
-        expect(isLeaf(mockedTree?.min?.max)).toBe(true);
+        expect(isLeaf(mockedLeaf)).toBe(true);
     });
 
     it('should return false when the given tree is a branch', () => {
