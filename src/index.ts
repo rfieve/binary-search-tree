@@ -8,4 +8,6 @@ export { isMinBranch } from 'src/functions/is-min-branch';
 export { toArrayMaxMin } from 'src/functions/to-array-max-min';
 export { toArrayMinMax } from 'src/functions/to-array-min-max';
 export { toBinaryTree } from 'src/functions/to-binary-tree';
+export { traverseMaxMin } from 'src/functions/traverse-max-min';
+export { traverseMinMax } from 'src/functions/traverse-min-max';
 export type { BinaryTree, BinaryTreeLeaf, BinaryTreeNode, CompareFunction } from 'src/types';

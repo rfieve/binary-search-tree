@@ -1,14 +1,6 @@
+import { makeStoreNodes } from 'src/functions/helpers/store-nodes';
+import { traverseMinMax } from 'src/functions/traverse-min-max';
 import { BinaryTree } from 'src/types';
-
-function loop<T>(nodes: T[], tree?: BinaryTree<T>): T[] {
-    if (tree?.data) {
-        loop(nodes, tree.min);
-        nodes.push(tree.data);
-        loop(nodes, tree.max);
-    }
-
-    return nodes;
-}
 
 /**
  * Converts the given binary tree to an array, with the elements sorted from min to max.
@@ -18,6 +10,9 @@ function loop<T>(nodes: T[], tree?: BinaryTree<T>): T[] {
  */
 export function toArrayMinMax<T>(tree?: BinaryTree<T>) {
     const nodes: T[] = [];
+    const storeNodes = makeStoreNodes(nodes);
 
-    return loop(nodes, tree);
+    traverseMinMax(storeNodes, tree);
+
+    return nodes;
 }
