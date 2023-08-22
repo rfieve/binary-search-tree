@@ -8,5 +8,5 @@ import { BinaryTree, BinaryTreeLeaf } from 'src/types';
  * @returns true if it is, false if it isn't.
  */
 export function isLeaf<T>(tree?: BinaryTree<T>): tree is BinaryTreeLeaf<T> {
-    return tree?.data !== undefined && !tree?.min && !tree?.max;
+    return tree?.data !== undefined && !tree.min && !tree.max;
 }
