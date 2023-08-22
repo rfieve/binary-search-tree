@@ -12,7 +12,6 @@
         "test": "NODE_PATH=./ jest --passWithNoTests",
         "test:watch": "NODE_PATH=./ jest --watch --coverage --passWithNoTests",
         "test:cov": "NODE_PATH=./ jest --coverage --passWithNoTests",
-        "prepare": "husky install",
         "prepublish": "tsc"
     },
     "author": "rfieve",
