@@ -10,11 +10,11 @@ import { BinaryTree, CompareFunction } from 'src/types';
  *  Its second argument is the parent element.
  *  Its return value can be negative, zero or positive:
  *
- *  => Negative : the current element should be placed as left node of its parent
+ *  => Negative : the current element should be placed as min node of its parent
  *
- *  => Positive : the current element should be placed as right node of its parent
+ *  => Positive : the current element should be placed as max node of its parent
  *
- *  => Zero     : the current element should be placed as right node of its parent
+ *  => Zero     : the current element should be placed as max node of its parent
  *
  * @returns The elements of the source array organized as a binary tree.
  */

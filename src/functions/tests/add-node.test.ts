@@ -9,17 +9,17 @@ describe('addNode', () => {
 
     it('should add a random node to the tree at the correct position', () => {
         const modifiedTree = addNode(mockedTree, compareFunction, 12);
-        expect(modifiedTree.right?.left?.data).toBe(12);
+        expect(modifiedTree.max?.min?.min?.data).toBe(12);
     });
 
-    it('should add a min node to the tree at the correct left-side position', () => {
+    it('should add a min node to the tree at the correct min-side position', () => {
         const modifiedTree = addNode(mockedTree, compareFunction, 0);
-        expect(modifiedTree.left?.left?.data).toBe(0);
+        expect(modifiedTree.min?.min?.data).toBe(0);
     });
 
-    it('should add a max node to the tree at the correct right-side position', () => {
-        const modifiedTree = addNode(mockedTree, compareFunction, 70);
-        expect(modifiedTree.right?.right?.data).toBe(70);
+    it('should add a max node to the tree at the correct max-side position', () => {
+        const modifiedTree = addNode(mockedTree, compareFunction, 100);
+        expect(modifiedTree.max?.max?.max?.data).toBe(100);
     });
 });
 
@@ -33,16 +33,16 @@ describe('makeAddNode', () => {
 
     it('should add a random node to the tree at the correct position', () => {
         const modifiedTree = boundAddNode(12);
-        expect(modifiedTree.right?.left?.data).toBe(12);
+        expect(modifiedTree.max?.min?.min?.data).toBe(12);
     });
 
-    it('should add a min node to the tree at the correct left-side position', () => {
+    it('should add a min node to the tree at the correct min-side position', () => {
         const modifiedTree = boundAddNode(0);
-        expect(modifiedTree.left?.left?.data).toBe(0);
+        expect(modifiedTree.min?.min?.data).toBe(0);
     });
 
-    it('should add a max node to the tree at the correct right-side position', () => {
-        const modifiedTree = boundAddNode(70);
-        expect(modifiedTree.right?.right?.data).toBe(70);
+    it('should add a max node to the tree at the correct max-side position', () => {
+        const modifiedTree = boundAddNode(100);
+        expect(modifiedTree.max?.max?.max?.data).toBe(100);
     });
 });

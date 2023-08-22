@@ -9,11 +9,11 @@ import { BinaryTree, BinaryTreeNode, CompareFunction } from 'src/types';
  *  Its second argument is the parent element.
  *  Its return value can be negative, zero or positive:
  *
- *  => Negative : the current element should be placed as left node of its parent
+ *  => Negative : the current element should be placed as min node of its parent
  *
- *  => Positive : the current element should be placed as right node of its parent
+ *  => Positive : the current element should be placed as max node of its parent
  *
- *  => Zero     : the current element should be placed as right node of its parent
+ *  => Zero     : the current element should be placed as max node of its parent
  * @param node The node to be added
  * @returns The new binary tree
  */
@@ -32,7 +32,7 @@ export function addNode<T>(
         return tree;
     }
 
-    const direction = comparison < 0 ? 'left' : 'right';
+    const direction = comparison < 0 ? 'min' : 'max';
     const subTree = tree[direction];
 
     return {
@@ -50,11 +50,11 @@ export function addNode<T>(
  *  Its second argument is the parent element.
  *  Its return value can be negative, zero or positive:
  *
- *  => Negative : the current element should be placed as left node of its parent
+ *  => Negative : the current element should be placed as min node of its parent
  *
- *  => Positive : the current element should be placed as right node of its parent
+ *  => Positive : the current element should be placed as max node of its parent
  *
- *  => Zero     : the current element should be placed as right node of its parent
+ *  => Zero     : the current element should be placed as max node of its parent
  *
  * @returns The bound addNode function
  */
