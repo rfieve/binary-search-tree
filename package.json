@@ -8,10 +8,11 @@
         "lib"
     ],
     "scripts": {
+        "build": "yarn tsc",
         "lint": "eslint --fix ./src/ --ext .js --ext .ts --ext .tsx --format table",
         "test": "NODE_PATH=./ jest --coverage --passWithNoTests",
         "test:watch": "NODE_PATH=./ jest --watch --coverage --passWithNoTests",
-        "prepublish": "tsc"
+        "prepublish": "yarn tsc"
     },
     "author": "rfieve",
     "license": "ISC",
