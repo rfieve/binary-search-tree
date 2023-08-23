@@ -4,28 +4,36 @@ export function compareFunction(currentNode: number, parentNode: number) {
     return currentNode - parentNode;
 }
 
-export const mockedArray = [10, 32, 21, 2, 89, 5, 50];
+export const mockedArray = [10, 32, 13, 2, 89, 5, 50];
 export const mockedArrayOrdered = mockedArray.slice().sort((a, b) => a - b);
 export const mockedArrayReversed = mockedArrayOrdered.slice().reverse();
 
+//       10
+//    /     \
+//   2      32
+//    \    /  \
+//     5  13  89
+//            /
+//          50
+
 export const mockedTree: BinaryTree<number> = {
     data : 10,
-    max  : {
+    min  : {
+        data : 2,
+        max  : {
+            data : 5,
+        },
+    },
+    max : {
         data : 32,
         min  : {
-            data : 21,
+            data : 13,
         },
         max : {
             data : 89,
             min  : {
                 data : 50,
             },
-        },
-    },
-    min : {
-        data : 2,
-        max  : {
-            data : 5,
         },
     },
 };

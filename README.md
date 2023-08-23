@@ -8,10 +8,12 @@ A bunch of TypeScript utility functions to work with binary trees and arrays of 
     -   [Table of Content](#table-of-content)
     -   [Usage](#usage)
         -   [`toBinaryTree`](#tobinarytree)
+        -   [`addNode` \& `makeAddNode`](#addnode--makeaddnode)
+        -   [`addNodes` \& `makeAddNodes`](#addnodes--makeaddnodes)
+        -   [`findNode` \& `makeFindNode`](#findnode--makefindnode)
+        -   [`findMin` \& `findMax`](#findmin--findmax)
         -   [`toArrayMinMax` \& `toArrayMaxMin`](#toarrayminmax--toarraymaxmin)
         -   [`traverseMinMax` \& `traverseMaxMin`](#traverseminmax--traversemaxmin)
-        -   [`findMin` \& `findMax`](#findmin--findmax)
-        -   [`addNode` \& `makeAddNode`](#addnode--makeaddnode)
         -   [`isLeaf` \& `isBranch`](#isleaf--isbranch)
         -   [`hasMinBranch` \& `hasMaxBranch`](#hasminbranch--hasmaxbranch)
 
@@ -22,29 +24,29 @@ A bunch of TypeScript utility functions to work with binary trees and arrays of 
 Converts the given array to a binary tree, depending on a given compare function.
 
 ```typescript
-const arr = [10, 32, 21, 2, 89, 5, 50];
+const arr = [10, 32, 13, 2, 89, 5, 50];
 const compare = (node: number, parentNode: number) => currentNode - parentNode;
 
 const tree = toBinaryTree(arr, compare);
 
 // {                            |
-//     data : 10,               |            10
-//     max  : {                 |         /     \
-//         data : 32,           |        2      32
-//         min  : {             |         \    /  \
-//             data : 21,       |          5  21  89
+//     data: 10,                |
+//     min: {                   |
+//         data: 2,             |
+//         max: {               |
+//             data : 5,        |
+//         },                   |
+//     },                       |            10
+//     max: {                   |         /     \
+//         data: 32,            |        2      32
+//         min: {               |         \    /  \
+//             data: 13,        |          5  13  89
 //         },                   |                 /
-//         max : {              |               50
-//             data : 89,       |
-//             min  : {         |
+//         max: {               |               50
+//             data: 89,        |
+//             min: {           |
 //                 data : 50,   |
 //             },               |
-//         },                   |
-//     },                       |
-//     min : {                  |
-//         data : 2,            |
-//         max  : {             |
-//             data : 5,        |
 //         },                   |
 //     },                       |
 // };                           |
@@ -52,33 +54,87 @@ const tree = toBinaryTree(arr, compare);
 
 ---
 
-### `toArrayMinMax` & `toArrayMaxMin`
+### `addNode` & `makeAddNode`
 
-Converts the given binary tree to an array, with the elements sorted from min to max (`toArrayMinMax`) or from max to min (`toArrayMaxMin`).
+`addNode` adds a given node to the given binary tree with the given compare function and returns a new tree, without modifing the original tree in place.
+
+⚠️ Caveats: using another compare function than the one used to create the tree with `toBinaryTree` will of course f\*\*k up the tree.
+
+A safer approach consists of using `makeAddNode`. It curries an `addNode` closure function with the given compare function.
 
 ```typescript
-// schema of "tree"
-//
-//       10
-//    /     \
-//   2      32
-//    \    /  \
-//     5  21  89
-//            /
-//          50
+const arr = [10, 32, 13, 2, 89, 5, 50];
+const compare = (node: number, parentNode: number) => currentNode - parentNode;
+const tree = toBinaryTree(arr, compare);
 
-const nodesMinMax = toArrayMinMax(tree);
-// nodesMinMax : [2, 5, 10, 21, 32, 50, 89]
+const modifiedTree = addNode(tree, compare, 11);
 
-const nodesMaxMin = toArrayMaxMmin(tree);
-// nodesMaxMin : [89, 50, 32, 21, 10, 5, 2]
+// schema of "tree"     =>     "modifiedTree"
+//                      |
+//       10             |            10
+//    /     \           |         /     \
+//   2      32          |        2      32
+//    \    /  \         |         \    /  \
+//     5  13  89        |          5  13  89
+//            /         |            /   /
+//          50          |           11  50
+
+const safeAndReusableAddNode = makeAddNode(compare);
+const safelyModifiedTree = safeAndReusableAddNode(tree, 11);
+
+// schema of "tree"     =>   "safelyModifiedTree"
+//                      |
+//       10             |            10
+//    /     \           |         /     \
+//   2      32          |        2      32
+//    \    /  \         |         \    /  \
+//     5  13  89        |          5  13  89
+//            /         |            /   /
+//          50          |           11  50
 ```
 
 ---
 
-### `traverseMinMax` & `traverseMaxMin`
+### `addNodes` & `makeAddNodes`
 
-Traverses a tree from min to max (`traverseMinMax`) or from max to min (`traverseMaxMin`), invoking the callback function on each visited node.
+Same as `addNode` & `makeAddNode`, but with an array of elements to add.
+
+```typescript
+const modifiedTree = addNodes(tree, compare, [11, 100]);
+
+// schema of "tree"     =>   "modifiedTree"
+//                      |
+//       10             |            10
+//    /     \           |         /     \
+//   2      32          |        2      32
+//    \    /  \         |         \    /  \
+//     5  13  89        |          5  13  89
+//            /         |            /   /  \
+//          50          |           11  50   100
+
+const safeAndReusableAddNodes = makeAddNodes(compare);
+const safelyModifiedTree = safeAndReusableAddNodes(tree, [11, 100]);
+
+// schema of "tree"     =>   "safelyModifiedTree"
+//                      |
+//       10             |            10
+//    /     \           |         /     \
+//   2      32          |        2      32
+//    \    /  \         |         \    /  \
+//     5  13  89        |          5  13  89
+//            /         |            /   /  \
+//          50          |           11  50   100
+```
+
+---
+
+### `findNode` & `makeFindNode`
+
+`findNode` finds a given node into the given binary tree with the given compare function.
+
+⚠️ Caveats: using another compare function than the one used to create the tree with `toBinaryTree` will of course f\*\*k up the search.
+
+A safer approach consists of using `makeFindNode`. It curries a `findNode` closure function with the given compare function.
 
 ```typescript
 // schema of "tree"
@@ -87,21 +143,14 @@ Traverses a tree from min to max (`traverseMinMax`) or from max to min (`travers
 //    /     \
 //   2      32
 //    \    /  \
-//     5  21  89
-//            /
-//          50
+//     5  13  89
+//           /
+//         50
 
-const storeNodes = (store: number[]) => (node: { data: number }) => {
-    store.push(node.data);
-};
-
-const nodesMinMax: number[] = [];
-traverseMinMax(storeNodes(nodesMinMax), tree);
-// nodesMinMax : [2, 5, 10, 21, 32, 50, 89]
-
-const nodesMaxMin: number[] = [];
-traverseMaxMmin(storeNodes(nodesMaxMin), tree);
-// nodesMaxMin : [89, 50, 32, 21, 10, 5, 2]
+const node = findNode(tree, compare, 13).data; // 13
+// or
+const safeAndReusableFindNode = makeFindNode(compare);
+const safelyModifiedTree = safeAndReusableFindNode(tree, 13).data; // 13
 ```
 
 ---
@@ -117,9 +166,9 @@ Finds the min (`findMin`) or the max (`findMax`) node of the tree.
 //    /     \
 //   2      32
 //    \    /  \
-//     5  21  89
-//            /
-//          50
+//     5  13  89
+//           /
+//         50
 
 const min = findMin(tree).data; // 2
 const max = findMax(tree).data; // 89
@@ -127,54 +176,56 @@ const max = findMax(tree).data; // 89
 
 ---
 
-### `addNode` & `makeAddNode`
+### `toArrayMinMax` & `toArrayMaxMin`
 
-Adds a given node to the given binary tree with the given compare function (`addNode`).
-
-⚠️ Caveats: using another compare function than the one used to create the tree with `toBinaryTree` will of course f\*\*k up the tree.
-
-A safer approach consists of using `makeAddNode`. It curries an `addNode` closure function for the given binary tree with the given compare function.
+Converts the given binary tree to an array, with the elements sorted from min to max (`toArrayMinMax`) or from max to min (`toArrayMaxMin`).
 
 ```typescript
-const arr = [10, 32, 21, 2, 89, 5, 50];
-const compare = (node: number, parentNode: number) => currentNode - parentNode;
-
-const tree = toBinaryTree(arr, compare);
-
 // schema of "tree"
 //
 //       10
 //    /     \
 //   2      32
 //    \    /  \
-//     5  21  89
-//            /
-//          50
+//     5  13  89
+//           /
+//         50
 
-const modifiedTree = addNode(tree, compare, 12);
+const nodesMinMax = toArrayMinMax(tree);
+// nodesMinMax : [2, 5, 10, 13, 32, 50, 89]
 
-// schema of "modifiedTree"
+const nodesMaxMin = toArrayMaxMmin(tree);
+// nodesMaxMin : [89, 50, 32, 13, 10, 5, 2]
+```
+
+---
+
+### `traverseMinMax` & `traverseMaxMin`
+
+Traverses a tree from min to max (`traverseMinMax`) or from max to min (`traverseMaxMin`), invoking the callback function on each visited node.
+
+```typescript
+// schema of "tree"
 //
 //       10
 //    /     \
 //   2      32
 //    \    /  \
-//     5  21  89
-//       /    /
-//      12   50
+//     5  13  89
+//           /
+//         50
 
-const saferAndReusableAddNode = makeAddNode(tree, compare);
-const reModifiedTree = saferAndReusableAddNode(12);
+const storeNodes = (store: number[]) => (node: { data: number }) => {
+    store.push(node.data);
+};
 
-// schema of "reModifiedTree"
-//
-//       10
-//    /     \
-//   2      32
-//    \    /  \
-//     5  21  89
-//       /    /
-//      12   50
+const nodesMinMax: number[] = [];
+traverseMinMax(storeNodes(nodesMinMax), tree);
+// nodesMinMax : [2, 5, 10, 13, 32, 50, 89]
+
+const nodesMaxMin: number[] = [];
+traverseMaxMmin(storeNodes(nodesMaxMin), tree);
+// nodesMaxMin : [89, 50, 32, 13, 10, 5, 2]
 ```
 
 ---
@@ -190,9 +241,9 @@ Assess if the given tree/node is a leaf (has no min nor max prop) (`isLeaf`) or 
 //    /     \
 //   2      32
 //    \    /  \
-//     5  21  89
-//            /
-//          50
+//     5  13  89
+//           /
+//         50
 
 const isLeaf_A = isLeaf(tree.min.min); // true
 const isLeaf_B = isLeaf(tree); // false
@@ -214,9 +265,9 @@ Assess if the given tree/node has a min branch (has a min prop) (`hasMinBranch`)
 //    /     \
 //   2      32
 //    \    /  \
-//     5  21  89
-//            /
-//          50
+//     5  13  89
+//           /
+//         50
 
 const hasMin_A = hasMinBranch(tree); // true
 const hasMin_B = hasMinBranch(tree.min); // false

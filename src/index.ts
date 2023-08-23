@@ -1,6 +1,7 @@
-export { addNode, makeAddNode } from 'src/functions/add-node';
+export { addNode, addNodes, makeAddNode, makeAddNodes } from 'src/functions/add-node';
 export { findMax } from 'src/functions/find-max';
 export { findMin } from 'src/functions/find-min';
+export { findNode, makeFindNode } from 'src/functions/find-node';
 export { hasMaxBranch } from 'src/functions/has-max-branch';
 export { hasMinBranch } from 'src/functions/has-min-branch';
 export { isBranch } from 'src/functions/is-branch';

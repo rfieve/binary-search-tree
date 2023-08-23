@@ -1,4 +1,4 @@
-import { addNode } from 'src/functions/add-node';
+import { addNodes } from 'src/functions/add-node';
 import { BinaryTree, CompareFunction } from 'src/types';
 
 /**
@@ -19,5 +19,5 @@ import { BinaryTree, CompareFunction } from 'src/types';
  * @returns The elements of the source array organized as a binary tree.
  */
 export function toBinaryTree<T>(source: T[], compareFn: CompareFunction<T>): BinaryTree<T> {
-    return source.reduce((acc, curr) => addNode(acc, compareFn, curr), {} as BinaryTree<T>);
+    return addNodes({}, compareFn, source);
 }
