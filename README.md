@@ -2,6 +2,19 @@
 
 A bunch of TypeScript utility functions to work with binary trees and arrays of any types, with a functional-programming approach.
 
+## Table of Content
+
+-   [🌳 binary-tree](#-binary-tree)
+    -   [Table of Content](#table-of-content)
+    -   [Usage](#usage)
+        -   [`toBinaryTree`](#tobinarytree)
+        -   [`toArrayMinMax` \& `toArrayMaxMin`](#toarrayminmax--toarraymaxmin)
+        -   [`traverseMinMax` \& `traverseMaxMin`](#traverseminmax--traversemaxmin)
+        -   [`findMin` \& `findMax`](#findmin--findmax)
+        -   [`addNode` \& `makeAddNode`](#addnode--makeaddnode)
+        -   [`isLeaf` \& `isBranch`](#isleaf--isbranch)
+        -   [`hasMinBranch` \& `hasMaxBranch`](#hasminbranch--hasmaxbranch)
+
 ## Usage
 
 ### `toBinaryTree`
@@ -114,12 +127,13 @@ const max = findMax(tree).data; // 89
 
 ---
 
-### `addNode`
+### `addNode` & `makeAddNode`
 
-Adds a given node to the given binary tree with the given compare function.
+Adds a given node to the given binary tree with the given compare function (`addNode`).
 
 ⚠️ Caveats: using another compare function than the one used to create the tree with `toBinaryTree` will of course f\*\*k up the tree.
-To avoid this, please see `makeAddNode`.
+
+A safer approach consists of using `makeAddNode`. It curries an `addNode` closure function for the given binary tree with the given compare function.
 
 ```typescript
 const arr = [10, 32, 21, 2, 89, 5, 50];
@@ -148,34 +162,11 @@ const modifiedTree = addNode(tree, compare, 12);
 //     5  21  89
 //       /    /
 //      12   50
-```
 
----
+const saferAndReusableAddNode = makeAddNode(tree, compare);
+const reModifiedTree = saferAndReusableAddNode(12);
 
-### `makeAddNode`
-
-Curries an `addNode` closure function for the given binary tree with the given compare function.
-
-```typescript
-const arr = [10, 32, 21, 2, 89, 5, 50];
-const compare = (node: number, parentNode: number) => currentNode - parentNode;
-
-const tree = toBinaryTree(arr, compare);
-const addNode = makeAddNode(tree, compare);
-
-// schema of "tree"
-//
-//       10
-//    /     \
-//   2      32
-//    \    /  \
-//     5  21  89
-//            /
-//          50
-
-const modifiedTree = addNode(12);
-
-// schema of "modifiedTree"
+// schema of "reModifiedTree"
 //
 //       10
 //    /     \
