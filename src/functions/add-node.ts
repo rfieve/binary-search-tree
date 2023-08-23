@@ -1,7 +1,7 @@
 import { BinaryTree, BinaryTreeNode, CompareFunction } from 'src/types';
 
 /**
- * Add a given node to the given binary tree with the given compare function.
+ * Adds a given node to the given binary tree with the given compare function.
  *
  * @param tree The source binary tree
  * @param compareFn The function used to determine the order of the elements.

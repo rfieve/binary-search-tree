@@ -1,6 +1,6 @@
 # 🌳 binary-tree
 
-A bunch of TypeScript functions to work with binary trees and arrays of any types.
+A bunch of TypeScript utility functions to work with binary trees and arrays of any types, with a functional-programming approach.
 
 ## Usage
 
@@ -10,9 +10,9 @@ Converts the given array to a binary tree, depending on a given compare function
 
 ```typescript
 const arr = [10, 32, 21, 2, 89, 5, 50];
-const compareFunction = (node: number, parentNode: number) => currentNode - parentNode;
+const compare = (node: number, parentNode: number) => currentNode - parentNode;
 
-const tree = toBinaryTree(arr, compareFunction);
+const tree = toBinaryTree(arr, compare);
 
 // {                            |
 //     data : 10,               |            10
@@ -110,6 +110,128 @@ Finds the min (`findMin`) or the max (`findMax`) node of the tree.
 
 const min = findMin(tree).data; // 2
 const max = findMax(tree).data; // 89
+```
+
+---
+
+### `addNode`
+
+Adds a given node to the given binary tree with the given compare function.
+
+⚠️ Caveats: using another compare function than the one used to create the tree with `toBinaryTree` will of course f\*\*k up the tree.
+To avoid this, please see `makeAddNode`.
+
+```typescript
+const arr = [10, 32, 21, 2, 89, 5, 50];
+const compare = (node: number, parentNode: number) => currentNode - parentNode;
+
+const tree = toBinaryTree(arr, compare);
+
+// schema of "tree"
+//
+//       10
+//    /     \
+//   2      32
+//    \    /  \
+//     5  21  89
+//            /
+//          50
+
+const modifiedTree = addNode(tree, compare, 12);
+
+// schema of "modifiedTree"
+//
+//       10
+//    /     \
+//   2      32
+//    \    /  \
+//     5  21  89
+//       /    /
+//      12   50
+```
+
+---
+
+### `makeAddNode`
+
+Curries an `addNode` closure function for the given binary tree with the given compare function.
+
+```typescript
+const arr = [10, 32, 21, 2, 89, 5, 50];
+const compare = (node: number, parentNode: number) => currentNode - parentNode;
+
+const tree = toBinaryTree(arr, compare);
+const addNode = makeAddNode(tree, compare);
+
+// schema of "tree"
+//
+//       10
+//    /     \
+//   2      32
+//    \    /  \
+//     5  21  89
+//            /
+//          50
+
+const modifiedTree = addNode(12);
+
+// schema of "modifiedTree"
+//
+//       10
+//    /     \
+//   2      32
+//    \    /  \
+//     5  21  89
+//       /    /
+//      12   50
+```
+
+---
+
+### `isLeaf` & `isBranch`
+
+Assess if the given tree/node is a leaf (has no min nor max prop) (`isLeaf`) or a branch (has a min or a max prop or both) (`isBranch`).
+
+```typescript
+// schema of "tree"
+//
+//       10
+//    /     \
+//   2      32
+//    \    /  \
+//     5  21  89
+//            /
+//          50
+
+const isLeaf_A = isLeaf(tree.min.min); // true
+const isLeaf_B = isLeaf(tree); // false
+
+const isBranch_A = isBranch(tree); // true
+const isBranch_B = isBranch(tree.min.min); // false
+```
+
+---
+
+### `hasMinBranch` & `hasMaxBranch`
+
+Assess if the given tree/node has a min branch (has a min prop) (`hasMinBranch`) or a max branch (has a max prop) (`hasMaxBranch`).
+
+```typescript
+// schema of "tree"
+//
+//       10
+//    /     \
+//   2      32
+//    \    /  \
+//     5  21  89
+//            /
+//          50
+
+const hasMin_A = hasMinBranch(tree); // true
+const hasMin_B = hasMinBranch(tree.min); // false
+
+const hasMax_A = hasMaxBranch(tree); // true
+const hasMax_B = hasMaxBranch(tree.min.min); // false
 ```
 
 ---

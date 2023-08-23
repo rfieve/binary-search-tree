@@ -1,4 +1,4 @@
-import { isMinBranch } from 'src/functions/is-min-branch';
+import { hasMinBranch } from 'src/functions/has-min-branch';
 import {
     mockedLeaf,
     mockedStrictMaxLeaf,
@@ -8,26 +8,26 @@ import {
 
 describe('isMinBranch', () => {
     it('should return true when the given tree is a branch', () => {
-        expect(isMinBranch(mockedTree)).toBe(true);
+        expect(hasMinBranch(mockedTree)).toBe(true);
     });
 
     it('should return true when the given tree is srictly a min branch', () => {
-        expect(isMinBranch(mockedStrictMinLeaf)).toBe(true);
+        expect(hasMinBranch(mockedStrictMinLeaf)).toBe(true);
     });
 
     it('should return true when the given tree is srictly a max branch', () => {
-        expect(isMinBranch(mockedStrictMaxLeaf)).toBe(false);
+        expect(hasMinBranch(mockedStrictMaxLeaf)).toBe(false);
     });
 
     it('should return false when the given tree is a leaf', () => {
-        expect(isMinBranch(mockedLeaf)).toBe(false);
+        expect(hasMinBranch(mockedLeaf)).toBe(false);
     });
 
     it('should return false when the given tree is undefined', () => {
-        expect(isMinBranch()).toBe(false);
+        expect(hasMinBranch()).toBe(false);
     });
 
     it('should return false when the given tree has no data', () => {
-        expect(isMinBranch({ data: undefined })).toBe(false);
+        expect(hasMinBranch({ data: undefined })).toBe(false);
     });
 });
