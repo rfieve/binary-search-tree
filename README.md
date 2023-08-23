@@ -25,7 +25,7 @@ Converts the given array to a binary tree, depending on a given compare function
 
 ```typescript
 const arr = [10, 32, 13, 2, 89, 5, 50];
-const compare = (node: number, parentNode: number) => currentNode - parentNode;
+const compare = (node: number, parentNode: number) => node - parentNode;
 
 const tree = toBinaryTree(arr, compare);
 
@@ -64,7 +64,7 @@ A safer approach consists of using `makeAddNode`. It curries an `addNode` closur
 
 ```typescript
 const arr = [10, 32, 13, 2, 89, 5, 50];
-const compare = (node: number, parentNode: number) => currentNode - parentNode;
+const compare = (node: number, parentNode: number) => node - parentNode;
 const tree = toBinaryTree(arr, compare);
 
 const modifiedTree = addNode(tree, compare, 11);
