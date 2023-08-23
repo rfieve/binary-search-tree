@@ -221,7 +221,7 @@ traverseMinMax(collect(elements), tree);
 // elements: [2, 5, 10, 13, 32, 50, 89]
 
 const elements: number[] = [];
-traverseMaxMmin(collect(nodesMaxMin), tree);
+traverseMaxMmin(collect(elements), tree);
 // elements: [89, 50, 32, 13, 10, 5, 2]
 ```
 
