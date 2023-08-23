@@ -1,7 +1,7 @@
 import { BinaryTree, BinaryTreeLeaf } from 'src/types';
 
 /**
- * Assess if the given tree is a leaf (has neither min nor max).
+ * Assesses if the given tree is a leaf (has neither min nor max).
  *
  * @param tree The source binary tree
  *

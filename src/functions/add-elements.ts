@@ -15,19 +15,19 @@ import { BinaryTree, BinaryTreeNode, CompareFunction } from 'src/types';
  *  => Positive : the current element should be placed as max node of its parent
  *
  *  => Zero     : the current element should be placed as max node of its parent
- * @param node The node to be added
+ * @param element The node to be added
  * @returns The new binary tree
  */
-export function addNode<T>(
+export function addElement<T>(
     tree: BinaryTree<T>,
     compareFn: CompareFunction<T>,
-    node: T
+    element: T
 ): BinaryTree<T> {
     if (!tree.data) {
-        return { data: node } as BinaryTreeNode<T>;
+        return { data: element } as BinaryTreeNode<T>;
     }
 
-    const comparison = compareFn(node, tree.data);
+    const comparison = compareFn(element, tree.data);
 
     if (comparison === 0) {
         return tree;
@@ -38,12 +38,12 @@ export function addNode<T>(
 
     return {
         ...tree,
-        [direction] : subTree ? addNode(subTree, compareFn, node) : { data: node },
+        [direction] : subTree ? addElement(subTree, compareFn, element) : { data: element },
     };
 }
 
 /**
- * Creates an addNode function for the given binary tree with the given compare function.
+ * Creates an addElement function for the given binary tree with the given compare function.
  *
  * @param compareFn The function used to determine the order of the elements.
  *  Its first argument is the current element.
@@ -56,16 +56,16 @@ export function addNode<T>(
  *
  *  => Zero     : the current element should be placed as max node of its parent
  *
- * @returns The bound addNode function
+ * @returns The bound addElement function
  */
-export function makeAddNode<T>(compareFn: CompareFunction<T>) {
-    return function (tree: BinaryTree<T>, node: T) {
-        return addNode(tree, compareFn, node);
+export function makeAddElement<T>(compareFn: CompareFunction<T>) {
+    return function (tree: BinaryTree<T>, element: T) {
+        return addElement(tree, compareFn, element);
     };
 }
 
 /**
- * Adds the given nodes to the given binary tree with the given compare function,
+ * Adds the given elements to the given binary tree with the given compare function,
  * and returns a new tree, without modifing the original tree in place.
  *
  * @param tree The source binary tree
@@ -82,16 +82,16 @@ export function makeAddNode<T>(compareFn: CompareFunction<T>) {
  * @param nodes The nodes to be added
  * @returns The new binary tree
  */
-export function addNodes<T>(
+export function addElements<T>(
     tree: BinaryTree<T>,
     compareFn: CompareFunction<T>,
-    nodes: T[]
+    elements: T[]
 ): BinaryTree<T> {
-    return nodes.reduce((acc, curr) => addNode(acc, compareFn, curr), tree);
+    return elements.reduce((acc, curr) => addElement(acc, compareFn, curr), tree);
 }
 
 /**
- * Creates an addNodes function for the given binary tree with the given compare function.
+ * Creates an addElements function for the given binary tree with the given compare function.
  *
  * @param compareFn The function used to determine the order of the elements.
  *  Its first argument is the current element.
@@ -104,10 +104,10 @@ export function addNodes<T>(
  *
  *  => Zero     : the current element should be placed as max node of its parent
  *
- * @returns The bound addNodes function
+ * @returns The bound addElements function
  */
-export function makeAddNodes<T>(compareFn: CompareFunction<T>) {
-    return function (tree: BinaryTree<T>, nodes: T[]) {
-        return addNodes(tree, compareFn, nodes);
+export function makeAddElements<T>(compareFn: CompareFunction<T>) {
+    return function (tree: BinaryTree<T>, elements: T[]) {
+        return addElements(tree, compareFn, elements);
     };
 }

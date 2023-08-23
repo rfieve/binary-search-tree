@@ -1,7 +1,7 @@
 import { BinaryTree, BinaryTreeMinBranch } from 'src/types';
 
 /**
- * Assess if the given tree has a min branch (has min).
+ * Assesses if the given tree has a min branch (has min).
  *
  * @param tree The source binary tree
  *

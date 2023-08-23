@@ -1,4 +1,9 @@
-export { addNode, addNodes, makeAddNode, makeAddNodes } from 'src/functions/add-node';
+export {
+    addElement,
+    addElements,
+    makeAddElement,
+    makeAddElements,
+} from 'src/functions/add-elements';
 export { findMax } from 'src/functions/find-max';
 export { findMin } from 'src/functions/find-min';
 export { findNode, makeFindNode } from 'src/functions/find-node';

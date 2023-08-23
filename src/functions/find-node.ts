@@ -2,7 +2,7 @@ import { isBranch } from 'src/functions/is-branch';
 import { BinaryTree, BinaryTreeNode, CompareFunction } from 'src/types';
 
 /**
- * Finds a given node into the given binary tree with the given compare function.
+ * Finds a given element into the given binary tree with the given compare function.
  *
  * @param tree The source binary tree
  * @param compareFn The function used to determine the order of the elements.
@@ -15,15 +15,15 @@ import { BinaryTree, BinaryTreeNode, CompareFunction } from 'src/types';
  *  => Positive : the current element should be found as max node of its parent
  *
  *  => Zero     : the current element should be found as max node of its parent
- * @param node The node to be found
+ * @param element The element to be found
  * @returns The new binary tree
  */
 export function findNode<T>(
     tree: BinaryTree<T>,
     compareFn: CompareFunction<T>,
-    node: T
+    element: T
 ): BinaryTree<T> | undefined {
-    if (tree.data === node) {
+    if (tree.data === element) {
         return tree;
     }
 
@@ -31,11 +31,11 @@ export function findNode<T>(
         return undefined;
     }
 
-    const comparison = compareFn(node, tree.data);
+    const comparison = compareFn(element, tree.data);
     const direction = comparison < 0 ? 'min' : 'max';
     const subTree = tree[direction] as BinaryTreeNode<T>;
 
-    return findNode(subTree, compareFn, node);
+    return findNode(subTree, compareFn, element);
 }
 
 /**
@@ -56,7 +56,7 @@ export function findNode<T>(
  * @returns The bound findNode function
  */
 export function makeFindNode<T>(tree: BinaryTree<T>, compareFn: CompareFunction<T>) {
-    return function (node: T) {
-        return findNode(tree, compareFn, node);
+    return function (element: T) {
+        return findNode(tree, compareFn, element);
     };
 }

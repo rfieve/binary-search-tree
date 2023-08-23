@@ -1,7 +1,7 @@
 import { BinaryTree } from 'src/types';
 
-export function compareFunction(currentNode: number, parentNode: number) {
-    return currentNode - parentNode;
+export function compareFunction(a: number, b: number) {
+    return a - b;
 }
 
 export const mockedArray = [10, 32, 13, 2, 89, 5, 50];

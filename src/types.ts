@@ -1,4 +1,4 @@
-export type CompareFunction<T> = (currentNode: T, parentNode: T) => number;
+export type CompareFunction<T> = (a: T, b: T) => number;
 
 export type BinaryTreeLeaf<T> = {
     data : T;

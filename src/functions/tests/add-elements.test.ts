@@ -1,75 +1,80 @@
-import { addNode, addNodes, makeAddNode, makeAddNodes } from 'src/functions/add-node';
+import {
+    addElement,
+    addElements,
+    makeAddElement,
+    makeAddElements,
+} from 'src/functions/add-elements';
 import { compareFunction, mockedTree } from 'src/functions/tests/_mocks';
 
-describe('addNode', () => {
+describe('addElement', () => {
     it('should not add a node which is already there', () => {
-        const modifiedTree = addNode(mockedTree, compareFunction, 10);
+        const modifiedTree = addElement(mockedTree, compareFunction, 10);
         expect(modifiedTree).toEqual(mockedTree);
     });
 
     it('should add a random node to the tree at the correct position', () => {
-        const modifiedTree = addNode(mockedTree, compareFunction, 11);
+        const modifiedTree = addElement(mockedTree, compareFunction, 11);
         expect(modifiedTree.max?.min?.min?.data).toBe(11);
     });
 
     it('should add a min node to the tree at the correct min-side position', () => {
-        const modifiedTree = addNode(mockedTree, compareFunction, 0);
+        const modifiedTree = addElement(mockedTree, compareFunction, 0);
         expect(modifiedTree.min?.min?.data).toBe(0);
     });
 
     it('should add a max node to the tree at the correct max-side position', () => {
-        const modifiedTree = addNode(mockedTree, compareFunction, 100);
+        const modifiedTree = addElement(mockedTree, compareFunction, 100);
         expect(modifiedTree.max?.max?.max?.data).toBe(100);
     });
 });
 
-describe('makeAddNode', () => {
-    const boundAddNode = makeAddNode(compareFunction);
+describe('makeAddElement', () => {
+    const boundAddElement = makeAddElement(compareFunction);
 
     it('should not add a node which is already there', () => {
-        const modifiedTree = boundAddNode(mockedTree, 10);
+        const modifiedTree = boundAddElement(mockedTree, 10);
         expect(modifiedTree).toEqual(mockedTree);
     });
 
     it('should add a random node to the tree at the correct position', () => {
-        const modifiedTree = boundAddNode(mockedTree, 11);
+        const modifiedTree = boundAddElement(mockedTree, 11);
         expect(modifiedTree.max?.min?.min?.data).toBe(11);
     });
 
     it('should add a min node to the tree at the correct min-side position', () => {
-        const modifiedTree = boundAddNode(mockedTree, 0);
+        const modifiedTree = boundAddElement(mockedTree, 0);
         expect(modifiedTree.min?.min?.data).toBe(0);
     });
 
     it('should add a max node to the tree at the correct max-side position', () => {
-        const modifiedTree = boundAddNode(mockedTree, 100);
+        const modifiedTree = boundAddElement(mockedTree, 100);
         expect(modifiedTree.max?.max?.max?.data).toBe(100);
     });
 });
 
-describe('addNodes', () => {
+describe('addElements', () => {
     it('should not add a node which is already there', () => {
-        const modifiedTree = addNodes(mockedTree, compareFunction, [10]);
+        const modifiedTree = addElements(mockedTree, compareFunction, [10]);
         expect(modifiedTree).toEqual(mockedTree);
     });
 
     it('should add a random node to the tree at the correct position', () => {
-        const modifiedTree = addNodes(mockedTree, compareFunction, [11, 100]);
+        const modifiedTree = addElements(mockedTree, compareFunction, [11, 100]);
         expect(modifiedTree.max?.min?.min?.data).toBe(11);
         expect(modifiedTree.max?.max?.max?.data).toBe(100);
     });
 });
 
-describe('makeAddNodes', () => {
-    const boundAddNodes = makeAddNodes(compareFunction);
+describe('makeAddElements', () => {
+    const boundAddElements = makeAddElements(compareFunction);
 
     it('should not add a node which is already there', () => {
-        const modifiedTree = boundAddNodes(mockedTree, [10]);
+        const modifiedTree = boundAddElements(mockedTree, [10]);
         expect(modifiedTree).toEqual(mockedTree);
     });
 
     it('should add a random node to the tree at the correct position', () => {
-        const modifiedTree = boundAddNodes(mockedTree, [11, 100]);
+        const modifiedTree = boundAddElements(mockedTree, [11, 100]);
         expect(modifiedTree.max?.min?.min?.data).toBe(11);
         expect(modifiedTree.max?.max?.max?.data).toBe(100);
     });

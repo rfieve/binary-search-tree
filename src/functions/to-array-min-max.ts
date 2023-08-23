@@ -1,4 +1,4 @@
-import { makeStoreNodes } from 'src/functions/helpers/store-nodes';
+import { makeCollectElements } from 'src/functions/helpers/store-nodes';
 import { traverseMinMax } from 'src/functions/traverse-min-max';
 import { BinaryTree } from 'src/types';
 
@@ -9,10 +9,10 @@ import { BinaryTree } from 'src/types';
  * @returns The array sorted from min to max.
  */
 export function toArrayMinMax<T>(tree?: BinaryTree<T>) {
-    const nodes: T[] = [];
-    const storeNodes = makeStoreNodes(nodes);
+    const elements: T[] = [];
+    const collectElements = makeCollectElements(elements);
 
-    traverseMinMax(storeNodes, tree);
+    traverseMinMax(collectElements, tree);
 
-    return nodes;
+    return elements;
 }
