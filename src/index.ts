@@ -16,4 +16,9 @@ export { toArrayRTL } from 'src/functions/to-array-rtl';
 export { toBinarySearchTree } from 'src/functions/to-binary-search-tree';
 export { traverseLTR } from 'src/functions/traverse-ltr';
 export { traverseRTL } from 'src/functions/traverse-rtl';
-export type { BinarySearchTree, BinarySearchTreeLeaf, BinarySearchTreeNode, CompareFunction } from 'src/types';
+export type {
+    BinarySearchTree,
+    BinarySearchTreeLeaf,
+    BinarySearchTreeNode,
+    CompareFunction,
+} from 'src/types';

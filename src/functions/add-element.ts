@@ -1,4 +1,4 @@
-import { BinarySearchTree, BinarySearchTreeNode, CompareFunction } from 'src/types';
+import { BinarySearchTree, CompareFunction } from 'src/types';
 
 /**
  * Adds a given node to the given binary search tree with the given compare function,
@@ -25,7 +25,7 @@ export function addElement<T>(
     element: T
 ): BinarySearchTree<T> {
     if (tree.data === undefined) {
-        return { data: element } as BinarySearchTreeNode<T>;
+        return { data: element };
     }
 
     const comparison = compareFn(element, tree.data);
