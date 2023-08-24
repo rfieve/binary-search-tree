@@ -1,6 +1,6 @@
 # 🌳 binary-tree
 
-A bunch of TypeScript utility functions to work with binary trees and arrays of any types, with a functional-programming approach.
+A bunch of TypeScript utility functions to work with binary search trees and arrays of any types, with a functional-programming and immutable approach.
 
 ## Table of Content
 
@@ -12,16 +12,16 @@ A bunch of TypeScript utility functions to work with binary trees and arrays of 
         -   [`addElements` \& `makeAddElements`](#addelements--makeaddelements)
         -   [`findNode` \& `makeFindNode`](#findnode--makefindnode)
         -   [`findMin` \& `findMax`](#findmin--findmax)
-        -   [`toArrayMinMax` \& `toArrayMaxMin`](#toarrayminmax--toarraymaxmin)
-        -   [`traverseMinMax` \& `traverseMaxMin`](#traverseminmax--traversemaxmin)
+        -   [`toArrayLTR` \& `toArrayRTL`](#toarrayltr--toarrayrtl)
+        -   [`traverseLTR` \& `traverseRTL`](#traverseltr--traversertl)
         -   [`isLeaf` \& `isBranch`](#isleaf--isbranch)
-        -   [`hasMinBranch` \& `hasMaxBranch`](#hasminbranch--hasmaxbranch)
+        -   [`hasLeftBranch` \& `hasRightBranch`](#hasleftbranch--hasrightbranch)
 
 ## Usage
 
 ### `toBinaryTree`
 
-Converts the given array to a binary tree, depending on a given compare function.
+Converts the given array to a binary search tree, depending on a given compare function.
 
 ```typescript
 const arr = [10, 32, 13, 2, 89, 5, 50];
@@ -31,20 +31,20 @@ const tree = toBinaryTree(arr, compare);
 
 // {                            |
 //     data: 10,                |
-//     min: {                   |
+//     left: {                  |
 //         data: 2,             |
-//         max: {               |
+//         right: {             |
 //             data : 5,        |
 //         },                   |
 //     },                       |            10
-//     max: {                   |         /     \
+//     right: {                 |         /     \
 //         data: 32,            |        2      32
-//         min: {               |         \    /  \
+//         left: {              |         \    /  \
 //             data: 13,        |          5  13  89
 //         },                   |                 /
-//         max: {               |               50
+//         right: {             |               50
 //             data: 89,        |
-//             min: {           |
+//             left: {          |
 //                 data : 50,   |
 //             },               |
 //         },                   |
@@ -56,7 +56,7 @@ const tree = toBinaryTree(arr, compare);
 
 ### `addElement` & `makeAddElement`
 
-`addElement` adds a given node to the given binary tree with the given compare function and returns a new tree, without modifing the original tree in place.
+`addElement` adds a given node to the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
 
 ⚠️ Caveats: using another compare function than the one used to create the tree with `toBinaryTree` will of course f\*\*k up the tree.
 
@@ -130,7 +130,7 @@ const safelyModifiedTree = safeAndReusableAddElements(tree, [11, 100]);
 
 ### `findNode` & `makeFindNode`
 
-`findNode` finds a given node into the given binary tree with the given compare function.
+`findNode` finds a given node into the given binary search tree with the given compare function.
 
 ⚠️ Caveats: using another compare function than the one used to create the tree with `toBinaryTree` will of course f\*\*k up the search.
 
@@ -176,9 +176,9 @@ const max = findMax(tree).data; // 89
 
 ---
 
-### `toArrayMinMax` & `toArrayMaxMin`
+### `toArrayLTR` & `toArrayRTL`
 
-Converts the given binary tree to an array, with the elements sorted from min to max (`toArrayMinMax`) or from max to min (`toArrayMaxMin`).
+Converts the given binary search tree to an array, with the elements sorted from left to right (`toArrayLTR`) or from right to left (`toArrayRTL`).
 
 ```typescript
 // schema of "tree"
@@ -191,15 +191,15 @@ Converts the given binary tree to an array, with the elements sorted from min to
 //           /
 //         50
 
-const elements = toArrayMinMax(tree); // [2, 5, 10, 13, 32, 50, 89]
-const elements = toArrayMaxMmin(tree); // [89, 50, 32, 13, 10, 5, 2]
+const elements = toArrayLTR(tree); // [2, 5, 10, 13, 32, 50, 89]
+const elements = toArrayRTL(tree); // [89, 50, 32, 13, 10, 5, 2]
 ```
 
 ---
 
-### `traverseMinMax` & `traverseMaxMin`
+### `traverseLTR` & `traverseRTL`
 
-Traverses a tree from min to max (`traverseMinMax`) or from max to min (`traverseMaxMin`), invoking the callback function on each visited node.
+Traverses a tree from left to right (`traverseLTR`) or from right to left (`traverseRTL`), invoking the callback function on each visited node.
 
 ```typescript
 // schema of "tree"
@@ -212,24 +212,24 @@ Traverses a tree from min to max (`traverseMinMax`) or from max to min (`travers
 //           /
 //         50
 
-const collect = (store: number[]) => (node: { data: number }) => {
-    store.push(node.data);
+const collect = (collection: number[]) => (node: { data: number }) => {
+    collection.push(node.data);
 };
 
-const elements: number[] = [];
-traverseMinMax(collect(elements), tree);
-// elements: [2, 5, 10, 13, 32, 50, 89]
+const collection: number[] = [];
+traverseLTR(collect(collection), tree);
+// collection: [2, 5, 10, 13, 32, 50, 89]
 
-const elements: number[] = [];
-traverseMaxMmin(collect(elements), tree);
-// elements: [89, 50, 32, 13, 10, 5, 2]
+const collection: number[] = [];
+traverseRTL(collect(collection), tree);
+// collection: [89, 50, 32, 13, 10, 5, 2]
 ```
 
 ---
 
 ### `isLeaf` & `isBranch`
 
-Assesses if the given tree/node is a leaf (has no min nor max prop) (`isLeaf`) or a branch (has a min or a max prop or both) (`isBranch`).
+Assesses if the given tree/node is a leaf (has no left nor right prop) (`isLeaf`) or a branch (has a left or a right prop or both) (`isBranch`).
 
 ```typescript
 // schema of "tree"
@@ -242,18 +242,18 @@ Assesses if the given tree/node is a leaf (has no min nor max prop) (`isLeaf`) o
 //           /
 //         50
 
-const isLeaf_A = isLeaf(tree.min.min); // true
+const isLeaf_A = isLeaf(tree.left.left); // true
 const isLeaf_B = isLeaf(tree); // false
 
 const isBranch_A = isBranch(tree); // true
-const isBranch_B = isBranch(tree.min.min); // false
+const isBranch_B = isBranch(tree.left.left); // false
 ```
 
 ---
 
-### `hasMinBranch` & `hasMaxBranch`
+### `hasLeftBranch` & `hasRightBranch`
 
-Assesses if the given tree/node has a min branch (has a min prop) (`hasMinBranch`) or a max branch (has a max prop) (`hasMaxBranch`).
+Assesses if the given tree/node has a left branch (has a left prop) (`hasLeftBranch`) or a right branch (has a right prop) (`hasRightBranch`).
 
 ```typescript
 // schema of "tree"
@@ -266,11 +266,11 @@ Assesses if the given tree/node has a min branch (has a min prop) (`hasMinBranch
 //           /
 //         50
 
-const hasMin_A = hasMinBranch(tree); // true
-const hasMin_B = hasMinBranch(tree.min); // false
+const hasLeft_A = hasLeftBranch(tree); // true
+const hasLeft_B = hasLeftBranch(tree.left); // false
 
-const hasMax_A = hasMaxBranch(tree); // true
-const hasMax_B = hasMaxBranch(tree.min.min); // false
+const hasRight_A = hasRightBranch(tree); // true
+const hasRight_B = hasRightBranch(tree.left.left); // false
 ```
 
 ---

@@ -18,11 +18,11 @@ describe('isLeaf', () => {
         expect(isLeaf({ data: undefined })).toBe(false);
     });
 
-    it('should return false when the given tree has no min', () => {
-        expect(isLeaf({ data: 0, max: { data: 1 } })).toBe(false);
+    it('should return false when the given tree has no left branch', () => {
+        expect(isLeaf({ data: 0, right: { data: 1 } })).toBe(false);
     });
 
-    it('should return false when the given tree has no max', () => {
-        expect(isLeaf({ data: 0, min: { data: 1 } })).toBe(false);
+    it('should return false when the given tree has no right branch', () => {
+        expect(isLeaf({ data: 0, left: { data: 1 } })).toBe(false);
     });
 });

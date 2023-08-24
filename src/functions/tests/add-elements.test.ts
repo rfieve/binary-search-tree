@@ -14,17 +14,17 @@ describe('addElement', () => {
 
     it('should add a random node to the tree at the correct position', () => {
         const modifiedTree = addElement(mockedTree, compareFunction, 11);
-        expect(modifiedTree.max?.min?.min?.data).toBe(11);
+        expect(modifiedTree.right?.left?.left?.data).toBe(11);
     });
 
-    it('should add a min node to the tree at the correct min-side position', () => {
+    it('should add a left node to the tree at the correct left-side position', () => {
         const modifiedTree = addElement(mockedTree, compareFunction, 0);
-        expect(modifiedTree.min?.min?.data).toBe(0);
+        expect(modifiedTree.left?.left?.data).toBe(0);
     });
 
-    it('should add a max node to the tree at the correct max-side position', () => {
+    it('should add a right node to the tree at the correct right-side position', () => {
         const modifiedTree = addElement(mockedTree, compareFunction, 100);
-        expect(modifiedTree.max?.max?.max?.data).toBe(100);
+        expect(modifiedTree.right?.right?.right?.data).toBe(100);
     });
 });
 
@@ -38,17 +38,17 @@ describe('makeAddElement', () => {
 
     it('should add a random node to the tree at the correct position', () => {
         const modifiedTree = boundAddElement(mockedTree, 11);
-        expect(modifiedTree.max?.min?.min?.data).toBe(11);
+        expect(modifiedTree.right?.left?.left?.data).toBe(11);
     });
 
-    it('should add a min node to the tree at the correct min-side position', () => {
+    it('should add a left node to the tree at the correct left-side position', () => {
         const modifiedTree = boundAddElement(mockedTree, 0);
-        expect(modifiedTree.min?.min?.data).toBe(0);
+        expect(modifiedTree.left?.left?.data).toBe(0);
     });
 
-    it('should add a max node to the tree at the correct max-side position', () => {
+    it('should add a right node to the tree at the correct right-side position', () => {
         const modifiedTree = boundAddElement(mockedTree, 100);
-        expect(modifiedTree.max?.max?.max?.data).toBe(100);
+        expect(modifiedTree.right?.right?.right?.data).toBe(100);
     });
 });
 
@@ -60,8 +60,8 @@ describe('addElements', () => {
 
     it('should add a random node to the tree at the correct position', () => {
         const modifiedTree = addElements(mockedTree, compareFunction, [11, 100]);
-        expect(modifiedTree.max?.min?.min?.data).toBe(11);
-        expect(modifiedTree.max?.max?.max?.data).toBe(100);
+        expect(modifiedTree.right?.left?.left?.data).toBe(11);
+        expect(modifiedTree.right?.right?.right?.data).toBe(100);
     });
 });
 
@@ -75,7 +75,7 @@ describe('makeAddElements', () => {
 
     it('should add a random node to the tree at the correct position', () => {
         const modifiedTree = boundAddElements(mockedTree, [11, 100]);
-        expect(modifiedTree.max?.min?.min?.data).toBe(11);
-        expect(modifiedTree.max?.max?.max?.data).toBe(100);
+        expect(modifiedTree.right?.left?.left?.data).toBe(11);
+        expect(modifiedTree.right?.right?.right?.data).toBe(100);
     });
 });

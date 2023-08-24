@@ -12,12 +12,12 @@ describe('findNode', () => {
         expect(node?.data).toBe(89);
     });
 
-    it('should find a min node into the tree at the correct min-side position', () => {
+    it('should find a left node into the tree at the correct left-side position', () => {
         const node = findNode(mockedTree, compareFunction, 2);
         expect(node?.data).toBe(2);
     });
 
-    it('should find a max node into the tree at the correct max-side position', () => {
+    it('should find a right node into the tree at the correct right-side position', () => {
         const node = findNode(mockedTree, compareFunction, 50);
         expect(node?.data).toBe(50);
     });
@@ -36,12 +36,12 @@ describe('makeFindNode', () => {
         expect(node?.data).toBe(89);
     });
 
-    it('should find a min node into the tree at the correct min-side position', () => {
+    it('should find a left node into the tree at the correct left-side position', () => {
         const node = boundFindNode(2);
         expect(node?.data).toBe(2);
     });
 
-    it('should find a max node into the tree at the correct max-side position', () => {
+    it('should find a right node into the tree at the correct right-side position', () => {
         const node = boundFindNode(50);
         expect(node?.data).toBe(50);
     });

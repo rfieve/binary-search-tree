@@ -1,22 +1,23 @@
 import { BinaryTree, BinaryTreeNode, CompareFunction } from 'src/types';
 
 /**
- * Adds a given node to the given binary tree with the given compare function,
+ * Adds a given node to the given binary search tree with the given compare function,
  * and returns a new tree, without modifing the original tree in place.
  *
- * @param tree The source binary tree
- * @param compareFn The function used to determine the order of the elements.
+ * @param tree The source binary search tree
+ * @param compareFn The function used to determine the order of the elements (similar to Array.sort).
  *  Its first argument is the current element.
  *  Its second argument is the parent element.
  *  Its return value can be negative, zero or positive:
  *
- *  => Negative : the current element should be placed as min node of its parent
+ *  => Negative : the current element should be placed as left node of its parent
  *
- *  => Positive : the current element should be placed as max node of its parent
+ *  => Positive : the current element should be placed as right node of its parent
  *
- *  => Zero     : the current element should be placed as max node of its parent
- * @param element The node to be added
- * @returns The new binary tree
+ *  => Zero     : the current element should not be placed in the tree
+ *
+ * @param element The element to be added
+ * @returns The new binary search tree
  */
 export function addElement<T>(
     tree: BinaryTree<T>,
@@ -33,7 +34,7 @@ export function addElement<T>(
         return tree;
     }
 
-    const direction = comparison < 0 ? 'min' : 'max';
+    const direction = comparison < 0 ? 'left' : 'right';
     const subTree = tree[direction];
 
     return {
@@ -43,18 +44,18 @@ export function addElement<T>(
 }
 
 /**
- * Creates an addElement function for the given binary tree with the given compare function.
+ * Creates an addElement function for the given binary search tree with the given compare function.
  *
  * @param compareFn The function used to determine the order of the elements.
  *  Its first argument is the current element.
  *  Its second argument is the parent element.
  *  Its return value can be negative, zero or positive:
  *
- *  => Negative : the current element should be placed as min node of its parent
+ *  => Negative : the current element should be placed as left node of its parent
  *
- *  => Positive : the current element should be placed as max node of its parent
+ *  => Positive : the current element should be placed as right node of its parent
  *
- *  => Zero     : the current element should be placed as max node of its parent
+ *  => Zero     : the current element should not be placed in the tree
  *
  * @returns The bound addElement function
  */
@@ -65,22 +66,23 @@ export function makeAddElement<T>(compareFn: CompareFunction<T>) {
 }
 
 /**
- * Adds the given elements to the given binary tree with the given compare function,
+ * Adds the given elements to the given binary search tree with the given compare function,
  * and returns a new tree, without modifing the original tree in place.
  *
- * @param tree The source binary tree
+ * @param tree The source binary search tree
  * @param compareFn The function used to determine the order of the elements.
  *  Its first argument is the current element.
  *  Its second argument is the parent element.
  *  Its return value can be negative, zero or positive:
  *
- *  => Negative : the current element should be placed as min node of its parent
+ *  => Negative : the current element should be placed as left node of its parent
  *
- *  => Positive : the current element should be placed as max node of its parent
+ *  => Positive : the current element should be placed as right node of its parent
  *
- *  => Zero     : the current element should be placed as max node of its parent
+ *  => Zero     : the current element should not be placed in the tree
+ *
  * @param nodes The nodes to be added
- * @returns The new binary tree
+ * @returns The new binary search tree
  */
 export function addElements<T>(
     tree: BinaryTree<T>,
@@ -91,18 +93,18 @@ export function addElements<T>(
 }
 
 /**
- * Creates an addElements function for the given binary tree with the given compare function.
+ * Creates an addElements function for the given binary search tree with the given compare function.
  *
  * @param compareFn The function used to determine the order of the elements.
  *  Its first argument is the current element.
  *  Its second argument is the parent element.
  *  Its return value can be negative, zero or positive:
  *
- *  => Negative : the current element should be placed as min node of its parent
+ *  => Negative : the current element should be placed as left node of its parent
  *
- *  => Positive : the current element should be placed as max node of its parent
+ *  => Positive : the current element should be placed as right node of its parent
  *
- *  => Zero     : the current element should be placed as max node of its parent
+ *  => Zero     : the current element should not be placed in the tree
  *
  * @returns The bound addElements function
  */

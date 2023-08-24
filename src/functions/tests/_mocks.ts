@@ -18,26 +18,26 @@ export const mockedArrayReversed = mockedArrayOrdered.slice().reverse();
 
 export const mockedTree: BinaryTree<number> = {
     data : 10,
-    min  : {
-        data : 2,
-        max  : {
+    left : {
+        data  : 2,
+        right : {
             data : 5,
         },
     },
-    max : {
+    right : {
         data : 32,
-        min  : {
+        left : {
             data : 13,
         },
-        max : {
+        right : {
             data : 89,
-            min  : {
+            left : {
                 data : 50,
             },
         },
     },
 };
 
-export const mockedLeaf = (mockedTree.min as BinaryTree<number>).max;
-export const mockedStrictMinLeaf = (mockedTree.max as BinaryTree<number>).max;
-export const mockedStrictMaxLeaf = mockedTree.min;
+export const mockedLeaf = (mockedTree.left as BinaryTree<number>).right;
+export const mockedStrictLeftLeaf = (mockedTree.right as BinaryTree<number>).right;
+export const mockedStrictRightLeaf = mockedTree.left;
