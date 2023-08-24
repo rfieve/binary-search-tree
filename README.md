@@ -29,6 +29,8 @@ const compareAlphabetically = (a: Element, b: Element) => a.name.localeCompare(b
 
 const addElementAlphabetically = makeAddElement(compareAlphabetically);
 const addElementsAlphabetically = makeAddElements(compareAlphabetically);
+const removeElementAlphabetically = makeRemoveElement(compareAlphabetically);
+const removeElementsAlphabetically = makeRemoveElements(compareAlphabetically);
 const findNodeAlphabetically = makeFindNode(compareAlphabetically);
 
 const people: Element[] = [
@@ -45,7 +47,9 @@ const tree = toBinarySearchTree(people, compareAlphabetically);
 const updatedTree = pipe(
     (t) => addElementAlphabetically(t, { name: 'Yoda' }),
     (t) => addElementAlphabetically(t, { name: 'Obiwan' }),
-    (t) => addElementsAlphabetically(t, [{ name: 'Boba' }, { name: 'Grogu' }])
+    (t) => addElementsAlphabetically(t, [{ name: 'Boba' }, { name: 'Grogu' }]),
+    (t) => removeElementsAlphabetically(t, [{ name: 'Han' }, { name: 'Padme' }]),
+    (t) => removeElementAlphabetically(t, { name: 'Luke' })
 )(tree);
 
 // tree:                                     | Schema of "tree"
@@ -60,15 +64,15 @@ const updatedTree = pipe(
 //     },                                    |
 //     right: {                              | Schema of "updatedTree"
 //         data: { name: 'Leia' },           |
-//         left: {                           |             Han
+//         left: {                           |            Lando
 //             data: { name: 'Lando' },      |           /     \
 //         },                                |     Anakin       Leia
-//         right: {                          |         \       /    \
-//             data: { name: 'Luke' },       |       Chewie  Lando   Luke
+//         right: {                          |         \            \
+//             data: { name: 'Luke' },       |       Chewie        Obiwan
 //             right: {                      |        /    \            \
-//                 data : { name: 'Padme' }, |      Boba  Grogu        Padme
-//             },                            |                        /    \
-//         },                                |                    Obiwan   Yoda
+//                 data : { name: 'Padme' }, |      Boba  Grogu        Yoda
+//             },                            |
+//         },                                |
 //     },                                    |
 // };                                        |
 
