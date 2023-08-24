@@ -1,5 +1,5 @@
+import { compare, mockedTree } from 'src/functions/__tests__/_mocks';
 import { findNode, makeFindNode } from 'src/functions/find-node';
-import { compare, mockedTree } from 'src/functions/tests/_mocks';
 
 describe('findNode', () => {
     it('should not find a node which is not into the tree', () => {

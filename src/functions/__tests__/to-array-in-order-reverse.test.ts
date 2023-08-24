@@ -1,4 +1,4 @@
-import { mockedArrayReversed, mockedTree } from 'src/functions/tests/_mocks';
+import { mockedArrayReversed, mockedTree } from 'src/functions/__tests__/_mocks';
 import { toArrayinOrderReverse } from 'src/functions/to-array-in-order-reverse';
 
 describe('toArrayinOrderReverse', () => {

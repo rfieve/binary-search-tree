@@ -4,7 +4,7 @@ import {
     makeAddElement,
     makeAddElements,
 } from 'src/functions/add-element';
-import { compare, mockedTree } from 'src/functions/tests/_mocks';
+import { compare, mockedTree } from 'src/functions/__tests__/_mocks';
 
 describe('addElement', () => {
     it('should not add a node which is already there', () => {

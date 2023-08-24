@@ -1,5 +1,5 @@
+import { mockedTree } from 'src/functions/__tests__/_mocks';
 import { findMax } from 'src/functions/find-max';
-import { mockedTree } from 'src/functions/tests/_mocks';
 
 describe('findMax', () => {
     it('should return the maximal value of the tree', () => {

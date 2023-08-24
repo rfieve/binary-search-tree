@@ -2,17 +2,17 @@
     "name": "@rfieve/binary-tree",
     "version": "1.0.0",
     "description": "",
-    "main": "lib/index.js",
-    "types": "lib/index.d.ts",
+    "main": "dist/index.js",
+    "types": "dist/index.d.ts",
     "files": [
-        "lib"
+        "dist"
     ],
     "scripts": {
-        "build": "yarn tsc",
+        "build": "tsc --project tsconfig.build.json",
         "lint": "eslint --fix ./src/ --ext .js --ext .ts --ext .tsx --format table",
         "test": "NODE_PATH=./ jest --coverage --passWithNoTests",
         "test:watch": "NODE_PATH=./ jest --watch --coverage --passWithNoTests",
-        "prepublish": "yarn tsc"
+        "prepublish": "tsc --project tsconfig.build.json"
     },
     "author": "rfieve",
     "license": "ISC",

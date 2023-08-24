@@ -6,7 +6,7 @@
         "declaration": true,
         "declarationMap": true,
         "sourceMap": true,
-        "outDir": "lib",
+        "outDir": "dist",
         "esModuleInterop": true,
         "forceConsistentCasingInFileNames": true,
         "strict": true,
@@ -19,5 +19,5 @@
         "incremental": true
     },
     "include": ["src/**/*.ts"],
-    "exclude": ["node_modules", "lib"]
+    "exclude": ["node_modules", "dist"]
 }

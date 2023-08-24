@@ -1,10 +1,10 @@
+import { compare, mockedArray, mockedTree } from 'src/functions/__tests__/_mocks';
 import {
     makeRemoveElement,
     makeRemoveElements,
     removeElement,
     removeElements,
 } from 'src/functions/remove-element';
-import { compare, mockedArray, mockedTree } from 'src/functions/tests/_mocks';
 
 describe('removeElement', () => {
     it('should not remove a node which is not there', () => {

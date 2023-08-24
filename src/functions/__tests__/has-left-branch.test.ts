@@ -4,7 +4,7 @@ import {
     mockedStrictLeftLeaf,
     mockedStrictRightLeaf,
     mockedTree,
-} from 'src/functions/tests/_mocks';
+} from 'src/functions/__tests__/_mocks';
 
 describe('isLeftBranch', () => {
     it('should return true when the given tree is a branch', () => {

@@ -1,10 +1,10 @@
-import { isBranch } from 'src/functions/is-branch';
 import {
     mockedLeaf,
     mockedStrictLeftLeaf,
     mockedStrictRightLeaf,
     mockedTree,
-} from 'src/functions/tests/_mocks';
+} from 'src/functions/__tests__/_mocks';
+import { isBranch } from 'src/functions/is-branch';
 
 describe('isBranch', () => {
     it('should return true when the given tree is a branch', () => {

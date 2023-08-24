@@ -1,4 +1,4 @@
-import { compare, mockedArray, mockedTree } from 'src/functions/tests/_mocks';
+import { compare, mockedArray, mockedTree } from 'src/functions/__tests__/_mocks';
 import { toBinarySearchTree } from 'src/functions/to-binary-search-tree';
 
 describe('toBinarySearchTree', () => {

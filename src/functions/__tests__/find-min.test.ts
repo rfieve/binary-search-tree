@@ -1,5 +1,5 @@
 import { findMin } from 'src/functions/find-min';
-import { mockedTree } from 'src/functions/tests/_mocks';
+import { mockedTree } from 'src/functions/__tests__/_mocks';
 
 describe('findMin', () => {
     it('should return the minimal value of the tree', () => {
