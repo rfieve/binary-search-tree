@@ -15,8 +15,8 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
         -   [`removeElements` \& `makeRemoveElements`](#removeelements--makeremoveelements)
         -   [`findNode` \& `makeFindNode`](#findnode--makefindnode)
         -   [`findMin` \& `findMax`](#findmin--findmax)
-        -   [`toArrayInOrder` \& `toArrayinOrderReverse`](#toarrayinorder--toarrayinorderreverse)
-        -   [`traverseInOrder` \& `traverseinOrderReverse`](#traverseinorder--traverseinorderreverse)
+        -   [`toArrayInOrder` \& `toArrayInOrderReverse`](#toarrayinorder--toarrayinorderreverse)
+        -   [`traverseInOrder` \& `traverseInOrderReverse`](#traverseinorder--traverseinorderreverse)
         -   [`isLeaf` \& `isBranch`](#isleaf--isbranch)
         -   [`hasLeftBranch` \& `hasRightBranch`](#hasleftbranch--hasrightbranch)
 
@@ -295,9 +295,9 @@ const max = findMax(tree).data; // 89
 
 ---
 
-### `toArrayInOrder` & `toArrayinOrderReverse`
+### `toArrayInOrder` & `toArrayInOrderReverse`
 
-Converts the given binary search tree to an array, with the elements sorted from left to right (`toArrayInOrder`) or from right to left (`toArrayinOrderReverse`).
+Converts the given binary search tree to an array, with the elements sorted from left to right (`toArrayInOrder`) or from right to left (`toArrayInOrderReverse`).
 
 ```typescript
 // Schema of "tree"
@@ -311,14 +311,14 @@ Converts the given binary search tree to an array, with the elements sorted from
 //         50
 
 const elements = toArrayInOrder(tree); // [2, 5, 10, 13, 32, 50, 89]
-const elements = toArrayinOrderReverse(tree); // [89, 50, 32, 13, 10, 5, 2]
+const elements = toArrayInOrderReverse(tree); // [89, 50, 32, 13, 10, 5, 2]
 ```
 
 ---
 
-### `traverseInOrder` & `traverseinOrderReverse`
+### `traverseInOrder` & `traverseInOrderReverse`
 
-Traverses a tree from left to right (`traverseInOrder`) or from right to left (`traverseinOrderReverse`), invoking the callback function on each visited node.
+Traverses a tree from left to right (`traverseInOrder`) or from right to left (`traverseInOrderReverse`), invoking the callback function on each visited node.
 
 ```typescript
 // Schema of "tree"
@@ -340,7 +340,7 @@ traverseInOrder(collect(collection), tree);
 // collection: [2, 5, 10, 13, 32, 50, 89]
 
 const collection: number[] = [];
-traverseinOrderReverse(collect(collection), tree);
+traverseInOrderReverse(collect(collection), tree);
 // collection: [89, 50, 32, 13, 10, 5, 2]
 ```
 

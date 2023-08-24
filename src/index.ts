@@ -18,10 +18,10 @@ export {
     removeElements,
 } from 'src/functions/remove-element';
 export { toArrayInOrder } from 'src/functions/to-array-in-order';
-export { toArrayinOrderReverse } from 'src/functions/to-array-in-order-reverse';
+export { toArrayInOrderReverse } from 'src/functions/to-array-in-order-reverse';
 export { toBinarySearchTree } from 'src/functions/to-binary-search-tree';
 export { traverseInOrder } from 'src/functions/traverse-in-order';
-export { traverseinOrderReverse } from 'src/functions/traverse-in-order-reverse';
+export { traverseInOrderReverse } from 'src/functions/traverse-in-order-reverse';
 export type {
     BinarySearchTree,
     BinarySearchTreeLeaf,
