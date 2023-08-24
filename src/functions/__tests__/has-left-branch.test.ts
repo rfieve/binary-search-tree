@@ -1,10 +1,10 @@
-import { hasLeftBranch } from 'src/functions/has-left-branch';
 import {
     mockedLeaf,
     mockedStrictLeftLeaf,
     mockedStrictRightLeaf,
     mockedTree,
 } from 'src/functions/__tests__/_mocks';
+import { hasLeftBranch } from 'src/functions/has-left-branch';
 
 describe('isLeftBranch', () => {
     it('should return true when the given tree is a branch', () => {

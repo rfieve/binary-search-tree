@@ -8,7 +8,8 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
     -   [Table of Content](#table-of-content)
     -   [Example](#example)
     -   [Usage](#usage)
-        -   [`toBinarySearchTree`](#tobinarysearchtree)
+        -   [`toBinarySearchTree` \& `toBalancedBinarySearchTree`](#tobinarysearchtree--tobalancedbinarysearchtree)
+        -   [`balanceTree` \& `makeBalanceTree`](#balancetree--makebalancetree)
         -   [`addElement` \& `makeAddElement`](#addelement--makeaddelement)
         -   [`addElements` \& `makeAddElements`](#addelements--makeaddelements)
         -   [`removeElement` \& `makeRemoveElement`](#removeelement--makeremoveelement)
@@ -85,24 +86,62 @@ const grogu = findNodeAlpha(updatedTree, { name: 'Grogu' }).data.name; // Grogu
 
 ## Usage
 
-### `toBinarySearchTree`
+### `toBinarySearchTree` & `toBalancedBinarySearchTree`
 
-Converts the given array to a binary search tree, depending on a given compare function.
+Converts the given array to a binary search tree (`toBinarySearchTree`) or a balanced binary search tree(`toBalancedBinarySearchTree`), depending on a given compare function.
 
 ```typescript
 const arr = [10, 32, 13, 2, 89, 5, 50];
 const compare = (a: number, b: number) => a - b;
 const tree = toBinarySearchTree(arr, compare);
+const balancedTree = toBalancedBinarySearchTree(arr, compare);
 
-// Schema of "tree"
-//
-//       10
-//    /     \
-//   2      32
-//    \    /  \
-//     5  13  89
-//           /
-//         50
+// Schema of "tree"     |     "balancedTree"
+//                      |
+//       10             |            13
+//    /     \           |         /     \
+//   2      32          |        5      50
+//    \    /  \         |      /  \    /  \
+//     5  13  89        |     2   10  32   89
+//            /         |
+//          50          |
+```
+
+---
+
+### `balanceTree` & `makeBalanceTree`
+
+`balanceTree` balances the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
+
+⚠️ Caveats: using another compare function than the one used to create the tree with `toBinarySearchTree` will of course f\*\*k up the tree.
+
+A safer approach consists of using `makeBalanceTree`. It curries a `balanceTree` closure function with the given compare function.
+
+```typescript
+const balancedTree = balanceTree(tree, compare);
+
+// Schema of "tree"     |     "balancedTree"
+//                      |
+//       10             |            13
+//    /     \           |         /     \
+//   2      32          |        5      50
+//    \    /  \         |      /  \    /  \
+//     5  13  89        |     2   10  32   89
+//            /         |
+//          50          |
+
+const safeAndReusableBalanceTree = makeBalanceTree(compare);
+const safelyBalancedTree = safeAndReusableBalanceTree(tree);
+
+// Schema of "tree"     |     "safelyBalancedTree"
+//                      |
+//       10             |            13
+//    /     \           |         /     \
+//   2      32          |        5      50
+//    \    /  \         |      /  \    /  \
+//     5  13  89        |     2   10  32   89
+//            /         |
+//          50          |
 ```
 
 ---
@@ -183,7 +222,7 @@ const safelyModifiedTree = safeAndReusableAddElements(tree, [11, 100]);
 
 ⚠️ Caveats: using another compare function than the one used to create the tree with `toBinarySearchTree` will of course f\*\*k up the tree.
 
-A safer approach consists of using `makeRemoveElement`. It curries an `removeElement` closure function with the given compare function.
+A safer approach consists of using `makeRemoveElement`. It curries a `removeElement` closure function with the given compare function.
 
 ```typescript
 const modifiedTree = removeElement(tree, compare, 10);

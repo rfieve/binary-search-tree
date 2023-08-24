@@ -1,4 +1,4 @@
-import { makeCollectElements } from 'src/functions/helpers/collect-nodes';
+import { makeCollectElementFromNode } from 'src/functions/helpers/collect';
 import { traverseInOrder } from 'src/functions/traverse-in-order';
 import { BinarySearchTree } from 'src/types';
 
@@ -10,9 +10,9 @@ import { BinarySearchTree } from 'src/types';
  */
 export function toArrayInOrder<T>(tree?: BinarySearchTree<T>) {
     const elements: T[] = [];
-    const collectElements = makeCollectElements(elements);
+    const collectElementFromNode = makeCollectElementFromNode(elements);
 
-    traverseInOrder(collectElements, tree);
+    traverseInOrder(collectElementFromNode, tree);
 
     return elements;
 }

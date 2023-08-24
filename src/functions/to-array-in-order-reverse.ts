@@ -1,4 +1,4 @@
-import { makeCollectElements } from 'src/functions/helpers/collect-nodes';
+import { makeCollectElementFromNode } from 'src/functions/helpers/collect';
 import { traverseInOrderReverse } from 'src/functions/traverse-in-order-reverse';
 import { BinarySearchTree } from 'src/types';
 
@@ -10,9 +10,9 @@ import { BinarySearchTree } from 'src/types';
  */
 export function toArrayInOrderReverse<T>(tree?: BinarySearchTree<T>) {
     const elements: T[] = [];
-    const collectElements = makeCollectElements(elements);
+    const collectElementFromNode = makeCollectElementFromNode(elements);
 
-    traverseInOrderReverse(collectElements, tree);
+    traverseInOrderReverse(collectElementFromNode, tree);
 
     return elements;
 }

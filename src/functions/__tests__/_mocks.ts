@@ -38,6 +38,28 @@ export const mockedTree: BinarySearchTree<number> = {
     },
 };
 
+export const mockedBalancedTree: BinarySearchTree<number> = {
+    data : 13,
+    left : {
+        data : 5,
+        left : {
+            data : 2,
+        },
+        right : {
+            data : 10,
+        },
+    },
+    right : {
+        data : 50,
+        left : {
+            data : 32,
+        },
+        right : {
+            data : 89,
+        },
+    },
+};
+
 export const mockedLeaf = (mockedTree.left as BinarySearchTree<number>).right;
 export const mockedStrictLeftLeaf = (mockedTree.right as BinarySearchTree<number>).right;
 export const mockedStrictRightLeaf = mockedTree.left;
