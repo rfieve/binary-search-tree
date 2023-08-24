@@ -78,7 +78,7 @@ const updatedTree = pipe(
 
 const min = findMin(updatedTree).data.name; // Anakin
 const max = findMax(updatedTree).data.name; // Yoda
-const groguInTree = findNodeAlpha(updatedTree, { name: 'Grogu' }); // Grogu
+const grogu = findNodeAlpha(updatedTree, { name: 'Grogu' }).data.name; // Grogu
 // Thanks to the compare function, the search will traverse like this:
 // Lando -> Anakin -> Chewie -> Grogu
 ```
