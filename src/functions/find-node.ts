@@ -1,5 +1,4 @@
-import { isBranch } from 'src/functions/is-branch';
-import { BinarySearchTree, BinarySearchTreeNode, CompareFunction } from 'src/types';
+import { BinarySearchTree, CompareFunction } from 'src/types';
 
 /**
  * Finds a given element into the given binary search tree with the given compare function.
@@ -24,20 +23,20 @@ export function findNode<T>(
     compareFn: CompareFunction<T>,
     element: T
 ): BinarySearchTree<T> | undefined {
-    const comparison = tree.data ? compareFn(element, tree.data) : undefined;
-
-    if (comparison === 0 || tree.data === element) {
-        return tree;
-    }
-
-    if (comparison === undefined || !isBranch(tree)) {
+    if (tree.data === undefined) {
         return undefined;
     }
 
-    const direction = comparison < 0 ? 'left' : 'right';
-    const subTree = tree[direction] as BinarySearchTreeNode<T>;
+    const comparison = compareFn(element, tree.data);
 
-    return findNode(subTree, compareFn, element);
+    if (comparison === 0) {
+        return tree;
+    }
+
+    const direction = comparison < 0 ? 'left' : 'right';
+    const subTree = tree[direction];
+
+    return subTree ? findNode(subTree, compareFn, element) : undefined;
 }
 
 /**

@@ -7,6 +7,11 @@ describe('findNode', () => {
         expect(node?.data).toBe(undefined);
     });
 
+    it('should not find a node in an empty tree', () => {
+        const node = findNode({}, compareFunction, 0);
+        expect(node?.data).toBe(undefined);
+    });
+
     it('should find a random node into the tree at the correct position', () => {
         const node = findNode(mockedTree, compareFunction, 89);
         expect(node?.data).toBe(89);
@@ -28,6 +33,11 @@ describe('makeFindNode', () => {
 
     it('should not find a node which is not into the tree', () => {
         const node = boundFindNode(mockedTree, 11);
+        expect(node?.data).toBe(undefined);
+    });
+
+    it('should not find a node in an empty tree', () => {
+        const node = boundFindNode({}, 0);
         expect(node?.data).toBe(undefined);
     });
 

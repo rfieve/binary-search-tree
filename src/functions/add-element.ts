@@ -24,7 +24,7 @@ export function addElement<T>(
     compareFn: CompareFunction<T>,
     element: T
 ): BinarySearchTree<T> {
-    if (!tree.data) {
+    if (tree.data === undefined) {
         return { data: element } as BinarySearchTreeNode<T>;
     }
 
