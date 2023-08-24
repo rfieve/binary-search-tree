@@ -25,13 +25,13 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
 ```typescript
 type Element = { name: string };
 
-const compareAlphabetically = (a: Element, b: Element) => a.name.localeCompare(b.name);
+const compareAlpha = (a: Element, b: Element) => a.name.localeCompare(b.name);
 
-const addElementAlphabetically = makeAddElement(compareAlphabetically);
-const addElementsAlphabetically = makeAddElements(compareAlphabetically);
-const removeElementAlphabetically = makeRemoveElement(compareAlphabetically);
-const removeElementsAlphabetically = makeRemoveElements(compareAlphabetically);
-const findNodeAlphabetically = makeFindNode(compareAlphabetically);
+const addElementAlpha = makeAddElement(compareAlpha);
+const addElementsAlpha = makeAddElements(compareAlpha);
+const removeElementAlpha = makeRemoveElement(compareAlpha);
+const removeElementsAlpha = makeRemoveElements(compareAlpha);
+const findNodeAlpha = makeFindNode(compareAlpha);
 
 const people: Element[] = [
     { name: 'Han' },
@@ -42,14 +42,14 @@ const people: Element[] = [
     { name: 'Lando' },
     { name: 'Chewie' },
 ];
-const tree = toBinarySearchTree(people, compareAlphabetically);
+const tree = toBinarySearchTree(people, compareAlpha);
 
 const updatedTree = pipe(
-    (t) => addElementAlphabetically(t, { name: 'Yoda' }),
-    (t) => addElementAlphabetically(t, { name: 'Obiwan' }),
-    (t) => addElementsAlphabetically(t, [{ name: 'Boba' }, { name: 'Grogu' }]),
-    (t) => removeElementsAlphabetically(t, [{ name: 'Han' }, { name: 'Padme' }]),
-    (t) => removeElementAlphabetically(t, { name: 'Luke' })
+    (t) => addElementAlpha(t, { name: 'Yoda' }),
+    (t) => addElementAlpha(t, { name: 'Obiwan' }),
+    (t) => addElementsAlpha(t, [{ name: 'Boba' }, { name: 'Grogu' }]),
+    (t) => removeElementsAlpha(t, [{ name: 'Han' }, { name: 'Padme' }]),
+    (t) => removeElementAlpha(t, { name: 'Luke' })
 )(tree);
 
 // tree:                                     | Schema of "tree"
@@ -78,7 +78,7 @@ const updatedTree = pipe(
 
 const min = findMin(updatedTree).data.name; // Anakin
 const max = findMax(updatedTree).data.name; // Yoda
-const groguInTree = findNodeAlphabetically(updatedTree, { name: 'Grogu' }); // Grogu
+const groguInTree = findNodeAlpha(updatedTree, { name: 'Grogu' }); // Grogu
 // Thanks to the compare function, the search will traverse like this:
 // Lando -> Anakin -> Chewie -> Grogu
 ```
