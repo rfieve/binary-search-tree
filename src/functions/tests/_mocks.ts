@@ -1,6 +1,6 @@
 import { BinarySearchTree } from 'src/types';
 
-export function compareFunction(a: number, b: number) {
+export function compare(a: number, b: number) {
     return a - b;
 }
 

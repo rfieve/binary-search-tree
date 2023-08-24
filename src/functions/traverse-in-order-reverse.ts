@@ -6,10 +6,10 @@ import { BinarySearchTree } from 'src/types';
  * @param cb the callback invoked uppon each node
  * @param tree the tree to traverse
  */
-export function traverseRTL<T>(cb: (node: BinarySearchTree<T>) => void, tree?: BinarySearchTree<T>): void {
+export function traverseinOrderReverse<T>(cb: (node: BinarySearchTree<T>) => void, tree?: BinarySearchTree<T>): void {
     if (tree?.data) {
-        traverseRTL(cb, tree.right);
+        traverseinOrderReverse(cb, tree.right);
         cb(tree);
-        traverseRTL(cb, tree.left);
+        traverseinOrderReverse(cb, tree.left);
     }
 }

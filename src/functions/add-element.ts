@@ -5,7 +5,7 @@ import { BinarySearchTree, CompareFunction } from 'src/types';
  * and returns a new tree, without modifing the original tree in place.
  *
  * @param tree The source binary search tree
- * @param compareFn The function used to determine the order of the elements (similar to Array.sort).
+ * @param compare The function used to determine the order of the elements (similar to Array.sort).
  *  Its first argument is the current element.
  *  Its second argument is the parent element.
  *  Its return value can be negative, zero or positive:
@@ -21,14 +21,14 @@ import { BinarySearchTree, CompareFunction } from 'src/types';
  */
 export function addElement<T>(
     tree: BinarySearchTree<T>,
-    compareFn: CompareFunction<T>,
+    compare: CompareFunction<T>,
     element: T
 ): BinarySearchTree<T> {
     if (tree.data === undefined) {
         return { data: element };
     }
 
-    const comparison = compareFn(element, tree.data);
+    const comparison = compare(element, tree.data);
 
     if (comparison === 0) {
         return tree;
@@ -39,14 +39,14 @@ export function addElement<T>(
 
     return {
         ...tree,
-        [direction] : subTree ? addElement(subTree, compareFn, element) : { data: element },
+        [direction] : subTree ? addElement(subTree, compare, element) : { data: element },
     };
 }
 
 /**
  * Creates an addElement function for the given binary search tree with the given compare function.
  *
- * @param compareFn The function used to determine the order of the elements.
+ * @param compare The function used to determine the order of the elements.
  *  Its first argument is the current element.
  *  Its second argument is the parent element.
  *  Its return value can be negative, zero or positive:
@@ -59,9 +59,9 @@ export function addElement<T>(
  *
  * @returns The bound addElement function
  */
-export function makeAddElement<T>(compareFn: CompareFunction<T>) {
+export function makeAddElement<T>(compare: CompareFunction<T>) {
     return function (tree: BinarySearchTree<T>, element: T) {
-        return addElement(tree, compareFn, element);
+        return addElement(tree, compare, element);
     };
 }
 
@@ -70,7 +70,7 @@ export function makeAddElement<T>(compareFn: CompareFunction<T>) {
  * and returns a new tree, without modifing the original tree in place.
  *
  * @param tree The source binary search tree
- * @param compareFn The function used to determine the order of the elements.
+ * @param compare The function used to determine the order of the elements.
  *  Its first argument is the current element.
  *  Its second argument is the parent element.
  *  Its return value can be negative, zero or positive:
@@ -86,16 +86,16 @@ export function makeAddElement<T>(compareFn: CompareFunction<T>) {
  */
 export function addElements<T>(
     tree: BinarySearchTree<T>,
-    compareFn: CompareFunction<T>,
+    compare: CompareFunction<T>,
     elements: T[]
 ): BinarySearchTree<T> {
-    return elements.reduce((acc, curr) => addElement(acc, compareFn, curr), tree);
+    return elements.reduce((acc, curr) => addElement(acc, compare, curr), tree);
 }
 
 /**
  * Creates an addElements function for the given binary search tree with the given compare function.
  *
- * @param compareFn The function used to determine the order of the elements.
+ * @param compare The function used to determine the order of the elements.
  *  Its first argument is the current element.
  *  Its second argument is the parent element.
  *  Its return value can be negative, zero or positive:
@@ -108,8 +108,8 @@ export function addElements<T>(
  *
  * @returns The bound addElements function
  */
-export function makeAddElements<T>(compareFn: CompareFunction<T>) {
+export function makeAddElements<T>(compare: CompareFunction<T>) {
     return function (tree: BinarySearchTree<T>, elements: T[]) {
-        return addElements(tree, compareFn, elements);
+        return addElements(tree, compare, elements);
     };
 }

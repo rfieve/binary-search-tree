@@ -11,11 +11,17 @@ export { hasLeftBranch } from 'src/functions/has-left-branch';
 export { hasRightBranch } from 'src/functions/has-right-branch';
 export { isBranch } from 'src/functions/is-branch';
 export { isLeaf } from 'src/functions/is-leaf';
-export { toArrayLTR } from 'src/functions/to-array-ltr';
-export { toArrayRTL } from 'src/functions/to-array-rtl';
+export {
+    makeRemoveElement,
+    makeRemoveElements,
+    removeElement,
+    removeElements,
+} from 'src/functions/remove-element';
+export { toArrayInOrder } from 'src/functions/to-array-in-order';
+export { toArrayinOrderReverse } from 'src/functions/to-array-in-order-reverse';
 export { toBinarySearchTree } from 'src/functions/to-binary-search-tree';
-export { traverseLTR } from 'src/functions/traverse-ltr';
-export { traverseRTL } from 'src/functions/traverse-rtl';
+export { traverseInOrder } from 'src/functions/traverse-in-order';
+export { traverseinOrderReverse } from 'src/functions/traverse-in-order-reverse';
 export type {
     BinarySearchTree,
     BinarySearchTreeLeaf,

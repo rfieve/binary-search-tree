@@ -5,7 +5,7 @@ import { BinarySearchTree, CompareFunction } from 'src/types';
  * Converts the given array to a binary search tree, depending on a given compare function.
  *
  * @param elements The source array
- * @param compareFn The function used to determine the order of the elements.
+ * @param compare The function used to determine the order of the elements.
  *  Its first argument is the current element.
  *  Its second argument is the parent element.
  *  Its return value can be negative, zero or positive:
@@ -20,7 +20,7 @@ import { BinarySearchTree, CompareFunction } from 'src/types';
  */
 export function toBinarySearchTree<T>(
     elements: T[],
-    compareFn: CompareFunction<T>
+    compare: CompareFunction<T>
 ): BinarySearchTree<T> {
-    return addElements({}, compareFn, elements);
+    return addElements({}, compare, elements);
 }

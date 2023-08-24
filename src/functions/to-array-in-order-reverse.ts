@@ -1,5 +1,5 @@
 import { makeCollectElements } from 'src/functions/helpers/collect-nodes';
-import { traverseRTL } from 'src/functions/traverse-rtl';
+import { traverseinOrderReverse } from 'src/functions/traverse-in-order-reverse';
 import { BinarySearchTree } from 'src/types';
 
 /**
@@ -8,11 +8,11 @@ import { BinarySearchTree } from 'src/types';
  * @param tree The source binary search tree
  * @returns The array sorted from right to left.
  */
-export function toArrayRTL<T>(tree?: BinarySearchTree<T>) {
+export function toArrayinOrderReverse<T>(tree?: BinarySearchTree<T>) {
     const elements: T[] = [];
     const collectElements = makeCollectElements(elements);
 
-    traverseRTL(collectElements, tree);
+    traverseinOrderReverse(collectElements, tree);
 
     return elements;
 }

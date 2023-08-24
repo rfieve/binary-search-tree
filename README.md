@@ -11,10 +11,12 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
         -   [`toBinarySearchTree`](#tobinarysearchtree)
         -   [`addElement` \& `makeAddElement`](#addelement--makeaddelement)
         -   [`addElements` \& `makeAddElements`](#addelements--makeaddelements)
+        -   [`removeElement` \& `makeRemoveElement`](#removeelement--makeremoveelement)
+        -   [`removeElements` \& `makeRemoveElements`](#removeelements--makeremoveelements)
         -   [`findNode` \& `makeFindNode`](#findnode--makefindnode)
         -   [`findMin` \& `findMax`](#findmin--findmax)
-        -   [`toArrayLTR` \& `toArrayRTL`](#toarrayltr--toarrayrtl)
-        -   [`traverseLTR` \& `traverseRTL`](#traverseltr--traversertl)
+        -   [`toArrayInOrder` \& `toArrayinOrderReverse`](#toarrayinorder--toarrayinorderreverse)
+        -   [`traverseInOrder` \& `traverseinOrderReverse`](#traverseinorder--traverseinorderreverse)
         -   [`isLeaf` \& `isBranch`](#isleaf--isbranch)
         -   [`hasLeftBranch` \& `hasRightBranch`](#hasleftbranch--hasrightbranch)
 
@@ -110,10 +112,6 @@ const tree = toBinarySearchTree(arr, compare);
 A safer approach consists of using `makeAddElement`. It curries an `addElement` closure function with the given compare function.
 
 ```typescript
-const arr = [10, 32, 13, 2, 89, 5, 50];
-const compare = (a: number, b: number) => a - b;
-const tree = toBinarySearchTree(arr, compare);
-
 const modifiedTree = addElement(tree, compare, 11);
 
 // Schema of "tree"     =>     "modifiedTree"
@@ -175,6 +173,76 @@ const safelyModifiedTree = safeAndReusableAddElements(tree, [11, 100]);
 
 ---
 
+### `removeElement` & `makeRemoveElement`
+
+`removeElement` removes a given node from the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
+
+⚠️ Caveats: using another compare function than the one used to create the tree with `toBinarySearchTree` will of course f\*\*k up the tree.
+
+A safer approach consists of using `makeRemoveElement`. It curries an `removeElement` closure function with the given compare function.
+
+```typescript
+const modifiedTree = removeElement(tree, compare, 10);
+
+// Schema of "tree"     =>     "modifiedTree"
+//                      |
+//       10             |            13
+//    /     \           |         /     \
+//   2      32          |        2      32
+//    \    /  \         |         \       \
+//     5  13  89        |          5      89
+//            /         |                /
+//          50          |              50
+
+const safeAndReusableRemoveElement = makeRemoveElement(compare);
+const safelyModifiedTree = safeAndReusableRemoveElement(tree, 10);
+
+// Schema of "tree"     =>   "safelyModifiedTree"
+//                      |
+//       10             |            13
+//    /     \           |         /     \
+//   2      32          |        2      32
+//    \    /  \         |         \       \
+//     5  13  89        |          5      89
+//            /         |                /
+//          50          |              50
+```
+
+---
+
+### `removeElements` & `makeRemoveElements`
+
+Same as `removeElements` & `makeRemoveElements`, but with an array of elements to remove.
+
+```typescript
+const modifiedTree = removeElements(tree, compare, [10, 13]);
+
+// Schema of "tree"     =>   "modifiedTree"
+//                      |
+//       10             |             32
+//    /     \           |          /     \
+//   2      32          |         2      89
+//    \    /  \         |          \     /
+//     5  13  89        |           5  50
+//            /         |
+//          50          |
+
+const safeAndReusableRemoveElements = makeRemoveElements(compare);
+const safelyModifiedTree = safeAndReusableRemoveElements(tree, [10, 13]);
+
+// Schema of "tree"     =>   "safelyModifiedTree"
+//                      |
+//       10             |             32
+//    /     \           |          /     \
+//   2      32          |         2      89
+//    \    /  \         |          \     /
+//     5  13  89        |           5  50
+//            /         |
+//          50          |
+```
+
+---
+
 ### `findNode` & `makeFindNode`
 
 `findNode` finds a given node into the given binary search tree with the given compare function.
@@ -223,9 +291,9 @@ const max = findMax(tree).data; // 89
 
 ---
 
-### `toArrayLTR` & `toArrayRTL`
+### `toArrayInOrder` & `toArrayinOrderReverse`
 
-Converts the given binary search tree to an array, with the elements sorted from left to right (`toArrayLTR`) or from right to left (`toArrayRTL`).
+Converts the given binary search tree to an array, with the elements sorted from left to right (`toArrayInOrder`) or from right to left (`toArrayinOrderReverse`).
 
 ```typescript
 // Schema of "tree"
@@ -238,15 +306,15 @@ Converts the given binary search tree to an array, with the elements sorted from
 //           /
 //         50
 
-const elements = toArrayLTR(tree); // [2, 5, 10, 13, 32, 50, 89]
-const elements = toArrayRTL(tree); // [89, 50, 32, 13, 10, 5, 2]
+const elements = toArrayInOrder(tree); // [2, 5, 10, 13, 32, 50, 89]
+const elements = toArrayinOrderReverse(tree); // [89, 50, 32, 13, 10, 5, 2]
 ```
 
 ---
 
-### `traverseLTR` & `traverseRTL`
+### `traverseInOrder` & `traverseinOrderReverse`
 
-Traverses a tree from left to right (`traverseLTR`) or from right to left (`traverseRTL`), invoking the callback function on each visited node.
+Traverses a tree from left to right (`traverseInOrder`) or from right to left (`traverseinOrderReverse`), invoking the callback function on each visited node.
 
 ```typescript
 // Schema of "tree"
@@ -264,11 +332,11 @@ const collect = (collection: number[]) => (node: { data: number }) => {
 };
 
 const collection: number[] = [];
-traverseLTR(collect(collection), tree);
+traverseInOrder(collect(collection), tree);
 // collection: [2, 5, 10, 13, 32, 50, 89]
 
 const collection: number[] = [];
-traverseRTL(collect(collection), tree);
+traverseinOrderReverse(collect(collection), tree);
 // collection: [89, 50, 32, 13, 10, 5, 2]
 ```
 

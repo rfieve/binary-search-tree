@@ -1,8 +1,8 @@
 import { mockedArrayOrdered, mockedTree } from 'src/functions/tests/_mocks';
-import { toArrayLTR } from 'src/functions/to-array-ltr';
+import { toArrayInOrder } from 'src/functions/to-array-in-order';
 
-describe('toArrayLTR', () => {
+describe('toArrayInOrder', () => {
     it('should convert binary search tree to an array, ordered from left to right', () => {
-        expect(toArrayLTR(mockedTree)).toEqual(mockedArrayOrdered);
+        expect(toArrayInOrder(mockedTree)).toEqual(mockedArrayOrdered);
     });
 });
