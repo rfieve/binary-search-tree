@@ -80,7 +80,7 @@ const min = findMin(updatedTree).data.name; // Anakin
 const max = findMax(updatedTree).data.name; // Yoda
 const groguInTree = findNodeAlphabetically(updatedTree, { name: 'Grogu' }); // Grogu
 // Thanks to the compare function, the search will traverse like this:
-// Han -> Anakin -> Chewie -> Grogu
+// Lando -> Anakin -> Chewie -> Grogu
 ```
 
 ## Usage
