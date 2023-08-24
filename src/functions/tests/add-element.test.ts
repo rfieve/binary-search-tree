@@ -3,7 +3,7 @@ import {
     addElements,
     makeAddElement,
     makeAddElements,
-} from 'src/functions/add-elements';
+} from 'src/functions/add-element';
 import { compareFunction, mockedTree } from 'src/functions/tests/_mocks';
 
 describe('addElement', () => {

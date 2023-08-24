@@ -1,4 +1,4 @@
-import { BinaryTree } from 'src/types';
+import { BinarySearchTree } from 'src/types';
 
 /**
  * Traverses the tree from left to right.
@@ -6,7 +6,7 @@ import { BinaryTree } from 'src/types';
  * @param cb the callback invoked uppon each node
  * @param tree the tree to traverse
  */
-export function traverseLTR<T>(cb: (node: BinaryTree<T>) => void, tree?: BinaryTree<T>): void {
+export function traverseLTR<T>(cb: (node: BinarySearchTree<T>) => void, tree?: BinarySearchTree<T>): void {
     if (tree?.data) {
         traverseLTR(cb, tree.left);
         cb(tree);

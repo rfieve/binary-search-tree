@@ -1,13 +1,14 @@
-# 🌳 binary-tree
+# 🌳 binary-search-tree
 
 A bunch of TypeScript utility functions to work with binary search trees and arrays of any types, with a functional-programming and immutable approach.
 
 ## Table of Content
 
--   [🌳 binary-tree](#-binary-tree)
+-   [🌳 binary-search-tree](#-binary-search-tree)
     -   [Table of Content](#table-of-content)
+    -   [Example](#example)
     -   [Usage](#usage)
-        -   [`toBinaryTree`](#tobinarytree)
+        -   [`toBinarySearchTree`](#tobinarysearchtree)
         -   [`addElement` \& `makeAddElement`](#addelement--makeaddelement)
         -   [`addElements` \& `makeAddElements`](#addelements--makeaddelements)
         -   [`findNode` \& `makeFindNode`](#findnode--makefindnode)
@@ -17,39 +18,85 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
         -   [`isLeaf` \& `isBranch`](#isleaf--isbranch)
         -   [`hasLeftBranch` \& `hasRightBranch`](#hasleftbranch--hasrightbranch)
 
+## Example
+
+```typescript
+type Element = { name: string };
+
+const compareAlphabetically = (a: Element, b: Element) => a.name.localeCompare(b.name);
+
+const addElementAlphabetically = makeAddElement(compareAlphabetically);
+const addElementsAlphabetically = makeAddElements(compareAlphabetically);
+const findNodeAlphabetically = makeFindNode(compareAlphabetically);
+
+const people: Element[] = [
+    { name: 'Han' },
+    { name: 'Anakin' },
+    { name: 'Leia' },
+    { name: 'Luke' },
+    { name: 'Padme' },
+    { name: 'Lando' },
+    { name: 'Chewie' },
+];
+const tree = toBinarySearchTree(people, compareAlphabetically);
+
+const updatedTree = pipe(
+    (t) => addElementAlphabetically(t, { name: 'Yoda' }),
+    (t) => addElementAlphabetically(t, { name: 'Obiwan' }),
+    (t) => addElementsAlphabetically(t, [{ name: 'Boba' }, { name: 'Grogu' }])
+)(tree);
+
+// tree:                                     | Schema of "tree"
+//                                           |
+// {                                         |             Han
+//     data: { name: 'Han' },                |           /     \
+//     left: {                               |     Anakin       Leia
+//         data: { name: 'Anakin' },         |           \     /    \
+//         right: {                          |       Chewie  Lando   Luke
+//             data : { name: 'Chewie' },    |                         \
+//         },                                |                        Padme
+//     },                                    |
+//     right: {                              | Schema of "updatedTree"
+//         data: { name: 'Leia' },           |
+//         left: {                           |             Han
+//             data: { name: 'Lando' },      |           /     \
+//         },                                |     Anakin       Leia
+//         right: {                          |         \       /    \
+//             data: { name: 'Luke' },       |       Chewie  Lando   Luke
+//             right: {                      |        /    \            \
+//                 data : { name: 'Padme' }, |      Boba  Grogu        Padme
+//             },                            |                        /    \
+//         },                                |                    Obiwan   Yoda
+//     },                                    |
+// };                                        |
+
+const min = findMin(updatedTree).data.name; // Anakin
+const max = findMax(updatedTree).data.name; // Yoda
+const groguInTree = findNodeAlphabetically(updatedTree, { name: 'Grogu' }); // Grogu
+// Thanks to the compare function, the search will traverse like this:
+// Han -> Anakin -> Chewie -> Grogu
+```
+
 ## Usage
 
-### `toBinaryTree`
+### `toBinarySearchTree`
 
 Converts the given array to a binary search tree, depending on a given compare function.
 
 ```typescript
 const arr = [10, 32, 13, 2, 89, 5, 50];
 const compare = (a: number, b: number) => a - b;
+const tree = toBinarySearchTree(arr, compare);
 
-const tree = toBinaryTree(arr, compare);
-
-// {                            |
-//     data: 10,                |
-//     left: {                  |
-//         data: 2,             |
-//         right: {             |
-//             data : 5,        |
-//         },                   |
-//     },                       |            10
-//     right: {                 |         /     \
-//         data: 32,            |        2      32
-//         left: {              |         \    /  \
-//             data: 13,        |          5  13  89
-//         },                   |                 /
-//         right: {             |               50
-//             data: 89,        |
-//             left: {          |
-//                 data : 50,   |
-//             },               |
-//         },                   |
-//     },                       |
-// };                           |
+// Schema of "tree"
+//
+//       10
+//    /     \
+//   2      32
+//    \    /  \
+//     5  13  89
+//           /
+//         50
 ```
 
 ---
@@ -58,18 +105,18 @@ const tree = toBinaryTree(arr, compare);
 
 `addElement` adds a given node to the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
 
-⚠️ Caveats: using another compare function than the one used to create the tree with `toBinaryTree` will of course f\*\*k up the tree.
+⚠️ Caveats: using another compare function than the one used to create the tree with `toBinarySearchTree` will of course f\*\*k up the tree.
 
 A safer approach consists of using `makeAddElement`. It curries an `addElement` closure function with the given compare function.
 
 ```typescript
 const arr = [10, 32, 13, 2, 89, 5, 50];
 const compare = (a: number, b: number) => a - b;
-const tree = toBinaryTree(arr, compare);
+const tree = toBinarySearchTree(arr, compare);
 
 const modifiedTree = addElement(tree, compare, 11);
 
-// schema of "tree"     =>     "modifiedTree"
+// Schema of "tree"     =>     "modifiedTree"
 //                      |
 //       10             |            10
 //    /     \           |         /     \
@@ -82,7 +129,7 @@ const modifiedTree = addElement(tree, compare, 11);
 const safeAndReusableAddElement = makeAddElement(compare);
 const safelyModifiedTree = safeAndReusableAddElement(tree, 11);
 
-// schema of "tree"     =>   "safelyModifiedTree"
+// Schema of "tree"     =>   "safelyModifiedTree"
 //                      |
 //       10             |            10
 //    /     \           |         /     \
@@ -102,7 +149,7 @@ Same as `addElements` & `makeAddElements`, but with an array of elements to add.
 ```typescript
 const modifiedTree = addElements(tree, compare, [11, 100]);
 
-// schema of "tree"     =>   "modifiedTree"
+// Schema of "tree"     =>   "modifiedTree"
 //                      |
 //       10             |            10
 //    /     \           |         /     \
@@ -115,7 +162,7 @@ const modifiedTree = addElements(tree, compare, [11, 100]);
 const safeAndReusableAddElements = makeAddElements(compare);
 const safelyModifiedTree = safeAndReusableAddElements(tree, [11, 100]);
 
-// schema of "tree"     =>   "safelyModifiedTree"
+// Schema of "tree"     =>   "safelyModifiedTree"
 //                      |
 //       10             |            10
 //    /     \           |         /     \
@@ -132,12 +179,12 @@ const safelyModifiedTree = safeAndReusableAddElements(tree, [11, 100]);
 
 `findNode` finds a given node into the given binary search tree with the given compare function.
 
-⚠️ Caveats: using another compare function than the one used to create the tree with `toBinaryTree` will of course f\*\*k up the search.
+⚠️ Caveats: using another compare function than the one used to create the tree with `toBinarySearchTree` will of course f\*\*k up the search.
 
 A safer approach consists of using `makeFindNode`. It curries a `findNode` closure function with the given compare function.
 
 ```typescript
-// schema of "tree"
+// Schema of "tree"
 //
 //       10
 //    /     \
@@ -160,7 +207,7 @@ const safelyModifiedTree = safeAndReusableFindNode(tree, 13).data; // 13
 Finds the min (`findMin`) or the max (`findMax`) node of the tree.
 
 ```typescript
-// schema of "tree"
+// Schema of "tree"
 //
 //       10
 //    /     \
@@ -181,7 +228,7 @@ const max = findMax(tree).data; // 89
 Converts the given binary search tree to an array, with the elements sorted from left to right (`toArrayLTR`) or from right to left (`toArrayRTL`).
 
 ```typescript
-// schema of "tree"
+// Schema of "tree"
 //
 //       10
 //    /     \
@@ -202,7 +249,7 @@ const elements = toArrayRTL(tree); // [89, 50, 32, 13, 10, 5, 2]
 Traverses a tree from left to right (`traverseLTR`) or from right to left (`traverseRTL`), invoking the callback function on each visited node.
 
 ```typescript
-// schema of "tree"
+// Schema of "tree"
 //
 //       10
 //    /     \
@@ -232,7 +279,7 @@ traverseRTL(collect(collection), tree);
 Assesses if the given tree/node is a leaf (has no left nor right prop) (`isLeaf`) or a branch (has a left or a right prop or both) (`isBranch`).
 
 ```typescript
-// schema of "tree"
+// Schema of "tree"
 //
 //       10
 //    /     \
@@ -256,7 +303,7 @@ const isBranch_B = isBranch(tree.left.left); // false
 Assesses if the given tree/node has a left branch (has a left prop) (`hasLeftBranch`) or a right branch (has a right prop) (`hasRightBranch`).
 
 ```typescript
-// schema of "tree"
+// Schema of "tree"
 //
 //       10
 //    /     \

@@ -1,4 +1,4 @@
-import { BinaryTree } from 'src/types';
+import { BinarySearchTree } from 'src/types';
 
 export function compareFunction(a: number, b: number) {
     return a - b;
@@ -16,7 +16,7 @@ export const mockedArrayReversed = mockedArrayOrdered.slice().reverse();
 //            /
 //          50
 
-export const mockedTree: BinaryTree<number> = {
+export const mockedTree: BinarySearchTree<number> = {
     data : 10,
     left : {
         data  : 2,
@@ -38,6 +38,6 @@ export const mockedTree: BinaryTree<number> = {
     },
 };
 
-export const mockedLeaf = (mockedTree.left as BinaryTree<number>).right;
-export const mockedStrictLeftLeaf = (mockedTree.right as BinaryTree<number>).right;
+export const mockedLeaf = (mockedTree.left as BinarySearchTree<number>).right;
+export const mockedStrictLeftLeaf = (mockedTree.right as BinarySearchTree<number>).right;
 export const mockedStrictRightLeaf = mockedTree.left;

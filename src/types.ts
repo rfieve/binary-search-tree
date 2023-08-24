@@ -1,23 +1,23 @@
 export type CompareFunction<T> = (a: T, b: T) => number;
 
-export type BinaryTreeLeaf<T> = {
+export type BinarySearchTreeLeaf<T> = {
     data : T;
 };
 
-export type BinaryTreeLeftBranch<T> = {
-    left : BinaryTreeNode<T>;
+export type BinarySearchTreeLeftBranch<T> = {
+    left : BinarySearchTreeNode<T>;
 };
 
-export type BinaryTreeRightBranch<T> = {
-    right : BinaryTreeNode<T>;
+export type BinarySearchTreeRightBranch<T> = {
+    right : BinarySearchTreeNode<T>;
 };
 
-export type BinaryTreeBranch<T> = BinaryTreeLeaf<T> &
+export type BinarySearchTreeBranch<T> = BinarySearchTreeLeaf<T> &
     (
-        | (BinaryTreeLeftBranch<T> & Partial<BinaryTreeRightBranch<T>>)
-        | (BinaryTreeRightBranch<T> & Partial<BinaryTreeLeftBranch<T>>)
+        | (BinarySearchTreeLeftBranch<T> & Partial<BinarySearchTreeRightBranch<T>>)
+        | (BinarySearchTreeRightBranch<T> & Partial<BinarySearchTreeLeftBranch<T>>)
     );
 
-export type BinaryTreeNode<T> = BinaryTreeLeaf<T> & Omit<Partial<BinaryTreeBranch<T>>, 'data'>;
+export type BinarySearchTreeNode<T> = BinarySearchTreeLeaf<T> & Omit<Partial<BinarySearchTreeBranch<T>>, 'data'>;
 
-export type BinaryTree<T> = Partial<BinaryTreeNode<T>>;
+export type BinarySearchTree<T> = Partial<BinarySearchTreeNode<T>>;

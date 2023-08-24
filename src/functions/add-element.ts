@@ -1,4 +1,4 @@
-import { BinaryTree, BinaryTreeNode, CompareFunction } from 'src/types';
+import { BinarySearchTree, BinarySearchTreeNode, CompareFunction } from 'src/types';
 
 /**
  * Adds a given node to the given binary search tree with the given compare function,
@@ -20,12 +20,12 @@ import { BinaryTree, BinaryTreeNode, CompareFunction } from 'src/types';
  * @returns The new binary search tree
  */
 export function addElement<T>(
-    tree: BinaryTree<T>,
+    tree: BinarySearchTree<T>,
     compareFn: CompareFunction<T>,
     element: T
-): BinaryTree<T> {
+): BinarySearchTree<T> {
     if (!tree.data) {
-        return { data: element } as BinaryTreeNode<T>;
+        return { data: element } as BinarySearchTreeNode<T>;
     }
 
     const comparison = compareFn(element, tree.data);
@@ -60,7 +60,7 @@ export function addElement<T>(
  * @returns The bound addElement function
  */
 export function makeAddElement<T>(compareFn: CompareFunction<T>) {
-    return function (tree: BinaryTree<T>, element: T) {
+    return function (tree: BinarySearchTree<T>, element: T) {
         return addElement(tree, compareFn, element);
     };
 }
@@ -85,10 +85,10 @@ export function makeAddElement<T>(compareFn: CompareFunction<T>) {
  * @returns The new binary search tree
  */
 export function addElements<T>(
-    tree: BinaryTree<T>,
+    tree: BinarySearchTree<T>,
     compareFn: CompareFunction<T>,
     elements: T[]
-): BinaryTree<T> {
+): BinarySearchTree<T> {
     return elements.reduce((acc, curr) => addElement(acc, compareFn, curr), tree);
 }
 
@@ -109,7 +109,7 @@ export function addElements<T>(
  * @returns The bound addElements function
  */
 export function makeAddElements<T>(compareFn: CompareFunction<T>) {
-    return function (tree: BinaryTree<T>, elements: T[]) {
+    return function (tree: BinarySearchTree<T>, elements: T[]) {
         return addElements(tree, compareFn, elements);
     };
 }

@@ -1,4 +1,4 @@
-import { BinaryTree, BinaryTreeRightBranch } from 'src/types';
+import { BinarySearchTree, BinarySearchTreeRightBranch } from 'src/types';
 
 /**
  * Assesses if the given tree has a right branch (has right).
@@ -7,6 +7,6 @@ import { BinaryTree, BinaryTreeRightBranch } from 'src/types';
  *
  * @returns true if it has, false if it hasn't.
  */
-export function hasRightBranch<T>(tree?: BinaryTree<T>): tree is BinaryTreeRightBranch<T> {
+export function hasRightBranch<T>(tree?: BinarySearchTree<T>): tree is BinarySearchTreeRightBranch<T> {
     return tree?.data !== undefined && !!tree.right;
 }

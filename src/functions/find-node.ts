@@ -1,5 +1,5 @@
 import { isBranch } from 'src/functions/is-branch';
-import { BinaryTree, BinaryTreeNode, CompareFunction } from 'src/types';
+import { BinarySearchTree, BinarySearchTreeNode, CompareFunction } from 'src/types';
 
 /**
  * Finds a given element into the given binary search tree with the given compare function.
@@ -20,21 +20,22 @@ import { BinaryTree, BinaryTreeNode, CompareFunction } from 'src/types';
  * @returns The new binary search tree
  */
 export function findNode<T>(
-    tree: BinaryTree<T>,
+    tree: BinarySearchTree<T>,
     compareFn: CompareFunction<T>,
     element: T
-): BinaryTree<T> | undefined {
-    if (tree.data === element) {
+): BinarySearchTree<T> | undefined {
+    const comparison = tree.data ? compareFn(element, tree.data) : undefined;
+
+    if (comparison === 0 || tree.data === element) {
         return tree;
     }
 
-    if (!isBranch(tree)) {
+    if (comparison === undefined || !isBranch(tree)) {
         return undefined;
     }
 
-    const comparison = compareFn(element, tree.data);
     const direction = comparison < 0 ? 'left' : 'right';
-    const subTree = tree[direction] as BinaryTreeNode<T>;
+    const subTree = tree[direction] as BinarySearchTreeNode<T>;
 
     return findNode(subTree, compareFn, element);
 }
@@ -42,7 +43,6 @@ export function findNode<T>(
 /**
  * Creates an findNode function for the given binary search tree with the given compare function.
  *
- * @param tree The source binary search tree
  * @param compareFn The function used to determine the order of the elements.
  *  Its first argument is the current element.
  *  Its second argument is the parent element.
@@ -56,8 +56,8 @@ export function findNode<T>(
  *
  * @returns The bound findNode function
  */
-export function makeFindNode<T>(tree: BinaryTree<T>, compareFn: CompareFunction<T>) {
-    return function (element: T) {
+export function makeFindNode<T>(compareFn: CompareFunction<T>) {
+    return function (tree: BinarySearchTree<T>, element: T) {
         return findNode(tree, compareFn, element);
     };
 }

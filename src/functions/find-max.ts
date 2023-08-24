@@ -1,4 +1,4 @@
-import { BinaryTree } from 'src/types';
+import { BinarySearchTree } from 'src/types';
 
 /**
  * Finds the maximal node in the tree, beeing the bottom-right node.
@@ -7,6 +7,6 @@ import { BinaryTree } from 'src/types';
  *
  * @returns The node considered the maximal.
  */
-export function findMax<T>(tree: BinaryTree<T>): BinaryTree<T> {
+export function findMax<T>(tree: BinarySearchTree<T>): BinarySearchTree<T> {
     return tree.right ? findMax(tree.right) : tree;
 }

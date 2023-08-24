@@ -1,5 +1,5 @@
-import { addElements } from 'src/functions/add-elements';
-import { BinaryTree, CompareFunction } from 'src/types';
+import { addElements } from 'src/functions/add-element';
+import { BinarySearchTree, CompareFunction } from 'src/types';
 
 /**
  * Converts the given array to a binary search tree, depending on a given compare function.
@@ -18,6 +18,9 @@ import { BinaryTree, CompareFunction } from 'src/types';
  *
  * @returns The elements of the elements array organized as a binary search tree.
  */
-export function toBinaryTree<T>(elements: T[], compareFn: CompareFunction<T>): BinaryTree<T> {
+export function toBinarySearchTree<T>(
+    elements: T[],
+    compareFn: CompareFunction<T>
+): BinarySearchTree<T> {
     return addElements({}, compareFn, elements);
 }
