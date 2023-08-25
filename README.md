@@ -87,7 +87,7 @@ const grogu = findAlpha(updatedTree, { name: 'Grogu' }).data.name; // Grogu
 
 Converts the given array to a balanced binary search tree (`toBST`), depending on a given compare function.
 
-⚠️ For obvious performance reasons, `toBST` will create a BALANCED binary search tree by default. Whilst passing the option `{ isBalanced: true }` will indeed respect the order of the source array for insertion, beware that performace will be greatly impacted.
+⚠️ For obvious performance reasons, `toBST` will create a BALANCED binary search tree by default. Whilst passing the option `{ isBalanced: false }` will indeed respect the order of the source array for insertion, beware that performace will be greatly impacted.
 Worst, if you pass an array presorted with the compare function, the BST will be linear, and the Big O notation will be `n!`.
 
 ```typescript
@@ -96,7 +96,7 @@ const compare = (a: number, b: number) => a - b;
 
 const tree = toBST(arr, compare);
 // or
-const unbalancedTree = toBST(arr, compare, { isBalanced: true });
+const unbalancedTree = toBST(arr, compare, { isBalanced: false });
 
 // Schema of "tree"         |    "unbalancedTree"
 //                          |
