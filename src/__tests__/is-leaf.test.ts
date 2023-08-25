@@ -1,4 +1,4 @@
-import { mockedLeaf, mockedTree } from 'src/functions/__tests__/_mocks';
+import { mockedLeaf, mockedTree } from 'src/__tests__/_mocks';
 import { isLeaf } from 'src/functions/is-leaf';
 
 describe('isLeaf', () => {

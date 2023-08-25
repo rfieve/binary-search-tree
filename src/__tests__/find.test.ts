@@ -1,4 +1,4 @@
-import { compare, mockedTree } from 'src/functions/__tests__/_mocks';
+import { compare, mockedTree } from 'src/__tests__/_mocks';
 import { find, makeFind } from 'src/functions/find';
 
 describe('find', () => {

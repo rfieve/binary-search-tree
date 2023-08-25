@@ -1,4 +1,4 @@
-import { mockedArrayOrdered, mockedTree } from 'src/functions/__tests__/_mocks';
+import { mockedArrayOrdered, mockedTree } from 'src/__tests__/_mocks';
 import { toArrayInOrder } from 'src/functions/to-array-in-order';
 
 describe('toArrayInOrder', () => {

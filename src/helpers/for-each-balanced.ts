@@ -1,4 +1,4 @@
-export function loopAsBalanced<T>(cb: (element: T) => void, sortedElements: T[]): void {
+export function forEachBalanced<T>(cb: (element: T) => void, sortedElements: T[]): void {
     const length = sortedElements.length;
     const half = length / 2;
 
@@ -7,10 +7,10 @@ export function loopAsBalanced<T>(cb: (element: T) => void, sortedElements: T[])
 
     if (lefts.length > 0) {
         cb(lefts.pop() as T);
-        loopAsBalanced(cb, lefts);
+        forEachBalanced(cb, lefts);
     }
     if (rights.length > 0) {
         cb(rights.shift() as T);
-        loopAsBalanced(cb, rights);
+        forEachBalanced(cb, rights);
     }
 }

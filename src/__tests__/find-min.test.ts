@@ -1,4 +1,4 @@
-import { mockedTree } from 'src/functions/__tests__/_mocks';
+import { mockedTree } from 'src/__tests__/_mocks';
 import { findMin } from 'src/functions/find-min';
 
 describe('findMin', () => {

@@ -1,5 +1,5 @@
-import { makeCollectElementFromNode } from 'src/functions/helpers/collect';
 import { traverseInOrderReverse } from 'src/functions/traverse-in-order-reverse';
+import { makeCollectElementFromNode } from 'src/helpers/collect';
 import { BST } from 'src/types';
 
 /**

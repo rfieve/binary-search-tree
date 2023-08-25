@@ -1,9 +1,4 @@
-import {
-    compare,
-    mockedArray,
-    mockedBalancedTree,
-    mockedTree,
-} from 'src/functions/__tests__/_mocks';
+import { compare, mockedArray, mockedBalancedTree, mockedTree } from 'src/__tests__/_mocks';
 import { toBalancedBST, toBST } from 'src/functions/to-binary-search-tree';
 
 describe('toBST', () => {

@@ -1,5 +1,6 @@
-export { balance } from './functions/balance';
+export { BinarySearchTree } from 'src/classes/binary-search-tree';
 export { add, makeAdd } from 'src/functions/add';
+export { balance } from 'src/functions/balance';
 export { find, makeFind } from 'src/functions/find';
 export { findMax } from 'src/functions/find-max';
 export { findMin } from 'src/functions/find-min';

@@ -3,7 +3,7 @@ import {
     mockedStrictLeftLeaf,
     mockedStrictRightLeaf,
     mockedTree,
-} from 'src/functions/__tests__/_mocks';
+} from 'src/__tests__/_mocks';
 import { isBranch } from 'src/functions/is-branch';
 
 describe('isBranch', () => {

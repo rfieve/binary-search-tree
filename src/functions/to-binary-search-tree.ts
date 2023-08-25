@@ -1,6 +1,6 @@
 import { add } from 'src/functions/add';
-import { makeCollectElement } from 'src/functions/helpers/collect';
-import { loopAsBalanced } from 'src/functions/helpers/loop-as-balanced';
+import { makeCollectElement } from 'src/helpers/collect';
+import { forEachBalanced } from 'src/helpers/for-each-balanced';
 import { BST, CompareFunction } from 'src/types';
 
 /**
@@ -51,7 +51,7 @@ export function toBalancedBST<T>(
 
     const collectElement = makeCollectElement(balancedElements);
 
-    loopAsBalanced(collectElement, sortedElements);
+    forEachBalanced(collectElement, sortedElements);
 
     return add({}, compare, balancedElements);
 }

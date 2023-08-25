@@ -1,4 +1,4 @@
-import { compare, mockedBalancedTree, mockedTree } from 'src/functions/__tests__/_mocks';
+import { compare, mockedBalancedTree, mockedTree } from 'src/__tests__/_mocks';
 import { balance, makeBalance } from 'src/functions/balance';
 
 describe('balance', () => {

@@ -3,10 +3,10 @@ import {
     mockedStrictLeftLeaf,
     mockedStrictRightLeaf,
     mockedTree,
-} from 'src/functions/__tests__/_mocks';
+} from 'src/__tests__/_mocks';
 import { hasRight } from 'src/functions/has-right';
 
-describe('isRightBranch', () => {
+describe('hasRight', () => {
     it('should return true when the given tree is a branch', () => {
         expect(hasRight(mockedTree)).toBe(true);
     });

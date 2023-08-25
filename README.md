@@ -18,6 +18,7 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
         -   [`traverseInOrder` \& `traverseInOrderReverse`](#traverseinorder--traverseinorderreverse)
         -   [`isLeaf` \& `isBranch`](#isleaf--isbranch)
         -   [`hasLeft` \& `hasRight`](#hasleft--hasright)
+        -   [The infamous `BinarySearchTree` class](#the-infamous-binarysearchtree-class)
 
 ## Example
 
@@ -328,3 +329,67 @@ const hasRightB = hasRight(tree.left.left); // false
 ```
 
 ---
+
+---
+
+---
+
+### The infamous `BinarySearchTree` class
+
+While diverging from the functional approach, the `BinarySearchTree` class offers many advantages, depending on the situation:
+
+-   natural chaining
+-   tree state
+-   compare function encapsulation
+-   has all methods listed functions before
+
+Let's rewrite the Star Wars example with this approach:
+
+```typescript
+type Hero = { name: string };
+
+const compareAlpha = (a: Hero, b: Hero) => a.name.localeCompare(b.name);
+
+const heroes: Hero[] = [
+    { name: 'Han' },
+    { name: 'Anakin' },
+    { name: 'Leia' },
+    { name: 'Luke' },
+    { name: 'Padme' },
+    { name: 'Lando' },
+    { name: 'Chewie' },
+];
+
+const bst = new BinarySearchTree(heroes, compareAlpha);
+// Schema of bst.tree
+//
+//             Han
+//           /     \
+//     Anakin       Leia
+//           \     /    \
+//       Chewie  Lando   Luke
+//                         \
+//                        Padme
+
+bst.add({ name: 'Yoda' })
+    .add({ name: 'Obiwan' })
+    .add([{ name: 'Boba' }, { name: 'Grogu' }])
+    .remove([{ name: 'Han' }, { name: 'Padme' }])
+    .remove({ name: 'Luke' });
+
+// Schema of bst.tree, after update
+//
+//            Lando
+//           /     \
+//     Anakin       Leia
+//         \            \
+//       Chewie        Obiwan
+//        /    \            \
+//      Boba  Grogu        Yoda
+
+bst.findMin().data.name; // Anakin
+bst.findMax().data.name; // Yoda
+bst.find({ name: 'Grogu' }).data.name; // Grogu
+// Thanks to the compare function, the search will traverse like this:
+// Lando -> Anakin -> Chewie -> Grogu
+```
