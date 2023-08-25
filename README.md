@@ -138,11 +138,11 @@ const balancedTree = safeBalance(tree);
 
 ```typescript
 const modifiedTree = add(tree, compare, 11);
-const reModifiedTree = add(tree, compare, [1, 100]);
+const reModifiedTree = add(modifiedTree, compare, [1, 100]);
 //or
 const safeAdd = makeAdd(compare);
 const modifiedTree = safeAdd(tree, 11);
-const reModifiedTree = safeAdd(tree, [1, 100]);
+const reModifiedTree = safeAdd(modifiedTree, [1, 100]);
 
 // Schema of "tree"     =>     "modifiedTree"      =>   "reModifiedTree"
 //                      |                          |
@@ -165,11 +165,11 @@ const reModifiedTree = safeAdd(tree, [1, 100]);
 
 ```typescript
 const modifiedTree = remove(tree, compare, 10);
-const reModifiedTree = remove(tree, compare, [13, 5]);
+const reModifiedTree = remove(modifiedTree, compare, [13, 5]);
 // or
 const safeRemove = makeRemove(compare);
 const modifiedTree = safeRemove(tree, 10);
-const reModifiedTree = safeRemove(tree, [13, 5]);
+const reModifiedTree = safeRemove(modifiedTree, [13, 5]);
 
 // Schema of "tree"     =>     "modifiedTree"      =>   "reModifiedTree"
 //                      |                          |
