@@ -109,9 +109,7 @@ const balancedTree = toBalancedBST(arr, compare);
 
 `balance` balances the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
 
-⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree.
-
-A safer approach consists of using `makeBalance`. It curries a `balance` closure function with the given compare function.
+⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree. A safer approach consists of using `makeBalance`. It curries a `balance` closure function with the given compare function.
 
 ```typescript
 const balancedTree = balance(tree, compare);
@@ -136,9 +134,7 @@ const balancedTree = safeBalance(tree);
 
 `add` adds a (or list of) given node(s) to the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
 
-⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree.
-
-A safer approach consists of using `makeAdd`. It curries an `add` closure function with the given compare function.
+⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree. A safer approach consists of using `makeAdd`. It curries an `add` closure function with the given compare function.
 
 ```typescript
 const modifiedTree = add(tree, compare, 11);
@@ -165,9 +161,7 @@ const reModifiedTree = safeAdd(tree, [1, 100]);
 
 `remove` removes a (or list of) given node(s) from the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
 
-⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree.
-
-A safer approach consists of using `makeRemove`. It curries a `remove` closure function with the given compare function.
+⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree. A safer approach consists of using `makeRemove`. It curries a `remove` closure function with the given compare function.
 
 ```typescript
 const modifiedTree = remove(tree, compare, 10);
@@ -194,9 +188,7 @@ const reModifiedTree = safeRemove(tree, [13, 5]);
 
 `find` finds a given node into the given binary search tree with the given compare function.
 
-⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the search.
-
-A safer approach consists of using `makeFind`. It curries a `find` closure function with the given compare function.
+⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the search. A safer approach consists of using `makeFind`. It curries a `find` closure function with the given compare function.
 
 ```typescript
 // Schema of "tree"
