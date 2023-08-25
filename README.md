@@ -1,10 +1,10 @@
-# 🌳 binary-search-tree
+# ✌️🔍🌳 binary-search-tree
 
 A bunch of TypeScript utility functions to work with binary search trees and arrays of any types, with a functional-programming and immutable approach.
 
 ## Table of Content
 
--   [🌳 binary-search-tree](#-binary-search-tree)
+-   [✌️🔍🌳 binary-search-tree](#️-binary-search-tree)
     -   [Table of Content](#table-of-content)
     -   [Example](#example)
     -   [Usage](#usage)
