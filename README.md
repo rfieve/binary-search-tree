@@ -9,16 +9,16 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
     -   [Usage](#usage)
     -   [Documentation](#documentation)
         -   [`toBST`](#tobst)
-        -   [`balance` \&\& `isBalanced`](#balance--isbalanced)
+        -   [`balance`, `isBalanced`](#balance-isbalanced)
         -   [`add`](#add)
         -   [`remove`](#remove)
         -   [`find`](#find)
-        -   [`findMin` \& `findMax`](#findmin--findmax)
-        -   [`findMinHeight` \& `findMaxHeight`](#findminheight--findmaxheight)
-        -   [`toArrayInOrder` \& `toArrayInOrderReverse`](#toarrayinorder--toarrayinorderreverse)
-        -   [`traverseInOrder` \& `traverseInOrderReverse`](#traverseinorder--traverseinorderreverse)
-        -   [`isLeaf` \& `isBranch`](#isleaf--isbranch)
-        -   [`hasLeft` \& `hasRight`](#hasleft--hasright)
+        -   [`findMin`, `findMax`](#findmin-findmax)
+        -   [`findMinHeight`, `findMaxHeight`](#findminheight-findmaxheight)
+        -   [`toArrayInOrder`, `toArrayInOrderReverse`](#toarrayinorder-toarrayinorderreverse)
+        -   [`traverseInOrder`, `traverseInOrderReverse`](#traverseinorder-traverseinorderreverse)
+        -   [`isLeaf`, `isBranch`](#isleaf-isbranch)
+        -   [`hasLeft`, `hasRight`](#hasleft-hasright)
         -   [The infamous `BinarySearchTree` class](#the-infamous-binarysearchtree-class)
 
 ## Usage
@@ -112,7 +112,7 @@ const unbalancedTree = toBST(arr, compare, { isBalanced: false });
 
 ---
 
-### `balance` && `isBalanced`
+### `balance`, `isBalanced`
 
 `balance` balances the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
 
@@ -220,7 +220,7 @@ const element = safeFind(tree, 13).data; // 13
 
 ---
 
-### `findMin` & `findMax`
+### `findMin`, `findMax`
 
 Finds the min (`findMin`) or the max (`findMax`) node of the tree.
 
@@ -241,7 +241,7 @@ const max = findMax(tree).data; // 89
 
 ---
 
-### `findMinHeight` & `findMaxHeight`
+### `findMinHeight`, `findMaxHeight`
 
 Finds the height of the min (`findMinHeight`) or the max (`findMaxHeight`) branch of the tree.
 
@@ -264,7 +264,7 @@ const max = findMaxHeight(tree); // 3
 
 ---
 
-### `toArrayInOrder` & `toArrayInOrderReverse`
+### `toArrayInOrder`, `toArrayInOrderReverse`
 
 Converts the given binary search tree to an array, with the elements sorted from left to right (`toArrayInOrder`) or from right to left (`toArrayInOrderReverse`).
 
@@ -285,7 +285,7 @@ const elementsReversed = toArrayInOrderReverse(tree); // [89, 50, 32, 13, 10, 5,
 
 ---
 
-### `traverseInOrder` & `traverseInOrderReverse`
+### `traverseInOrder`, `traverseInOrderReverse`
 
 Traverses a tree from left to right (`traverseInOrder`) or from right to left (`traverseInOrderReverse`), invoking the callback function on each visited node.
 
@@ -315,7 +315,7 @@ traverseInOrderReverse(collect(elementsReversed), tree);
 
 ---
 
-### `isLeaf` & `isBranch`
+### `isLeaf`, `isBranch`
 
 Assesses if the given tree/node is a leaf (has no left nor right prop) (`isLeaf`) or a branch (has a left or a right prop or both) (`isBranch`).
 
@@ -339,7 +339,7 @@ const isBranchB = isBranch(tree.left.left); // false
 
 ---
 
-### `hasLeft` & `hasRight`
+### `hasLeft`, `hasRight`
 
 Assesses if the given tree/node has a left branch (has a left prop) (`hasLeft`) or a right branch (has a right prop) (`hasRight`).
 
