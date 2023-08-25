@@ -1,6 +1,6 @@
-import { hasLeftBranch } from 'src/functions/has-left-branch';
-import { hasRightBranch } from 'src/functions/has-right-branch';
-import { BinarySearchTree, BinarySearchTreeBranch } from 'src/types';
+import { hasLeft } from 'src/functions/has-left';
+import { hasRight } from 'src/functions/has-right';
+import { BST, BSTBranch } from 'src/types';
 
 /**
  * Assesses if the given tree is a branch (has either left or right).
@@ -9,6 +9,6 @@ import { BinarySearchTree, BinarySearchTreeBranch } from 'src/types';
  *
  * @returns true if it is, false if it isn't.
  */
-export function isBranch<T>(tree?: BinarySearchTree<T>): tree is BinarySearchTreeBranch<T> {
-    return hasLeftBranch(tree) || hasRightBranch(tree);
+export function isBranch<T>(tree?: BST<T>): tree is BSTBranch<T> {
+    return hasLeft(tree) || hasRight(tree);
 }

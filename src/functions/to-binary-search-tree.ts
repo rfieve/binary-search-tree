@@ -1,7 +1,7 @@
-import { addElements } from 'src/functions/add-element';
+import { add } from 'src/functions/add';
 import { makeCollectElement } from 'src/functions/helpers/collect';
 import { loopAsBalanced } from 'src/functions/helpers/loop-as-balanced';
-import { BinarySearchTree, CompareFunction } from 'src/types';
+import { BST, CompareFunction } from 'src/types';
 
 /**
  * Converts the given array to a binary search tree, depending on a given compare function.
@@ -20,11 +20,8 @@ import { BinarySearchTree, CompareFunction } from 'src/types';
  *
  * @returns The elements of the elements array organized as a binary search tree.
  */
-export function toBinarySearchTree<T>(
-    elements: T[],
-    compare: CompareFunction<T>
-): BinarySearchTree<T> {
-    return addElements({}, compare, elements);
+export function toBST<T>(elements: T[], compare: CompareFunction<T>): BST<T> {
+    return add({}, compare, elements);
 }
 
 /**
@@ -44,11 +41,11 @@ export function toBinarySearchTree<T>(
  *
  * @returns The elements of the elements array organized as a binary search tree.
  */
-export function toBalancedBinarySearchTree<T>(
+export function toBalancedBST<T>(
     elements: T[],
     compare: CompareFunction<T>,
     isPresorted?: boolean
-): BinarySearchTree<T> {
+): BST<T> {
     const sortedElements = isPresorted ? elements : elements.slice().sort(compare);
     const balancedElements: T[] = [];
 
@@ -56,5 +53,5 @@ export function toBalancedBinarySearchTree<T>(
 
     loopAsBalanced(collectElement, sortedElements);
 
-    return addElements({}, compare, balancedElements);
+    return add({}, compare, balancedElements);
 }

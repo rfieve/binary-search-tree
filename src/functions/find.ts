@@ -1,4 +1,4 @@
-import { BinarySearchTree, CompareFunction } from 'src/types';
+import { BST, CompareFunction } from 'src/types';
 
 /**
  * Finds a given element into the given binary search tree with the given compare function.
@@ -18,11 +18,7 @@ import { BinarySearchTree, CompareFunction } from 'src/types';
  * @param element The element to be found
  * @returns The new binary search tree
  */
-export function findNode<T>(
-    tree: BinarySearchTree<T>,
-    compare: CompareFunction<T>,
-    element: T
-): BinarySearchTree<T> | undefined {
+export function find<T>(tree: BST<T>, compare: CompareFunction<T>, element: T): BST<T> | undefined {
     if (tree.data === undefined) {
         return undefined;
     }
@@ -36,11 +32,11 @@ export function findNode<T>(
     const direction = comparison < 0 ? 'left' : 'right';
     const subTree = tree[direction];
 
-    return subTree ? findNode(subTree, compare, element) : undefined;
+    return subTree ? find(subTree, compare, element) : undefined;
 }
 
 /**
- * Creates an findNode function for the given binary search tree with the given compare function.
+ * Creates an find function for the given binary search tree with the given compare function.
  *
  * @param compare The function used to determine the order of the elements.
  *  Its first argument is the current element.
@@ -53,10 +49,10 @@ export function findNode<T>(
  *
  *  => Zero     : the current element is similar to the searched node
  *
- * @returns The bound findNode function
+ * @returns The bound find function
  */
-export function makeFindNode<T>(compare: CompareFunction<T>) {
-    return function (tree: BinarySearchTree<T>, element: T) {
-        return findNode(tree, compare, element);
+export function makeFind<T>(compare: CompareFunction<T>) {
+    return function (tree: BST<T>, element: T) {
+        return find(tree, compare, element);
     };
 }

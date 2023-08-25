@@ -1,6 +1,6 @@
 import { toArrayInOrder } from 'src/functions/to-array-in-order';
-import { toBalancedBinarySearchTree } from 'src/functions/to-binary-search-tree';
-import { BinarySearchTree, CompareFunction } from 'src/types';
+import { toBalancedBST } from 'src/functions/to-binary-search-tree';
+import { BST, CompareFunction } from 'src/types';
 
 /**
  * Balances the given binary search tree, depending on a given compare function.
@@ -19,12 +19,12 @@ import { BinarySearchTree, CompareFunction } from 'src/types';
  *
  * @returns The balanced binary search tree.
  */
-export function balanceTree<T>(tree: BinarySearchTree<T>, compare: CompareFunction<T>) {
-    return toBalancedBinarySearchTree(toArrayInOrder(tree), compare, true);
+export function balance<T>(tree: BST<T>, compare: CompareFunction<T>) {
+    return toBalancedBST(toArrayInOrder(tree), compare, true);
 }
 
 /**
- * Creates a balanceTree function for the given binary search tree with the given compare function.
+ * Creates a balance function for the given binary search tree with the given compare function.
  *
  * @param compare The function used to determine the order of the elements.
  *  Its first argument is the current element.
@@ -37,10 +37,10 @@ export function balanceTree<T>(tree: BinarySearchTree<T>, compare: CompareFuncti
  *
  *  => Zero     : the current element should not be placed in the tree
  *
- * @returns The bound balanceTree function
+ * @returns The bound balance function
  */
-export function makeBalanceTree<T>(compare: CompareFunction<T>) {
-    return function (tree: BinarySearchTree<T>) {
-        return balanceTree(tree, compare);
+export function makeBalance<T>(compare: CompareFunction<T>) {
+    return function (tree: BST<T>) {
+        return balance(tree, compare);
     };
 }

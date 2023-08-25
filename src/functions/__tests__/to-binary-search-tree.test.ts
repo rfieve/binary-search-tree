@@ -4,19 +4,16 @@ import {
     mockedBalancedTree,
     mockedTree,
 } from 'src/functions/__tests__/_mocks';
-import {
-    toBalancedBinarySearchTree,
-    toBinarySearchTree,
-} from 'src/functions/to-binary-search-tree';
+import { toBalancedBST, toBST } from 'src/functions/to-binary-search-tree';
 
-describe('toBinarySearchTree', () => {
+describe('toBST', () => {
     it('should return a correct binary search tree', () => {
-        expect(toBinarySearchTree(mockedArray, compare)).toEqual(mockedTree);
+        expect(toBST(mockedArray, compare)).toEqual(mockedTree);
     });
 });
 
-describe('toBalancedBinarySearchTree', () => {
+describe('toBalancedBST', () => {
     it('should return a correct balanced binary search tree', () => {
-        expect(toBalancedBinarySearchTree(mockedArray, compare)).toEqual(mockedBalancedTree);
+        expect(toBalancedBST(mockedArray, compare)).toEqual(mockedBalancedTree);
     });
 });

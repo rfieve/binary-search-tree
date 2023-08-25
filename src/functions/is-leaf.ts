@@ -1,4 +1,4 @@
-import { BinarySearchTree, BinarySearchTreeLeaf } from 'src/types';
+import { BST, BSTLeaf } from 'src/types';
 
 /**
  * Assesses if the given tree is a leaf (has neither left nor right).
@@ -7,6 +7,6 @@ import { BinarySearchTree, BinarySearchTreeLeaf } from 'src/types';
  *
  * @returns true if it is, false if it isn't.
  */
-export function isLeaf<T>(tree?: BinarySearchTree<T>): tree is BinarySearchTreeLeaf<T> {
+export function isLeaf<T>(tree?: BST<T>): tree is BSTLeaf<T> {
     return tree?.data !== undefined && !tree.left && !tree.right;
 }

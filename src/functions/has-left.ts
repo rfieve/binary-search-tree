@@ -1,4 +1,4 @@
-import { BinarySearchTree, BinarySearchTreeLeftBranch } from 'src/types';
+import { BST, BSTLeftBranch } from 'src/types';
 
 /**
  * Assesses if the given tree has a left branch (has left).
@@ -7,6 +7,6 @@ import { BinarySearchTree, BinarySearchTreeLeftBranch } from 'src/types';
  *
  * @returns true if it has, false if it hasn't.
  */
-export function hasLeftBranch<T>(tree?: BinarySearchTree<T>): tree is BinarySearchTreeLeftBranch<T> {
+export function hasLeft<T>(tree?: BST<T>): tree is BSTLeftBranch<T> {
     return tree?.data !== undefined && !!tree.left;
 }

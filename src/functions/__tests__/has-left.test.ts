@@ -4,30 +4,30 @@ import {
     mockedStrictRightLeaf,
     mockedTree,
 } from 'src/functions/__tests__/_mocks';
-import { hasLeftBranch } from 'src/functions/has-left-branch';
+import { hasLeft } from 'src/functions/has-left';
 
 describe('isLeftBranch', () => {
     it('should return true when the given tree is a branch', () => {
-        expect(hasLeftBranch(mockedTree)).toBe(true);
+        expect(hasLeft(mockedTree)).toBe(true);
     });
 
     it('should return true when the given tree is srictly a left branch', () => {
-        expect(hasLeftBranch(mockedStrictLeftLeaf)).toBe(true);
+        expect(hasLeft(mockedStrictLeftLeaf)).toBe(true);
     });
 
     it('should return true when the given tree is srictly a right branch', () => {
-        expect(hasLeftBranch(mockedStrictRightLeaf)).toBe(false);
+        expect(hasLeft(mockedStrictRightLeaf)).toBe(false);
     });
 
     it('should return false when the given tree is a leaf', () => {
-        expect(hasLeftBranch(mockedLeaf)).toBe(false);
+        expect(hasLeft(mockedLeaf)).toBe(false);
     });
 
     it('should return false when the given tree is undefined', () => {
-        expect(hasLeftBranch()).toBe(false);
+        expect(hasLeft()).toBe(false);
     });
 
     it('should return false when the given tree has no data', () => {
-        expect(hasLeftBranch({ data: undefined })).toBe(false);
+        expect(hasLeft({ data: undefined })).toBe(false);
     });
 });

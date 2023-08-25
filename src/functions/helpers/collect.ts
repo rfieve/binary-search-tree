@@ -1,7 +1,7 @@
-import { BinarySearchTree } from 'src/types';
+import { BST } from 'src/types';
 
 export function makeCollectElementFromNode<T>(elements: T[]) {
-    return function collectElementFromNode(node?: BinarySearchTree<T>) {
+    return function collectElementFromNode(node?: BST<T>) {
         if (node?.data) {
             elements.push(node.data);
         }

@@ -1,34 +1,16 @@
-export { balanceTree } from './functions/balance-tree';
-export {
-    addElement,
-    addElements,
-    makeAddElement,
-    makeAddElements,
-} from 'src/functions/add-element';
+export { balance } from './functions/balance';
+export { add, makeAdd } from 'src/functions/add';
+export { find, makeFind } from 'src/functions/find';
 export { findMax } from 'src/functions/find-max';
 export { findMin } from 'src/functions/find-min';
-export { findNode, makeFindNode } from 'src/functions/find-node';
-export { hasLeftBranch } from 'src/functions/has-left-branch';
-export { hasRightBranch } from 'src/functions/has-right-branch';
+export { hasLeft } from 'src/functions/has-left';
+export { hasRight } from 'src/functions/has-right';
 export { isBranch } from 'src/functions/is-branch';
 export { isLeaf } from 'src/functions/is-leaf';
-export {
-    makeRemoveElement,
-    makeRemoveElements,
-    removeElement,
-    removeElements,
-} from 'src/functions/remove-element';
+export { makeRemove, remove } from 'src/functions/remove';
 export { toArrayInOrder } from 'src/functions/to-array-in-order';
 export { toArrayInOrderReverse } from 'src/functions/to-array-in-order-reverse';
-export {
-    toBalancedBinarySearchTree,
-    toBinarySearchTree,
-} from 'src/functions/to-binary-search-tree';
+export { toBalancedBST, toBST } from 'src/functions/to-binary-search-tree';
 export { traverseInOrder } from 'src/functions/traverse-in-order';
 export { traverseInOrderReverse } from 'src/functions/traverse-in-order-reverse';
-export type {
-    BinarySearchTree,
-    BinarySearchTreeLeaf,
-    BinarySearchTreeNode,
-    CompareFunction,
-} from 'src/types';
+export type { BST, BSTLeaf, BSTNode, CompareFunction } from 'src/types';

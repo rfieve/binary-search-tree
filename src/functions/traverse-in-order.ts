@@ -1,4 +1,4 @@
-import { BinarySearchTree } from 'src/types';
+import { BST } from 'src/types';
 
 /**
  * Traverses the tree from left to right.
@@ -7,8 +7,8 @@ import { BinarySearchTree } from 'src/types';
  * @param tree the tree to traverse
  */
 export function traverseInOrder<T>(
-    cb: (node: BinarySearchTree<T>) => void,
-    tree?: BinarySearchTree<T>
+    cb: (node: BST<T>) => void,
+    tree?: BST<T>
 ): void {
     if (tree?.data) {
         traverseInOrder(cb, tree.left);
