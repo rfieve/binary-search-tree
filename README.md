@@ -22,15 +22,15 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
 ## Example
 
 ```typescript
-type Element = { name: string };
+type Hero = { name: string };
 
-const compareAlpha = (a: Element, b: Element) => a.name.localeCompare(b.name);
+const compareAlpha = (a: Hero, b: Hero) => a.name.localeCompare(b.name);
 
 const addAlpha = makeAdd(compareAlpha);
 const removeAlpha = makeRemove(compareAlpha);
 const findAlpha = makeFind(compareAlpha);
 
-const people: Element[] = [
+const heroes: Hero[] = [
     { name: 'Han' },
     { name: 'Anakin' },
     { name: 'Leia' },
@@ -39,7 +39,7 @@ const people: Element[] = [
     { name: 'Lando' },
     { name: 'Chewie' },
 ];
-const tree = toBST(people, compareAlpha);
+const tree = toBST(heroes, compareAlpha);
 
 const updatedTree = pipe(
     (t) => addAlpha(t, { name: 'Yoda' }),
@@ -117,7 +117,7 @@ const balancedTree = balance(tree, compare);
 const safeBalance = makeBalance(compare);
 const balancedTree = safeBalance(tree);
 
-// Schema of "tree"     |     "balancedTree"
+// Schema of "tree"     =>    "balancedTree"
 //                      |
 //       10             |            13
 //    /     \           |         /     \
