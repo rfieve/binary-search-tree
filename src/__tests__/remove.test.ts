@@ -1,15 +1,15 @@
-import { compare, mockedArray, mockedTree } from 'src/__tests__/_mocks';
+import { compare, mockedArray, mockedUnbalancedTree } from 'src/__tests__/_mocks';
 import { makeRemove, remove } from 'src/functions/remove';
 
 describe('remove', () => {
     const boundRemove = makeRemove(compare);
 
     it('should not remove a node which is not there', () => {
-        const tree = remove(mockedTree, compare, 86);
-        expect(tree).toEqual(mockedTree);
+        const tree = remove(mockedUnbalancedTree, compare, 86);
+        expect(tree).toEqual(mockedUnbalancedTree);
 
-        const treeBound = boundRemove(mockedTree, 86);
-        expect(treeBound).toEqual(mockedTree);
+        const treeBound = boundRemove(mockedUnbalancedTree, 86);
+        expect(treeBound).toEqual(mockedUnbalancedTree);
     });
 
     it('should not remove an empty node', () => {
@@ -29,28 +29,28 @@ describe('remove', () => {
     });
 
     it('should remove a leaf correctly', () => {
-        const tree = remove(mockedTree, compare, 50);
+        const tree = remove(mockedUnbalancedTree, compare, 50);
         expect(tree?.right?.right?.data).toBe(89);
         expect(tree?.right?.right?.left?.data).toBe(undefined);
 
-        const treeBound = boundRemove(mockedTree, 50);
+        const treeBound = boundRemove(mockedUnbalancedTree, 50);
         expect(treeBound?.right?.right?.data).toBe(89);
         expect(treeBound?.right?.right?.left?.data).toBe(undefined);
     });
 
     it('should remove a single branch with left node correctly', () => {
-        const tree = remove(mockedTree, compare, 89);
+        const tree = remove(mockedUnbalancedTree, compare, 89);
         expect(tree?.right?.right?.data).toBe(50);
 
-        const treeBound = boundRemove(mockedTree, 89);
+        const treeBound = boundRemove(mockedUnbalancedTree, 89);
         expect(treeBound?.right?.right?.data).toBe(50);
     });
 
     it('should remove a single branch with right node correctly', () => {
-        const tree = remove(mockedTree, compare, 2);
+        const tree = remove(mockedUnbalancedTree, compare, 2);
         expect(tree?.left?.data).toBe(5);
 
-        const treeBound = boundRemove(mockedTree, 2);
+        const treeBound = boundRemove(mockedUnbalancedTree, 2);
         expect(treeBound?.left?.data).toBe(5);
     });
 
@@ -63,7 +63,7 @@ describe('remove', () => {
         //            /    |            /     |     5  50
         //          50     |          50      |
 
-        const tree = remove(mockedTree, compare, 10);
+        const tree = remove(mockedUnbalancedTree, compare, 10);
         const treeUpdated = remove(tree, compare, 13);
 
         expect(tree?.data).toBe(13);
@@ -78,7 +78,7 @@ describe('remove', () => {
         expect(treeUpdated?.right?.data).toBe(89);
         expect(treeUpdated?.right?.left?.data).toBe(50);
 
-        const treeBound = boundRemove(mockedTree, 10);
+        const treeBound = boundRemove(mockedUnbalancedTree, 10);
         const treeUpdatedBound = boundRemove(treeBound, 13);
 
         expect(treeBound?.data).toBe(13);
@@ -95,11 +95,11 @@ describe('remove', () => {
     });
 
     it('should not remove a node which is not there', () => {
-        const tree = remove(mockedTree, compare, [86]);
-        expect(tree).toEqual(mockedTree);
+        const tree = remove(mockedUnbalancedTree, compare, [86]);
+        expect(tree).toEqual(mockedUnbalancedTree);
 
-        const treeBound = boundRemove(mockedTree, [86]);
-        expect(treeBound).toEqual(mockedTree);
+        const treeBound = boundRemove(mockedUnbalancedTree, [86]);
+        expect(treeBound).toEqual(mockedUnbalancedTree);
     });
 
     it('should work with undefined', () => {
@@ -111,10 +111,10 @@ describe('remove', () => {
     });
 
     it('should empty the tree correctly', () => {
-        const tree = remove(mockedTree, compare, mockedArray);
+        const tree = remove(mockedUnbalancedTree, compare, mockedArray);
         expect(tree).toEqual({});
 
-        const treeBound = boundRemove(mockedTree, mockedArray);
+        const treeBound = boundRemove(mockedUnbalancedTree, mockedArray);
         expect(treeBound).toEqual({});
     });
 });

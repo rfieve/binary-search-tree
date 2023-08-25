@@ -16,7 +16,7 @@ export const mockedArrayReversed = mockedArrayOrdered.slice().reverse();
 //            /
 //          50
 
-export const mockedTree: BST<number> = {
+export const mockedUnbalancedTree: BST<number> = {
     data : 10,
     left : {
         data  : 2,
@@ -60,6 +60,6 @@ export const mockedBalancedTree: BST<number> = {
     },
 };
 
-export const mockedLeaf = (mockedTree.left as BST<number>).right;
-export const mockedStrictLeftLeaf = (mockedTree.right as BST<number>).right;
-export const mockedStrictRightLeaf = mockedTree.left;
+export const mockedLeaf = (mockedUnbalancedTree.left as BST<number>).right;
+export const mockedStrictLeftLeaf = (mockedUnbalancedTree.right as BST<number>).right;
+export const mockedStrictRightLeaf = mockedUnbalancedTree.left;

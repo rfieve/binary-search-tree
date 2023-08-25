@@ -2,13 +2,13 @@ import {
     mockedLeaf,
     mockedStrictLeftLeaf,
     mockedStrictRightLeaf,
-    mockedTree,
+    mockedUnbalancedTree,
 } from 'src/__tests__/_mocks';
 import { isBranch } from 'src/functions/is-branch';
 
 describe('isBranch', () => {
     it('should return true when the given tree is a branch', () => {
-        expect(isBranch(mockedTree)).toBe(true);
+        expect(isBranch(mockedUnbalancedTree)).toBe(true);
     });
 
     it('should return true when the given tree is srictly a left branch', () => {

@@ -4,7 +4,7 @@ import {
     mockedArrayOrdered,
     mockedArrayReversed,
     mockedBalancedTree,
-    mockedTree,
+    mockedUnbalancedTree,
 } from 'src/__tests__/_mocks';
 import { BinarySearchTree } from 'src/classes/binary-search-tree';
 import { makeCollectElementFromNode } from 'src/helpers/collect';
@@ -17,7 +17,7 @@ describe('BinarySearchTree', () => {
 
     it('should initialize correctly as unbalanced', () => {
         const { tree } = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
-        expect(tree).toEqual(mockedTree);
+        expect(tree).toEqual(mockedUnbalancedTree);
     });
 
     it('should balance correctly', () => {
@@ -34,7 +34,7 @@ describe('BinarySearchTree', () => {
 
     it('should fill the tree correctly', () => {
         const { tree } = new BinarySearchTree([], compare).add(mockedArray);
-        expect(tree).toEqual(mockedTree);
+        expect(tree).toEqual(mockedUnbalancedTree);
     });
 
     it('should remove a node correctly', () => {

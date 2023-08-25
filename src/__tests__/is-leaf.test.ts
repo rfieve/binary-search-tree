@@ -1,4 +1,4 @@
-import { mockedLeaf, mockedTree } from 'src/__tests__/_mocks';
+import { mockedLeaf, mockedUnbalancedTree } from 'src/__tests__/_mocks';
 import { isLeaf } from 'src/functions/is-leaf';
 
 describe('isLeaf', () => {
@@ -7,7 +7,7 @@ describe('isLeaf', () => {
     });
 
     it('should return false when the given tree is a branch', () => {
-        expect(isLeaf(mockedTree)).toBe(false);
+        expect(isLeaf(mockedUnbalancedTree)).toBe(false);
     });
 
     it('should return false when the given tree is undefined', () => {

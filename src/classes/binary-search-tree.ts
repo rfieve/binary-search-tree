@@ -2,9 +2,12 @@ import { add as addNode } from 'src/functions/add';
 import { balance as balanceTree } from 'src/functions/balance';
 import { find as findNode } from 'src/functions/find';
 import { findMax as findMaxNode } from 'src/functions/find-max';
+import { findMaxHeight as findMaxHeightTree } from 'src/functions/find-max-height';
 import { findMin as findMinNode } from 'src/functions/find-min';
+import { findMinHeight as findMinHeightTree } from 'src/functions/find-min-height';
 import { hasLeft as hasLeftNode } from 'src/functions/has-left';
 import { hasRight as hasRightNode } from 'src/functions/has-right';
+import { isBalanced as isBalancedTree } from 'src/functions/is-balanced';
 import { isBranch as isBranchNode } from 'src/functions/is-branch';
 import { isLeaf as isLeafNode } from 'src/functions/is-leaf';
 import { remove as removeNode } from 'src/functions/remove';
@@ -73,4 +76,10 @@ export class BinarySearchTree<T> {
     public readonly findMin = () => findMinNode(this.t);
 
     public readonly findMax = () => findMaxNode(this.t);
+
+    public readonly findMinHeight = () => findMinHeightTree(this.t);
+
+    public readonly findMaxHeight = () => findMaxHeightTree(this.t);
+
+    public readonly isBalanced = () => isBalancedTree(this.t);
 }

@@ -1,9 +1,9 @@
-import { compare, mockedTree } from 'src/__tests__/_mocks';
+import { compare, mockedUnbalancedTree } from 'src/__tests__/_mocks';
 import { find, makeFind } from 'src/functions/find';
 
 describe('find', () => {
     it('should not find a node which is not into the tree', () => {
-        const node = find(mockedTree, compare, 11);
+        const node = find(mockedUnbalancedTree, compare, 11);
         expect(node?.data).toBe(undefined);
     });
 
@@ -13,17 +13,17 @@ describe('find', () => {
     });
 
     it('should find a random node into the tree at the correct position', () => {
-        const node = find(mockedTree, compare, 89);
+        const node = find(mockedUnbalancedTree, compare, 89);
         expect(node?.data).toBe(89);
     });
 
     it('should find a left node into the tree at the correct left-side position', () => {
-        const node = find(mockedTree, compare, 2);
+        const node = find(mockedUnbalancedTree, compare, 2);
         expect(node?.data).toBe(2);
     });
 
     it('should find a right node into the tree at the correct right-side position', () => {
-        const node = find(mockedTree, compare, 50);
+        const node = find(mockedUnbalancedTree, compare, 50);
         expect(node?.data).toBe(50);
     });
 });
@@ -32,7 +32,7 @@ describe('makeFind', () => {
     const boundFind = makeFind(compare);
 
     it('should not find a node which is not into the tree', () => {
-        const node = boundFind(mockedTree, 11);
+        const node = boundFind(mockedUnbalancedTree, 11);
         expect(node?.data).toBe(undefined);
     });
 
@@ -42,17 +42,17 @@ describe('makeFind', () => {
     });
 
     it('should find a random node into the tree at the correct position', () => {
-        const node = boundFind(mockedTree, 89);
+        const node = boundFind(mockedUnbalancedTree, 89);
         expect(node?.data).toBe(89);
     });
 
     it('should find a left node into the tree at the correct left-side position', () => {
-        const node = boundFind(mockedTree, 2);
+        const node = boundFind(mockedUnbalancedTree, 2);
         expect(node?.data).toBe(2);
     });
 
     it('should find a right node into the tree at the correct right-side position', () => {
-        const node = boundFind(mockedTree, 50);
+        const node = boundFind(mockedUnbalancedTree, 50);
         expect(node?.data).toBe(50);
     });
 });

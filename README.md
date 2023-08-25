@@ -9,11 +9,12 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
     -   [Usage](#usage)
     -   [Documentation](#documentation)
         -   [`toBST`](#tobst)
-        -   [`balance`](#balance)
+        -   [`balance` \&\& `isBalanced`](#balance--isbalanced)
         -   [`add`](#add)
         -   [`remove`](#remove)
         -   [`find`](#find)
         -   [`findMin` \& `findMax`](#findmin--findmax)
+        -   [`findMinHeight` \& `findMaxHeight`](#findminheight--findmaxheight)
         -   [`toArrayInOrder` \& `toArrayInOrderReverse`](#toarrayinorder--toarrayinorderreverse)
         -   [`traverseInOrder` \& `traverseInOrderReverse`](#traverseinorder--traverseinorderreverse)
         -   [`isLeaf` \& `isBranch`](#isleaf--isbranch)
@@ -111,17 +112,21 @@ const unbalancedTree = toBST(arr, compare, { isBalanced: false });
 
 ---
 
-### `balance`
+### `balance` && `isBalanced`
 
 `balance` balances the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
 
 ⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree. A safer approach consists of using `makeBalance`. It curries a `balance` closure function with the given compare function.
 
 ```typescript
+isBalanced(unbalancedTree); // false
+
 const tree = balance(unbalancedTree, compare);
 // or
 const safeBalance = makeBalance(compare);
 const tree = safeBalance(unbalancedTree);
+
+isBalanced(tree); // true
 
 // Schema of "unbalancedTree"  =>        "tree"
 //                             |
@@ -232,6 +237,29 @@ Finds the min (`findMin`) or the max (`findMax`) node of the tree.
 
 const min = findMin(tree).data; // 2
 const max = findMax(tree).data; // 89
+```
+
+---
+
+### `findMinHeight` & `findMaxHeight`
+
+Finds the height of the min (`findMinHeight`) or the max (`findMaxHeight`) branch of the tree.
+
+```typescript
+// Schema of "tree"
+//
+//       10
+//    /     \
+//   2      32
+//    \    /  \
+//     5  13  89
+//           /
+//         50
+
+const min = findMinHeight(tree); // 1
+const max = findMaxHeight(tree); // 3
+// tree is thus unbalanced as a balanced tree has at most a delta of 1.
+// adding '1' to the tree would render it balanced.
 ```
 
 ---
