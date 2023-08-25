@@ -12,6 +12,14 @@ describe('add', () => {
         expect(treeWithBound).toEqual(mockedTree);
     });
 
+    it('should add a node to and empty tree', () => {
+        const tree = add({}, compare, 10);
+        expect(tree?.data).toBe(10);
+
+        const treeWithBound = boundAdd({}, 10);
+        expect(treeWithBound?.data).toBe(10);
+    });
+
     it('should add a random node to the tree at the correct position', () => {
         const tree = add(mockedTree, compare, 11);
         expect(tree.right?.left?.left?.data).toBe(11);

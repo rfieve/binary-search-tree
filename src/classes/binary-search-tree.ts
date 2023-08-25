@@ -10,12 +10,10 @@ import { isLeaf as isLeafNode } from 'src/functions/is-leaf';
 import { remove as removeNode } from 'src/functions/remove';
 import { toArrayInOrder as toArrayTreeInOrder } from 'src/functions/to-array-in-order';
 import { toArrayInOrderReverse as toArrayTreeInOrderReverse } from 'src/functions/to-array-in-order-reverse';
-import { toBalancedBST, toBST } from 'src/functions/to-binary-search-tree';
+import { toBST } from 'src/functions/to-binary-search-tree';
 import { traverseInOrder as traverseTreeInOrder } from 'src/functions/traverse-in-order';
 import { traverseInOrderReverse as traverseTreeInOrderReverse } from 'src/functions/traverse-in-order-reverse';
-import { BST, CompareFunction } from 'src/types';
-
-type BinarySearchTreeOptions = { isBalanced?: boolean; isPresorted?: boolean };
+import { BinarySearchTreeOptions, BST, CompareFunction } from 'src/types';
 
 export class BinarySearchTree<T> {
     private t! : BST<T>;
@@ -24,9 +22,7 @@ export class BinarySearchTree<T> {
 
     constructor(elements: T[], compare: CompareFunction<T>, options?: BinarySearchTreeOptions) {
         this.compare = compare;
-        this.t = options?.isBalanced
-            ? toBalancedBST(elements, compare, options?.isPresorted)
-            : toBST(elements, compare);
+        this.t = toBST(elements, compare, options);
     }
 
     public get tree() {

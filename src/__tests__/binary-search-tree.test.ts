@@ -10,14 +10,14 @@ import { BinarySearchTree } from 'src/classes/binary-search-tree';
 import { makeCollectElementFromNode } from 'src/helpers/collect';
 
 describe('BinarySearchTree', () => {
-    it('should initialize correctly', () => {
+    it('should initialize correctly as balanced', () => {
         const { tree } = new BinarySearchTree(mockedArray, compare);
-        expect(tree).toEqual(mockedTree);
+        expect(tree).toEqual(mockedBalancedTree);
     });
 
-    it('should initialize correctly as balanced', () => {
-        const { tree } = new BinarySearchTree(mockedArray, compare, { isBalanced: true });
-        expect(tree).toEqual(mockedBalancedTree);
+    it('should initialize correctly as unbalanced', () => {
+        const { tree } = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
+        expect(tree).toEqual(mockedTree);
     });
 
     it('should balance correctly', () => {
@@ -28,7 +28,7 @@ describe('BinarySearchTree', () => {
     });
 
     it('should add a node correctly', () => {
-        const { tree } = new BinarySearchTree(mockedArray, compare).add(11);
+        const { tree } = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).add(11);
         expect(tree.right?.left?.left?.data).toBe(11);
     });
 
@@ -38,7 +38,9 @@ describe('BinarySearchTree', () => {
     });
 
     it('should remove a node correctly', () => {
-        const { tree } = new BinarySearchTree(mockedArray, compare).remove(50);
+        const { tree } = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).remove(
+            50
+        );
         expect(tree?.right?.right?.data).toBe(89);
         expect(tree?.right?.right?.left?.data).toBe(undefined);
     });
@@ -88,25 +90,25 @@ describe('BinarySearchTree', () => {
     });
 
     it('should hasLeft correctly', () => {
-        const result = new BinarySearchTree(mockedArray, compare);
+        const result = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
         expect(result.hasLeft(10)).toEqual(true);
         expect(result.hasLeft(2)).toEqual(false);
     });
 
     it('should hasRight correctly', () => {
-        const result = new BinarySearchTree(mockedArray, compare);
+        const result = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
         expect(result.hasRight(10)).toEqual(true);
         expect(result.hasRight(89)).toEqual(false);
     });
 
     it('should isBranch correctly', () => {
-        const result = new BinarySearchTree(mockedArray, compare);
+        const result = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
         expect(result.isBranch(10)).toEqual(true);
         expect(result.isBranch(5)).toEqual(false);
     });
 
     it('should isLeaf correctly', () => {
-        const result = new BinarySearchTree(mockedArray, compare);
+        const result = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
         expect(result.isLeaf(5)).toEqual(true);
         expect(result.isLeaf(10)).toEqual(false);
     });

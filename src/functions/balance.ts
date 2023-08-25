@@ -1,5 +1,5 @@
 import { toArrayInOrder } from 'src/functions/to-array-in-order';
-import { toBalancedBST } from 'src/functions/to-binary-search-tree';
+import { toBST } from 'src/functions/to-binary-search-tree';
 import { BST, CompareFunction } from 'src/types';
 
 /**
@@ -20,7 +20,7 @@ import { BST, CompareFunction } from 'src/types';
  * @returns The balanced binary search tree.
  */
 export function balance<T>(tree: BST<T>, compare: CompareFunction<T>) {
-    return toBalancedBST(toArrayInOrder(tree), compare, true);
+    return toBST(toArrayInOrder(tree), compare, { isBalanced: true, isPresorted: true });
 }
 
 /**

@@ -20,8 +20,40 @@ function addElement<T>(tree: BST<T>, compare: CompareFunction<T>, element: T): B
     };
 }
 
+// Impure, but way more efficient, pass a precloned tree in order to ensure immutablibilty
+function addElementImpure<T>(tree: BST<T>, compare: CompareFunction<T>, element: T): void {
+    if (tree.data === undefined) {
+        tree.data = element;
+    }
+
+    let currentNode = tree;
+
+    while (true) {
+        const comparison = compare(element, currentNode.data as T);
+
+        if (comparison === 0) {
+            break;
+        }
+
+        const direction = comparison < 0 ? 'left' : 'right';
+
+        if (currentNode[direction]) {
+            currentNode = currentNode[direction]!;
+        } else {
+            currentNode[direction] = { data: element };
+            break;
+        }
+    }
+}
+
 function addElements<T>(tree: BST<T>, compare: CompareFunction<T>, elements: T[]): BST<T> {
-    return elements.reduce((acc, curr) => addElement(acc, compare, curr), tree);
+    const clone = structuredClone(tree);
+
+    for (const element of elements) {
+        addElementImpure(clone, compare, element);
+    }
+
+    return clone;
 }
 
 /**

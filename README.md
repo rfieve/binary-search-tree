@@ -6,9 +6,9 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
 
 -   [✌️🔍🌳 binary-search-tree](#️-binary-search-tree)
     -   [Table of Content](#table-of-content)
-    -   [Example](#example)
     -   [Usage](#usage)
-        -   [`toBST` \& `toBalancedBST`](#tobst--tobalancedbst)
+    -   [Documentation](#documentation)
+        -   [`toBST`](#tobst)
         -   [`balance`](#balance)
         -   [`add`](#add)
         -   [`remove`](#remove)
@@ -20,7 +20,7 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
         -   [`hasLeft` \& `hasRight`](#hasleft--hasright)
         -   [The infamous `BinarySearchTree` class](#the-infamous-binarysearchtree-class)
 
-## Example
+## Usage
 
 ```typescript
 type Hero = { name: string };
@@ -40,7 +40,7 @@ const heroes: Hero[] = [
     { name: 'Lando' },
     { name: 'Chewie' },
 ];
-const tree = toBST(heroes, compareAlpha);
+const unbalancedTree = toBST(heroes, compareAlpha, { isBalanced: false });
 
 const updatedTree = pipe(
     (t) => addAlpha(t, { name: 'Yoda' }),
@@ -48,9 +48,9 @@ const updatedTree = pipe(
     (t) => addAlpha(t, [{ name: 'Boba' }, { name: 'Grogu' }]),
     (t) => removeAlpha(t, [{ name: 'Han' }, { name: 'Padme' }]),
     (t) => removeAlpha(t, { name: 'Luke' })
-)(tree);
+)(unbalancedTree);
 
-// tree:                                     | Schema of "tree"
+// unbalancedTree:                           | Schema of "unbalancedTree"
 //                                           |
 // {                                         |             Han
 //     data: { name: 'Han' },                |           /     \
@@ -81,27 +81,32 @@ const grogu = findAlpha(updatedTree, { name: 'Grogu' }).data.name; // Grogu
 // Lando -> Anakin -> Chewie -> Grogu
 ```
 
-## Usage
+## Documentation
 
-### `toBST` & `toBalancedBST`
+### `toBST`
 
-Converts the given array to a binary search tree (`toBST`) or a balanced binary search tree(`toBalancedBST`), depending on a given compare function.
+Converts the given array to a balanced binary search tree (`toBST`), depending on a given compare function.
+
+⚠️ For obvious performance reasons, `toBST` will create a BALANCED binary search tree by default. Whilst passing the option `{ isBalanced: true }` will indeed respect the order of the source array for insertion, beware that performace will be greatly impacted.
+Worst, if you pass an array presorted with the compare function, the BST will be linear, and the Big O notation will be `n!`.
 
 ```typescript
 const arr = [10, 32, 13, 2, 89, 5, 50];
 const compare = (a: number, b: number) => a - b;
-const tree = toBST(arr, compare);
-const balancedTree = toBalancedBST(arr, compare);
 
-// Schema of "tree"     |     "balancedTree"
-//                      |
-//       10             |            13
-//    /     \           |         /     \
-//   2      32          |        5      50
-//    \    /  \         |      /  \    /  \
-//     5  13  89        |     2   10  32   89
-//            /         |
-//          50          |
+const tree = toBST(arr, compare);
+// or
+const unbalancedTree = toBST(arr, compare, { isBalanced: true });
+
+// Schema of "tree"         |    "unbalancedTree"
+//                          |
+//           13             |          10
+//        /     \           |       /     \
+//       5      50          |      2      32
+//     /  \    /  \         |       \    /  \
+//    2   10  32   89       |        5  13  89
+//                          |               /
+//                          |             50
 ```
 
 ---
@@ -113,20 +118,20 @@ const balancedTree = toBalancedBST(arr, compare);
 ⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree. A safer approach consists of using `makeBalance`. It curries a `balance` closure function with the given compare function.
 
 ```typescript
-const balancedTree = balance(tree, compare);
+const tree = balance(unbalancedTree, compare);
 // or
 const safeBalance = makeBalance(compare);
-const balancedTree = safeBalance(tree);
+const tree = safeBalance(unbalancedTree);
 
-// Schema of "tree"     =>    "balancedTree"
-//                      |
-//       10             |            13
-//    /     \           |         /     \
-//   2      32          |        5      50
-//    \    /  \         |      /  \    /  \
-//     5  13  89        |     2   10  32   89
-//            /         |
-//          50          |
+// Schema of "unbalancedTree"  =>        "tree"
+//                             |
+//       10                    |            13
+//    /     \                  |         /     \
+//   2      32                 |        5      50
+//    \    /  \                |      /  \    /  \
+//     5  13  89               |     2   10  32   89
+//            /                |
+//          50                 |
 ```
 
 ---
@@ -360,7 +365,7 @@ const heroes: Hero[] = [
     { name: 'Chewie' },
 ];
 
-const bst = new BinarySearchTree(heroes, compareAlpha);
+const bst = new BinarySearchTree(heroes, compareAlpha, { isBalanced: false });
 // Schema of bst.tree
 //
 //             Han

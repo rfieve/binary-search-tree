@@ -1,5 +1,7 @@
 export type CompareFunction<T> = (a: T, b: T) => number;
 
+export type BinarySearchTreeOptions = { isBalanced?: boolean; isPresorted?: boolean };
+
 export type BSTLeaf<T> = {
     data : T;
 };
