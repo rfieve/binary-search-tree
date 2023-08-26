@@ -1,5 +1,5 @@
 import { traverseInOrderReverse } from 'src/functions/traverse-in-order-reverse';
-import { makeCollectElementFromNode } from 'src/helpers/collect';
+import { makeToArrayWithTraversal } from 'src/helpers/make-to-array-with-traversal';
 import { BST } from 'src/types';
 
 /**
@@ -9,10 +9,5 @@ import { BST } from 'src/types';
  * @returns The array sorted from right to left.
  */
 export function toArrayInOrderReverse<T>(tree?: BST<T>) {
-    const elements: T[] = [];
-    const collectElementFromNode = makeCollectElementFromNode(elements);
-
-    traverseInOrderReverse(collectElementFromNode, tree);
-
-    return elements;
+    return makeToArrayWithTraversal(traverseInOrderReverse)(tree);
 }

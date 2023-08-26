@@ -15,8 +15,8 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
         -   [`find`](#find)
         -   [`findMin`, `findMax`](#findmin-findmax)
         -   [`findMinHeight`, `findMaxHeight`](#findminheight-findmaxheight)
-        -   [`toArrayInOrder`, `toArrayInOrderReverse`](#toarrayinorder-toarrayinorderreverse)
-        -   [`traverseInOrder`, `traverseInOrderReverse`](#traverseinorder-traverseinorderreverse)
+        -   [`traverse`](#traverse)
+        -   [`toArray`](#toarray)
         -   [`isLeaf`, `isBranch`](#isleaf-isbranch)
         -   [`hasLeft`, `hasRight`](#hasleft-hasright)
         -   [The infamous `BinarySearchTree` class](#the-infamous-binarysearchtree-class)
@@ -264,30 +264,14 @@ const max = findMaxHeight(tree); // 3
 
 ---
 
-### `toArrayInOrder`, `toArrayInOrderReverse`
+### `traverse`
 
-Converts the given binary search tree to an array, with the elements sorted from left to right (`toArrayInOrder`) or from right to left (`toArrayInOrderReverse`).
+Traverses a tree, invoking the callback function on each visited node.
 
-```typescript
-// Schema of "tree"
-//
-//       10
-//    /     \
-//   2      32
-//    \    /  \
-//     5  13  89
-//           /
-//         50
-
-const elements = toArrayInOrder(tree); // [2, 5, 10, 13, 32, 50, 89]
-const elementsReversed = toArrayInOrderReverse(tree); // [89, 50, 32, 13, 10, 5, 2]
-```
-
----
-
-### `traverseInOrder`, `traverseInOrderReverse`
-
-Traverses a tree from left to right (`traverseInOrder`) or from right to left (`traverseInOrderReverse`), invoking the callback function on each visited node.
+-   traverseInOrder
+-   traverseInOrderReverse
+-   traverseTopDown
+-   traverseTopDownReverse
 
 ```typescript
 // Schema of "tree"
@@ -304,13 +288,51 @@ const collect = (collection: number[]) => (node: { data: number }) => {
     collection.push(node.data);
 };
 
-const elements: number[] = [];
+const elements = [];
+
 traverseInOrder(collect(elements), tree);
 // elements: [2, 5, 10, 13, 32, 50, 89]
 
-const elementsReversed: number[] = [];
-traverseInOrderReverse(collect(elementsReversed), tree);
-// elementsReversed: [89, 50, 32, 13, 10, 5, 2]
+traverseInOrderReverse(collect(elements), tree);
+// elements: [89, 50, 32, 13, 10, 5, 2]
+
+traverseTopDown(collect(elements), tree);
+// elements: [10, 2, 32, 5, 13, 89, 50]
+
+traverseTopDownReverse(collect(elements), tree);
+// elements: [10, 32, 2, 89, 13, 5, 50]
+```
+
+---
+
+### `toArray`
+
+Converts the given binary search tree to an array sorted as traversed:
+
+-   toArrayInOrder
+-   toArrayInOrderReverse
+-   toArrayTopDown
+-   toArrayTopDownReverse
+
+```typescript
+// Schema of "tree"
+//
+//       10
+//    /     \
+//   2      32
+//    \    /  \
+//     5  13  89
+//           /
+//         50
+
+const a = toArrayInOrder(tree);
+// [2, 5, 10, 13, 32, 50, 89]
+const b = toArrayInOrderReverse(tree);
+// [89, 50, 32, 13, 10, 5, 2]
+const c = toArrayTopDown(tree);
+// [10, 2, 32, 5, 13, 89, 50]
+const d = toArrayTopDownReverse(tree);
+// [10, 32, 2, 89, 13, 5, 50]
 ```
 
 ---

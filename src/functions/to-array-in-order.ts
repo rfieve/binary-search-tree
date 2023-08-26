@@ -1,5 +1,5 @@
 import { traverseInOrder } from 'src/functions/traverse-in-order';
-import { makeCollectElementFromNode } from 'src/helpers/collect';
+import { makeToArrayWithTraversal } from 'src/helpers/make-to-array-with-traversal';
 import { BST } from 'src/types';
 
 /**
@@ -9,10 +9,5 @@ import { BST } from 'src/types';
  * @returns The array sorted from left to right.
  */
 export function toArrayInOrder<T>(tree?: BST<T>) {
-    const elements: T[] = [];
-    const collectElementFromNode = makeCollectElementFromNode(elements);
-
-    traverseInOrder(collectElementFromNode, tree);
-
-    return elements;
+    return makeToArrayWithTraversal(traverseInOrder)(tree);
 }

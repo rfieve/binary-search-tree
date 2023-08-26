@@ -10,6 +10,8 @@ import { BinarySearchTree } from 'src/classes/binary-search-tree';
 import { makeCollectElementFromNode } from 'src/helpers/collect';
 
 describe('BinarySearchTree', () => {
+    // ___ Init ___
+
     it('should initialize correctly as balanced', () => {
         const { tree } = new BinarySearchTree(mockedArray, compare);
         expect(tree).toEqual(mockedBalancedTree);
@@ -19,6 +21,8 @@ describe('BinarySearchTree', () => {
         const { tree } = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
         expect(tree).toEqual(mockedUnbalancedTree);
     });
+
+    // ___ Updates ___
 
     it('should balance correctly', () => {
         const { tree } = new BinarySearchTree(mockedArray, compare, {
@@ -50,29 +54,77 @@ describe('BinarySearchTree', () => {
         expect(tree).toEqual({});
     });
 
-    it('should be converted in order correctly', () => {
-        const arr = new BinarySearchTree(mockedArray, compare).toArrayInOrder();
-        expect(arr).toEqual(mockedArrayOrdered);
-    });
+    // ___ Traversals ___
 
-    it('should be converted in order reversed correctly', () => {
-        const arr = new BinarySearchTree(mockedArray, compare).toArrayInOrderReverse();
-        expect(arr).toEqual(mockedArrayReversed);
+    // In order
+    it('should be converted in order correctly', () => {
+        const arr = new BinarySearchTree(mockedArray, compare, {
+            isBalanced : false,
+        }).toArrayInOrder();
+        expect(arr).toEqual(mockedArrayOrdered);
     });
 
     it('should be traversed in order correctly', () => {
         const arr: number[] = [];
         const collect = makeCollectElementFromNode(arr);
-        new BinarySearchTree(mockedArray, compare).traverseInOrder(collect);
+        new BinarySearchTree(mockedArray, compare, { isBalanced: false }).traverseInOrder(collect);
+
         expect(arr).toEqual(mockedArrayOrdered);
+    });
+
+    // In order reversed
+    it('should be converted in order reversed correctly', () => {
+        const arr = new BinarySearchTree(mockedArray, compare, {
+            isBalanced : false,
+        }).toArrayInOrderReverse();
+        expect(arr).toEqual(mockedArrayReversed);
     });
 
     it('should be traversed in order reversed correctly', () => {
         const arr: number[] = [];
         const collect = makeCollectElementFromNode(arr);
-        new BinarySearchTree(mockedArray, compare).traverseInOrderReverse(collect);
+        new BinarySearchTree(mockedArray, compare, { isBalanced: false }).traverseInOrderReverse(
+            collect
+        );
+
         expect(arr).toEqual(mockedArrayReversed);
     });
+
+    // Top down
+    it('should be converted top down correctly', () => {
+        const arr = new BinarySearchTree(mockedArray, compare, {
+            isBalanced : false,
+        }).toArrayTopDown();
+        expect(arr).toEqual([10, 2, 32, 5, 13, 89, 50]);
+    });
+
+    it('should be traversed top down correctly', () => {
+        const arr: number[] = [];
+        const collect = makeCollectElementFromNode(arr);
+        new BinarySearchTree(mockedArray, compare, { isBalanced: false }).traverseTopDown(collect);
+
+        expect(arr).toEqual([10, 2, 32, 5, 13, 89, 50]);
+    });
+
+    // Top down reversed
+    it('should be converted top down reversed correctly', () => {
+        const arr = new BinarySearchTree(mockedArray, compare, {
+            isBalanced : false,
+        }).toArrayTopDownReverse();
+        expect(arr).toEqual([10, 32, 2, 89, 13, 5, 50]);
+    });
+
+    it('should be traversed top down reversed correctly', () => {
+        const arr: number[] = [];
+        const collect = makeCollectElementFromNode(arr);
+        new BinarySearchTree(mockedArray, compare, { isBalanced: false }).traverseTopDownReverse(
+            collect
+        );
+
+        expect(arr).toEqual([10, 32, 2, 89, 13, 5, 50]);
+    });
+
+    // ___ Finds ___
 
     it('should find correctly', () => {
         const node = new BinarySearchTree(mockedArray, compare).find(10);
@@ -94,6 +146,8 @@ describe('BinarySearchTree', () => {
         expect(result.hasLeft(10)).toEqual(true);
         expect(result.hasLeft(2)).toEqual(false);
     });
+
+    // ___ Assesments ___
 
     it('should hasRight correctly', () => {
         const result = new BinarySearchTree(mockedArray, compare, { isBalanced: false });

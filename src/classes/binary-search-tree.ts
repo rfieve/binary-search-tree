@@ -13,9 +13,13 @@ import { isLeaf as isLeafNode } from 'src/functions/is-leaf';
 import { remove as removeNode } from 'src/functions/remove';
 import { toArrayInOrder as toArrayTreeInOrder } from 'src/functions/to-array-in-order';
 import { toArrayInOrderReverse as toArrayTreeInOrderReverse } from 'src/functions/to-array-in-order-reverse';
+import { toArrayTopDown as toArrayTreeTopDown } from 'src/functions/to-array-top-down';
+import { toArrayTopDownReverse as toArrayTreeTopDownReverse } from 'src/functions/to-array-top-down-reverse';
 import { toBST } from 'src/functions/to-binary-search-tree';
 import { traverseInOrder as traverseTreeInOrder } from 'src/functions/traverse-in-order';
 import { traverseInOrderReverse as traverseTreeInOrderReverse } from 'src/functions/traverse-in-order-reverse';
+import { traverseTopDown as traverseTreeTopDown } from 'src/functions/traverse-top-down';
+import { traverseTopDownReverse as traverseTreeTopDownReverse } from 'src/functions/traverse-top-down-reverse';
 import { BinarySearchTreeOptions, BST, CompareFunction } from 'src/types';
 
 export class BinarySearchTree<T> {
@@ -32,6 +36,7 @@ export class BinarySearchTree<T> {
         return this.t;
     }
 
+    // Updates
     public readonly balance = () => {
         this.t = balanceTree(this.t, this.compare);
         return this;
@@ -47,6 +52,7 @@ export class BinarySearchTree<T> {
         return this;
     };
 
+    // Traversals
     public readonly traverseInOrder = (cb: (node: BST<T>) => void) => {
         traverseTreeInOrder(cb, this.t);
         return this;
@@ -57,9 +63,27 @@ export class BinarySearchTree<T> {
         return this;
     };
 
+    public readonly traverseTopDown = (cb: (node: BST<T>) => void) => {
+        traverseTreeTopDown(cb, this.t);
+        return this;
+    };
+
+    public readonly traverseTopDownReverse = (cb: (node: BST<T>) => void) => {
+        traverseTreeTopDownReverse(cb, this.t);
+        return this;
+    };
+
+    // To array conversions
     public readonly toArrayInOrder = () => toArrayTreeInOrder(this.t);
 
     public readonly toArrayInOrderReverse = () => toArrayTreeInOrderReverse(this.t);
+
+    public readonly toArrayTopDown = () => toArrayTreeTopDown(this.t);
+
+    public readonly toArrayTopDownReverse = () => toArrayTreeTopDownReverse(this.t);
+
+    // Assessments
+    public readonly isBalanced = () => isBalancedTree(this.t);
 
     public readonly hasLeft = (element: T) => hasLeftNode(findNode(this.t, this.compare, element));
 
@@ -71,6 +95,7 @@ export class BinarySearchTree<T> {
 
     public readonly isLeaf = (element: T) => isLeafNode(findNode(this.t, this.compare, element));
 
+    // Finders
     public readonly find = (element: T) => findNode(this.t, this.compare, element);
 
     public readonly findMin = () => findMinNode(this.t);
@@ -80,6 +105,4 @@ export class BinarySearchTree<T> {
     public readonly findMinHeight = () => findMinHeightTree(this.t);
 
     public readonly findMaxHeight = () => findMaxHeightTree(this.t);
-
-    public readonly isBalanced = () => isBalancedTree(this.t);
 }
