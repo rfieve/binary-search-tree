@@ -7,7 +7,7 @@ import { BST } from 'src/types';
  * @param tree the tree to traverse
  */
 export function traverseInOrder<T>(cb: (node: BST<T>) => void, tree?: BST<T>): void {
-    if (tree?.data) {
+    if (tree?.data !== undefined) {
         traverseInOrder(cb, tree.left);
         cb(tree);
         traverseInOrder(cb, tree.right);

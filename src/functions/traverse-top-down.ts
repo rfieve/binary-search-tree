@@ -7,7 +7,7 @@ import { BST } from 'src/types';
  * @param tree the tree to traverse
  */
 export function traverseTopDown<T>(cb: (node: BST<T>) => void, tree?: BST<T>): void {
-    if (tree?.data) {
+    if (tree?.data !== undefined) {
         const queue: BST<T>[] = [tree];
 
         while (queue.length > 0) {
