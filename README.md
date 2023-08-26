@@ -13,8 +13,8 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
         -   [`add`](#add)
         -   [`remove`](#remove)
         -   [`find`](#find)
-        -   [`findMin`, `findMax`](#findmin-findmax)
-        -   [`findMinHeight`, `findMaxHeight`](#findminheight-findmaxheight)
+        -   [`find(Min/Max)`](#findminmax)
+        -   [`find(Min/Max)Height`](#findminmaxheight)
         -   [`traverse`](#traverse)
         -   [`toArray`](#toarray)
         -   [`isLeaf`, `isBranch`](#isleaf-isbranch)
@@ -220,7 +220,7 @@ const element = safeFind(tree, 13).data; // 13
 
 ---
 
-### `findMin`, `findMax`
+### `find(Min/Max)`
 
 Finds the min (`findMin`) or the max (`findMax`) node of the tree.
 
@@ -241,7 +241,7 @@ const max = findMax(tree).data; // 89
 
 ---
 
-### `findMinHeight`, `findMaxHeight`
+### `find(Min/Max)Height`
 
 Finds the height of the min (`findMinHeight`) or the max (`findMaxHeight`) branch of the tree.
 
@@ -268,10 +268,10 @@ const max = findMaxHeight(tree); // 3
 
 Traverses a tree, invoking the callback function on each visited node.
 
--   traverseInOrder
--   traverseInOrderReverse
--   traverseTopDown
--   traverseTopDownReverse
+-   `traverseInOrder`
+-   `traverseInOrderReverse`
+-   `traverseTopDown`
+-   `traverseTopDownReverse`
 
 ```typescript
 // Schema of "tree"
@@ -309,10 +309,10 @@ traverseTopDownReverse(collect(elements), tree);
 
 Converts the given binary search tree to an array sorted as traversed:
 
--   toArrayInOrder
--   toArrayInOrderReverse
--   toArrayTopDown
--   toArrayTopDownReverse
+-   `toArrayInOrder`
+-   `toArrayInOrderReverse`
+-   `toArrayTopDown`
+-   `toArrayTopDownReverse`
 
 ```typescript
 // Schema of "tree"
