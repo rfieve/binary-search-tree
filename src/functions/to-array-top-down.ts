@@ -1,5 +1,5 @@
 import { traverseTopDown } from 'src/functions/traverse-top-down';
-import { makeToArrayWithTraversal } from 'src/helpers/make-to-array-with-traversal';
+import { makeToArrayFromTraversal } from 'src/helpers/make-to-array-from-traversal';
 
 /**
  * Converts the given binary search tree to an array, with the elements sorted from top to bottom, left to right.
@@ -7,4 +7,4 @@ import { makeToArrayWithTraversal } from 'src/helpers/make-to-array-with-travers
  * @param tree The source binary search tree
  * @returns The array sorted from top to bottom, left to right.
  */
-export const toArrayTopDown = makeToArrayWithTraversal(traverseTopDown);
+export const toArrayTopDown = makeToArrayFromTraversal(traverseTopDown);

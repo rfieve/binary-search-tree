@@ -1,7 +1,7 @@
 import { makeCollectElementFromNode } from 'src/helpers/collect';
 import { BST } from 'src/types';
 
-export function makeToArrayWithTraversal<T>(
+export function makeToArrayFromTraversal<T>(
     traverse: (cb: (node: BST<T>) => void, tree?: BST<T>) => void
 ) {
     return function toArray(tree?: BST<T>) {
