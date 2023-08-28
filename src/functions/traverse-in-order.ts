@@ -1,7 +1,7 @@
 import { BST } from 'src/types';
 
 /**
- * Traverses the tree from left to right.
+ * Traverses the tree with a Depth-First Search In-Order algorithm, from left to right.
  *
  * @param cb the callback invoked uppon each node
  * @param tree the tree to traverse
@@ -15,7 +15,7 @@ export function traverseInOrder<T>(cb: (node: BST<T>) => void, tree?: BST<T>): v
 }
 
 /**
- * Traverses the tree from right to left.
+ * Traverses the tree with a Depth-First Search In-Order algorithm, from right to left.
  *
  * @param cb the callback invoked uppon each node
  * @param tree the tree to traverse

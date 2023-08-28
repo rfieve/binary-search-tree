@@ -1,52 +1,69 @@
 import { traverseInOrder, traverseInOrderReverse } from 'src/functions/traverse-in-order';
+import { traverseLevelOrder, traverseLevelOrderReverse } from 'src/functions/traverse-level-order';
+import { traversePostOrder, traversePostOrderReverse } from 'src/functions/traverse-post-order';
 import { traversePreOrder, traversePreOrderReverse } from 'src/functions/traverse-pre-order';
-import { traverseTopDown, traverseTopDownReverse } from 'src/functions/traverse-top-down';
 import { makeToArrayFromTraversal } from 'src/helpers/make-to-array-from-traversal';
 
 /**
- * Converts the given binary search tree to an array, with the elements sorted from left to right.
+ * Converts the given binary search tree to an array, with a In-Order tree traversal.
  *
  * @param tree The source binary search tree
- * @returns The array sorted from left to right.
+ * @returns The sorted array
  */
 export const toArrayInOrder = makeToArrayFromTraversal(traverseInOrder);
 
 /**
- * Converts the given binary search tree to an array, with the elements sorted from right to left.
+ * Converts the given binary search tree to an array, with a In-Order reversed tree traversal.
  *
  * @param tree The source binary search tree
- * @returns The array sorted from right to left.
+ * @returns The sorted array
  */
 export const toArrayInOrderReverse = makeToArrayFromTraversal(traverseInOrderReverse);
 
 /**
- * Converts the given binary search tree to an array, with the elements sorted from left to right.
+ * Converts the given binary search tree to an array, with a Pre-Order tree traversal.
  *
  * @param tree The source binary search tree
- * @returns The array sorted from left to right.
+ * @returns The sorted array
  */
 export const toArrayPreOrder = makeToArrayFromTraversal(traversePreOrder);
 
 /**
- * Converts the given binary search tree to an array, with the elements sorted from right to left.
+ * Converts the given binary search tree to an array, with a Pre-Order reversed tree traversal.
  *
  * @param tree The source binary search tree
- * @returns The array sorted from right to left.
+ * @returns The sorted array
  */
 export const toArrayPreOrderReverse = makeToArrayFromTraversal(traversePreOrderReverse);
 
 /**
- * Converts the given binary search tree to an array, with the elements sorted from top to bottom, left to right.
+ * Converts the given binary search tree to an array, with a Post-Order tree traversal.
  *
  * @param tree The source binary search tree
- * @returns The array sorted from top to bottom, left to right.
+ * @returns The sorted array
  */
-export const toArrayTopDown = makeToArrayFromTraversal(traverseTopDown);
+export const toArrayPostOrder = makeToArrayFromTraversal(traversePostOrder);
 
 /**
- * Converts the given binary search tree to an array, with the elements sorted from top to bottom, right to left.
+ * Converts the given binary search tree to an array, with a Post-Order reversed tree traversal.
  *
  * @param tree The source binary search tree
- * @returns The array sorted from top to bottom, right to left.
+ * @returns The sorted array
  */
-export const toArrayTopDownReverse = makeToArrayFromTraversal(traverseTopDownReverse);
+export const toArrayPostOrderReverse = makeToArrayFromTraversal(traversePostOrderReverse);
+
+/**
+ * Converts the given binary search tree to an array, with a Level-Order tree traversal.
+ *
+ * @param tree The source binary search tree
+ * @returns The sorted array
+ */
+export const toArrayLevelOrder = makeToArrayFromTraversal(traverseLevelOrder);
+
+/**
+ * Converts the given binary search tree to an array, with a Level-Order reversed tree traversal.
+ *
+ * @param tree The source binary search tree
+ * @returns The sorted array
+ */
+export const toArrayLevelOrderReverse = makeToArrayFromTraversal(traverseLevelOrderReverse);

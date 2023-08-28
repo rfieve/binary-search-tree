@@ -14,10 +14,12 @@ import { remove as removeNode } from 'src/functions/remove';
 import {
     toArrayInOrder as toArrayTreeInOrder,
     toArrayInOrderReverse as toArrayTreeInOrderReverse,
+    toArrayLevelOrder as toArrayTreeLevelOrder,
+    toArrayLevelOrderReverse as toArrayTreeLevelOrderReverse,
+    toArrayPostOrder as toArrayTreePostOrder,
+    toArrayPostOrderReverse as toArrayTreePostOrderReverse,
     toArrayPreOrder as toArrayTreePreOrder,
     toArrayPreOrderReverse as toArrayTreePreOrderReverse,
-    toArrayTopDown as toArrayTreeTopDown,
-    toArrayTopDownReverse as toArrayTreeTopDownReverse,
 } from 'src/functions/to-array';
 import { toBST } from 'src/functions/to-binary-search-tree';
 import {
@@ -25,13 +27,17 @@ import {
     traverseInOrderReverse as traverseTreeInOrderReverse,
 } from 'src/functions/traverse-in-order';
 import {
+    traverseLevelOrder as traverseTreeLevelOrder,
+    traverseLevelOrderReverse as traverseTreeLevelOrderReverse,
+} from 'src/functions/traverse-level-order';
+import {
+    traversePostOrder as traverseTreePostOrder,
+    traversePostOrderReverse as traverseTreePostOrderReverse,
+} from 'src/functions/traverse-post-order';
+import {
     traversePreOrder as traverseTreePreOrder,
     traversePreOrderReverse as traverseTreePreOrderReverse,
 } from 'src/functions/traverse-pre-order';
-import {
-    traverseTopDown as traverseTreeTopDown,
-    traverseTopDownReverse as traverseTreeTopDownReverse,
-} from 'src/functions/traverse-top-down';
 import { BinarySearchTreeOptions, BST, CompareFunction } from 'src/types';
 
 export class BinarySearchTree<T> {
@@ -84,14 +90,23 @@ export class BinarySearchTree<T> {
         traverseTreePreOrderReverse(cb, this.t);
         return this;
     };
-
-    public readonly traverseTopDown = (cb: (node: BST<T>) => void) => {
-        traverseTreeTopDown(cb, this.t);
+    public readonly traversePostOrder = (cb: (node: BST<T>) => void) => {
+        traverseTreePostOrder(cb, this.t);
         return this;
     };
 
-    public readonly traverseTopDownReverse = (cb: (node: BST<T>) => void) => {
-        traverseTreeTopDownReverse(cb, this.t);
+    public readonly traversePostOrderReverse = (cb: (node: BST<T>) => void) => {
+        traverseTreePostOrderReverse(cb, this.t);
+        return this;
+    };
+
+    public readonly traverseLevelOrder = (cb: (node: BST<T>) => void) => {
+        traverseTreeLevelOrder(cb, this.t);
+        return this;
+    };
+
+    public readonly traverseLevelOrderReverse = (cb: (node: BST<T>) => void) => {
+        traverseTreeLevelOrderReverse(cb, this.t);
         return this;
     };
 
@@ -104,9 +119,13 @@ export class BinarySearchTree<T> {
 
     public readonly toArrayPreOrderReverse = () => toArrayTreePreOrderReverse(this.t);
 
-    public readonly toArrayTopDown = () => toArrayTreeTopDown(this.t);
+    public readonly toArrayPostOrder = () => toArrayTreePostOrder(this.t);
 
-    public readonly toArrayTopDownReverse = () => toArrayTreeTopDownReverse(this.t);
+    public readonly toArrayPostOrderReverse = () => toArrayTreePostOrderReverse(this.t);
+
+    public readonly toArrayLevelOrder = () => toArrayTreeLevelOrder(this.t);
+
+    public readonly toArrayLevelOrderReverse = () => toArrayTreeLevelOrderReverse(this.t);
 
     // Assessments
     public readonly isBalanced = () => isBalancedTree(this.t);

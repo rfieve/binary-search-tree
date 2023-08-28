@@ -15,10 +15,16 @@ export { makeRemove, remove } from 'src/functions/remove';
 export {
     toArrayInOrder,
     toArrayInOrderReverse,
-    toArrayTopDown,
-    toArrayTopDownReverse,
+    toArrayLevelOrder,
+    toArrayLevelOrderReverse,
+    toArrayPostOrder,
+    toArrayPostOrderReverse,
+    toArrayPreOrder,
+    toArrayPreOrderReverse,
 } from 'src/functions/to-array';
 export { toBST } from 'src/functions/to-binary-search-tree';
 export { traverseInOrder, traverseInOrderReverse } from 'src/functions/traverse-in-order';
-export { traverseTopDown, traverseTopDownReverse } from 'src/functions/traverse-top-down';
+export { traverseLevelOrder, traverseLevelOrderReverse } from 'src/functions/traverse-level-order';
+export { traversePostOrder, traversePostOrderReverse } from 'src/functions/traverse-post-order';
+export { traversePreOrder, traversePreOrderReverse } from 'src/functions/traverse-pre-order';
 export type { BST, BSTLeaf, BSTNode, CompareFunction } from 'src/types';

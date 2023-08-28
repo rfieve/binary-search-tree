@@ -1,13 +1,12 @@
 import { BST } from 'src/types';
 
 /**
- * Breadth-First Search traversal.
- * Traverses the tree from top to bottom, left to right.
+ * Traverses the tree with a Breadth-First Search Level-Order algorithm, from left to right. left to right.
  *
  * @param cb the callback invoked uppon each node
  * @param tree the tree to traverse
  */
-export function traverseTopDown<T>(cb: (node: BST<T>) => void, tree?: BST<T>): void {
+export function traverseLevelOrder<T>(cb: (node: BST<T>) => void, tree?: BST<T>): void {
     if (tree?.data !== undefined) {
         const queue: BST<T>[] = [tree];
 
@@ -28,13 +27,12 @@ export function traverseTopDown<T>(cb: (node: BST<T>) => void, tree?: BST<T>): v
 }
 
 /**
- * Breadth-First Search traversal.
- * Traverses the tree from top to bottom, right to left.
+ * Traverses the tree with a Breadth-First Search Level-Order algorithm, from right to left. right to left.
  *
  * @param cb the callback invoked uppon each node
  * @param tree the tree to traverse
  */
-export function traverseTopDownReverse<T>(cb: (node: BST<T>) => void, tree?: BST<T>): void {
+export function traverseLevelOrderReverse<T>(cb: (node: BST<T>) => void, tree?: BST<T>): void {
     if (tree?.data !== undefined) {
         const queue: BST<T>[] = [tree];
 
