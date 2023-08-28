@@ -12,13 +12,13 @@ export { isBalanced } from 'src/functions/is-balanced';
 export { isBranch } from 'src/functions/is-branch';
 export { isLeaf } from 'src/functions/is-leaf';
 export { makeRemove, remove } from 'src/functions/remove';
-export { toArrayInOrder } from 'src/functions/to-array-in-order';
-export { toArrayInOrderReverse } from 'src/functions/to-array-in-order-reverse';
-export { toArrayTopDown } from 'src/functions/to-array-top-down';
-export { toArrayTopDownReverse } from 'src/functions/to-array-top-down-reverse';
+export {
+    toArrayInOrder,
+    toArrayInOrderReverse,
+    toArrayTopDown,
+    toArrayTopDownReverse,
+} from 'src/functions/to-array';
 export { toBST } from 'src/functions/to-binary-search-tree';
-export { traverseInOrder } from 'src/functions/traverse-in-order';
-export { traverseInOrderReverse } from 'src/functions/traverse-in-order-reverse';
-export { traverseTopDown } from 'src/functions/traverse-top-down';
-export { traverseTopDownReverse } from 'src/functions/traverse-top-down-reverse';
+export { traverseInOrder, traverseInOrderReverse } from 'src/functions/traverse-in-order';
+export { traverseTopDown, traverseTopDownReverse } from 'src/functions/traverse-top-down';
 export type { BST, BSTLeaf, BSTNode, CompareFunction } from 'src/types';

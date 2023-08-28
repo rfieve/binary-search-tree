@@ -11,15 +11,21 @@ import { isBalanced as isBalancedTree } from 'src/functions/is-balanced';
 import { isBranch as isBranchNode } from 'src/functions/is-branch';
 import { isLeaf as isLeafNode } from 'src/functions/is-leaf';
 import { remove as removeNode } from 'src/functions/remove';
-import { toArrayInOrder as toArrayTreeInOrder } from 'src/functions/to-array-in-order';
-import { toArrayInOrderReverse as toArrayTreeInOrderReverse } from 'src/functions/to-array-in-order-reverse';
-import { toArrayTopDown as toArrayTreeTopDown } from 'src/functions/to-array-top-down';
-import { toArrayTopDownReverse as toArrayTreeTopDownReverse } from 'src/functions/to-array-top-down-reverse';
+import {
+    toArrayInOrder as toArrayTreeInOrder,
+    toArrayInOrderReverse as toArrayTreeInOrderReverse,
+    toArrayTopDown as toArrayTreeTopDown,
+    toArrayTopDownReverse as toArrayTreeTopDownReverse,
+} from 'src/functions/to-array';
 import { toBST } from 'src/functions/to-binary-search-tree';
-import { traverseInOrder as traverseTreeInOrder } from 'src/functions/traverse-in-order';
-import { traverseInOrderReverse as traverseTreeInOrderReverse } from 'src/functions/traverse-in-order-reverse';
-import { traverseTopDown as traverseTreeTopDown } from 'src/functions/traverse-top-down';
-import { traverseTopDownReverse as traverseTreeTopDownReverse } from 'src/functions/traverse-top-down-reverse';
+import {
+    traverseInOrder as traverseTreeInOrder,
+    traverseInOrderReverse as traverseTreeInOrderReverse,
+} from 'src/functions/traverse-in-order';
+import {
+    traverseTopDown as traverseTreeTopDown,
+    traverseTopDownReverse as traverseTreeTopDownReverse,
+} from 'src/functions/traverse-top-down';
 import { BinarySearchTreeOptions, BST, CompareFunction } from 'src/types';
 
 export class BinarySearchTree<T> {

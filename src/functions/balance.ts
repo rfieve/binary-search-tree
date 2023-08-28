@@ -1,5 +1,5 @@
 import { isBalanced } from 'src/functions/is-balanced';
-import { toArrayInOrder } from 'src/functions/to-array-in-order';
+import { toArrayInOrder } from 'src/functions/to-array';
 import { toBST } from 'src/functions/to-binary-search-tree';
 import { BST, CompareFunction } from 'src/types';
 
