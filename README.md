@@ -77,7 +77,8 @@ const updatedTree = pipe(
 
 const min = findMin(updatedTree).data.name; // Anakin
 const max = findMax(updatedTree).data.name; // Yoda
-const grogu = findAlpha(updatedTree, { name: 'Grogu' }).data.name; // Grogu
+const grogu = findAlpha(updatedTree, { name: 'Grogu' }).node.data.name; // Grogu
+const groguPath = findAlpha(updatedTree, { name: 'Grogu' }).path; // ['left', 'right', 'right', 'right']
 // Thanks to the compare function, the search will traverse like this:
 // Lando -> Anakin -> Chewie -> Grogu
 ```
@@ -212,10 +213,10 @@ const reModifiedTree = safeRemove(modifiedTree, [13, 5]);
 //           /
 //         50
 
-const element = find(tree, compare, 13).data; // 13
+const element = find(tree, compare, 13).node.data; // 13
 // or
 const safeFind = makeFind(compare);
-const element = safeFind(tree, 13).data; // 13
+const element = safeFind(tree, 13).node.data; // 13
 ```
 
 ---
@@ -471,7 +472,8 @@ bst.add({ name: 'Yoda' })
 
 bst.findMin().data.name; // Anakin
 bst.findMax().data.name; // Yoda
-bst.find({ name: 'Grogu' }).data.name; // Grogu
+bst.find({ name: 'Grogu' }).node.data.name; // Grogu
+bst.find({ name: 'Grogu' }).path; // ['left', 'right', 'right', 'right']
 // Thanks to the compare function, the search will traverse like this:
 // Lando -> Anakin -> Chewie -> Grogu
 ```

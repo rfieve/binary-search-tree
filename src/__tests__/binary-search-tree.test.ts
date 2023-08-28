@@ -205,7 +205,7 @@ describe('BinarySearchTree', () => {
     // ___ Finds ___
 
     it('should find correctly', () => {
-        const node = new BinarySearchTree(mockedArray, compare).find(10);
+        const { node } = new BinarySearchTree(mockedArray, compare).find(10);
         expect(node?.data).toEqual(10);
     });
 

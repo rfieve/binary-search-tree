@@ -16,23 +16,29 @@ import { BST, CompareFunction } from 'src/types';
  *  => Zero     : the current element is similar to the searched node
  *
  * @param element The element to be found
- * @returns The new binary search tree
+ * @returns The found result. { node: the found node, path:; the path to access it}
  */
-export function find<T>(tree: BST<T>, compare: CompareFunction<T>, element: T): BST<T> | undefined {
+export function find<T>(
+    tree: BST<T>,
+    compare: CompareFunction<T>,
+    element: T,
+    path = [] as ('left' | 'right')[]
+): { node: BST<T> | undefined; path: ('left' | 'right')[] } {
     if (tree.data === undefined) {
-        return undefined;
+        return { node: undefined, path };
     }
 
     const comparison = compare(element, tree.data);
 
     if (comparison === 0) {
-        return tree;
+        return { node: tree, path };
     }
 
     const direction = comparison < 0 ? 'left' : 'right';
     const subTree = tree[direction];
+    const newPath = path.slice().concat(direction);
 
-    return subTree ? find(subTree, compare, element) : undefined;
+    return subTree ? find(subTree, compare, element, newPath) : { node: undefined, path: newPath };
 }
 
 /**

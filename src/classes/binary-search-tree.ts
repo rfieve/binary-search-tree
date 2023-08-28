@@ -130,15 +130,17 @@ export class BinarySearchTree<T> {
     // Assessments
     public readonly isBalanced = () => isBalancedTree(this.t);
 
-    public readonly hasLeft = (element: T) => hasLeftNode(findNode(this.t, this.compare, element));
+    public readonly hasLeft = (element: T) =>
+        hasLeftNode(findNode(this.t, this.compare, element).node);
 
     public readonly hasRight = (element: T) =>
-        hasRightNode(findNode(this.t, this.compare, element));
+        hasRightNode(findNode(this.t, this.compare, element).node);
 
     public readonly isBranch = (element: T) =>
-        isBranchNode(findNode(this.t, this.compare, element));
+        isBranchNode(findNode(this.t, this.compare, element).node);
 
-    public readonly isLeaf = (element: T) => isLeafNode(findNode(this.t, this.compare, element));
+    public readonly isLeaf = (element: T) =>
+        isLeafNode(findNode(this.t, this.compare, element).node);
 
     // Finders
     public readonly find = (element: T) => findNode(this.t, this.compare, element);
