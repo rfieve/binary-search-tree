@@ -1,6 +1,7 @@
 import { BST } from 'src/types';
 
 /**
+ * Breadth-First Search traversal.
  * Traverses the tree from top to bottom, left to right.
  *
  * @param cb the callback invoked uppon each node
@@ -27,6 +28,7 @@ export function traverseTopDown<T>(cb: (node: BST<T>) => void, tree?: BST<T>): v
 }
 
 /**
+ * Breadth-First Search traversal.
  * Traverses the tree from top to bottom, right to left.
  *
  * @param cb the callback invoked uppon each node

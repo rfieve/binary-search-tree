@@ -268,10 +268,13 @@ const max = findMaxHeight(tree); // 3
 
 Traverses a tree, invoking the callback function on each visited node.
 
--   `traverseInOrder`
--   `traverseInOrderReverse`
--   `traverseTopDown`
--   `traverseTopDownReverse`
+-   `traverseInOrder` (DFS)
+-   `traverseInOrderReverse` (DFS)
+-   `traverseTopDown` (BSF)
+-   `traverseTopDownReverse` (BSF)
+
+*   DFS: Depth-First Search traversal
+*   BFS: Breadth-First Search traversal
 
 ```typescript
 // Schema of "tree"
@@ -309,10 +312,13 @@ traverseTopDownReverse(collect(elements), tree);
 
 Converts the given binary search tree to an array sorted as traversed:
 
--   `toArrayInOrder`
--   `toArrayInOrderReverse`
--   `toArrayTopDown`
--   `toArrayTopDownReverse`
+-   `toArrayInOrder` (DFS)
+-   `toArrayInOrderReverse` (DFS)
+-   `toArrayTopDown` (BSF)
+-   `toArrayTopDownReverse` (BSF)
+
+*   DFS: Depth-First Search traversal
+*   BFS: Breadth-First Search traversal
 
 ```typescript
 // Schema of "tree"
