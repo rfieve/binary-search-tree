@@ -421,9 +421,9 @@ const hasRightB = hasRight(tree.left.left); // false
 While diverging from the functional approach, the `BinarySearchTree` class offers many advantages, depending on the situation:
 
 -   natural chaining
--   tree state
+-   tree state encapsulation
 -   compare function encapsulation
--   has all methods listed functions before
+-   has all methods listed as functions before
 
 Let's rewrite the Star Wars example with this approach:
 
