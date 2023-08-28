@@ -1,4 +1,4 @@
-import { BST } from 'src/types';
+import { BST } from '../types';
 
 /**
  * Finds the minimal node in the tree, beeing the bottom-left node.

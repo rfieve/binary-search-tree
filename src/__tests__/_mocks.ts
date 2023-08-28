@@ -1,4 +1,4 @@
-import { BST } from 'src/types';
+import { BST } from '../types';
 
 export function compare(a: number, b: number) {
     return a - b;

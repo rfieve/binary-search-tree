@@ -1,16 +1,16 @@
-import { add as addNode } from 'src/functions/add';
-import { balance as balanceTree } from 'src/functions/balance';
-import { find as findNode } from 'src/functions/find';
-import { findMax as findMaxNode } from 'src/functions/find-max';
-import { findMaxHeight as findMaxHeightTree } from 'src/functions/find-max-height';
-import { findMin as findMinNode } from 'src/functions/find-min';
-import { findMinHeight as findMinHeightTree } from 'src/functions/find-min-height';
-import { hasLeft as hasLeftNode } from 'src/functions/has-left';
-import { hasRight as hasRightNode } from 'src/functions/has-right';
-import { isBalanced as isBalancedTree } from 'src/functions/is-balanced';
-import { isBranch as isBranchNode } from 'src/functions/is-branch';
-import { isLeaf as isLeafNode } from 'src/functions/is-leaf';
-import { remove as removeNode } from 'src/functions/remove';
+import { add as addNode } from '../functions/add';
+import { balance as balanceTree } from '../functions/balance';
+import { find as findNode } from '../functions/find';
+import { findMax as findMaxNode } from '../functions/find-max';
+import { findMaxHeight as findMaxHeightTree } from '../functions/find-max-height';
+import { findMin as findMinNode } from '../functions/find-min';
+import { findMinHeight as findMinHeightTree } from '../functions/find-min-height';
+import { hasLeft as hasLeftNode } from '../functions/has-left';
+import { hasRight as hasRightNode } from '../functions/has-right';
+import { isBalanced as isBalancedTree } from '../functions/is-balanced';
+import { isBranch as isBranchNode } from '../functions/is-branch';
+import { isLeaf as isLeafNode } from '../functions/is-leaf';
+import { remove as removeNode } from '../functions/remove';
 import {
     toArrayInOrder as toArrayTreeInOrder,
     toArrayInOrderReverse as toArrayTreeInOrderReverse,
@@ -20,25 +20,25 @@ import {
     toArrayPostOrderReverse as toArrayTreePostOrderReverse,
     toArrayPreOrder as toArrayTreePreOrder,
     toArrayPreOrderReverse as toArrayTreePreOrderReverse,
-} from 'src/functions/to-array';
-import { toBST } from 'src/functions/to-binary-search-tree';
+} from '../functions/to-array';
+import { toBST } from '../functions/to-binary-search-tree';
 import {
     traverseInOrder as traverseTreeInOrder,
     traverseInOrderReverse as traverseTreeInOrderReverse,
-} from 'src/functions/traverse-in-order';
+} from '../functions/traverse-in-order';
 import {
     traverseLevelOrder as traverseTreeLevelOrder,
     traverseLevelOrderReverse as traverseTreeLevelOrderReverse,
-} from 'src/functions/traverse-level-order';
+} from '../functions/traverse-level-order';
 import {
     traversePostOrder as traverseTreePostOrder,
     traversePostOrderReverse as traverseTreePostOrderReverse,
-} from 'src/functions/traverse-post-order';
+} from '../functions/traverse-post-order';
 import {
     traversePreOrder as traverseTreePreOrder,
     traversePreOrderReverse as traverseTreePreOrderReverse,
-} from 'src/functions/traverse-pre-order';
-import { BinarySearchTreeOptions, BST, CompareFunction } from 'src/types';
+} from '../functions/traverse-pre-order';
+import { BinarySearchTreeOptions, BST, CompareFunction } from '../types';
 
 export class BinarySearchTree<T> {
     private t! : BST<T>;

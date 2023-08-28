@@ -1,4 +1,4 @@
-import { BST } from 'src/types';
+import { BST } from '../types';
 
 export function makeCollectElementFromNode<T>(elements: T[]) {
     return function collectElementFromNode(node?: BST<T>) {

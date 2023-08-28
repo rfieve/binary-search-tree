@@ -1,8 +1,8 @@
-import { traverseInOrder, traverseInOrderReverse } from 'src/functions/traverse-in-order';
-import { traverseLevelOrder, traverseLevelOrderReverse } from 'src/functions/traverse-level-order';
-import { traversePostOrder, traversePostOrderReverse } from 'src/functions/traverse-post-order';
-import { traversePreOrder, traversePreOrderReverse } from 'src/functions/traverse-pre-order';
-import { makeToArrayFromTraversal } from 'src/helpers/make-to-array-from-traversal';
+import { traverseInOrder, traverseInOrderReverse } from './traverse-in-order';
+import { traverseLevelOrder, traverseLevelOrderReverse } from './traverse-level-order';
+import { traversePostOrder, traversePostOrderReverse } from './traverse-post-order';
+import { traversePreOrder, traversePreOrderReverse } from './traverse-pre-order';
+import { makeToArrayFromTraversal } from '../helpers/make-to-array-from-traversal';
 
 /**
  * Converts the given binary search tree to an array, with a In-Order tree traversal.

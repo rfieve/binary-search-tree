@@ -1,5 +1,5 @@
-import { compare, mockedUnbalancedTree } from 'src/__tests__/_mocks';
-import { add, makeAdd } from 'src/functions/add';
+import { add, makeAdd } from '../functions/add';
+import { compare, mockedUnbalancedTree } from './_mocks';
 
 describe('add', () => {
     const boundAdd = makeAdd(compare);

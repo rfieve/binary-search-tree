@@ -1,8 +1,9 @@
-import { findMin } from 'src/functions/find-min';
-import { hasLeft } from 'src/functions/has-left';
-import { hasRight } from 'src/functions/has-right';
-import { isLeaf } from 'src/functions/is-leaf';
-import { BST, BSTNode, CompareFunction, Direction } from 'src/types';
+import { findMin } from './find-min';
+import { hasLeft } from './has-left';
+import { hasRight } from './has-right';
+import { isLeaf } from './is-leaf';
+
+import { BST, BSTNode, CompareFunction, Direction } from '../types';
 
 function removeElement<T>(
     tree = {} as BST<T>,

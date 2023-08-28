@@ -1,5 +1,5 @@
-import { mockedUnbalancedTree } from 'src/__tests__/_mocks';
-import { findMinHeight } from 'src/functions/find-min-height';
+import { findMinHeight } from '../functions/find-min-height';
+import { mockedUnbalancedTree } from './_mocks';
 
 describe('findMinHeight', () => {
     it('should return a correct height from a binary search tree', () => {

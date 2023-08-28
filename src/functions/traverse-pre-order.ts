@@ -1,4 +1,4 @@
-import { BST } from 'src/types';
+import { BST } from '../types';
 
 /**
  * Traverses the tree with a Depth-First Search Pre-Order algorithm, from left to right.

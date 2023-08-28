@@ -1,5 +1,5 @@
-import { mockedUnbalancedTree } from 'src/__tests__/_mocks';
-import { findMaxHeight } from 'src/functions/find-max-height';
+import { findMaxHeight } from '../functions/find-max-height';
+import { mockedUnbalancedTree } from './_mocks';
 
 describe('findMaxHeight', () => {
     it('should return a correct height from a binary search tree', () => {

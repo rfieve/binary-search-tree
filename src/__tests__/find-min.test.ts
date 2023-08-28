@@ -1,5 +1,5 @@
-import { mockedUnbalancedTree } from 'src/__tests__/_mocks';
-import { findMin } from 'src/functions/find-min';
+import { findMin } from '../functions/find-min';
+import { mockedUnbalancedTree } from './_mocks';
 
 describe('findMin', () => {
     it('should return the minimal value of the tree', () => {

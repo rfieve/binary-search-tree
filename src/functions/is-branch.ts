@@ -1,6 +1,6 @@
-import { hasLeft } from 'src/functions/has-left';
-import { hasRight } from 'src/functions/has-right';
-import { BST, BSTBranch } from 'src/types';
+import { BST, BSTBranch } from '../types';
+import { hasLeft } from './has-left';
+import { hasRight } from './has-right';
 
 /**
  * Assesses if the given tree is a branch (has either left or right).

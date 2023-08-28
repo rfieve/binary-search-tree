@@ -1,12 +1,6 @@
 {
     "extends": ["plugin:@typescript-eslint/recommended", "plugin:unicorn/recommended"],
-    "plugins": [
-        "unicorn",
-        "simple-import-sort",
-        "import",
-        "no-relative-import-paths",
-        "typescript-sort-keys"
-    ],
+    "plugins": ["unicorn", "simple-import-sort", "import", "typescript-sort-keys"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "tsconfigRootDir": ".",
@@ -49,14 +43,6 @@
         "typescript-sort-keys/interface": "error",
         "typescript-sort-keys/string-enum": "error",
         "no-duplicate-imports": "error",
-        "no-relative-import-paths/no-relative-import-paths": [
-            "warn",
-            {
-                "allowSameFolder": false,
-                "rootDir": "",
-                "prefix": ""
-            }
-        ],
         "key-spacing": "off",
         "@typescript-eslint/key-spacing": [
             2,

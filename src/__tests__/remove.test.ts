@@ -1,5 +1,5 @@
-import { compare, mockedArray, mockedUnbalancedTree } from 'src/__tests__/_mocks';
-import { makeRemove, remove } from 'src/functions/remove';
+import { makeRemove, remove } from '../functions/remove';
+import { compare, mockedArray, mockedUnbalancedTree } from './_mocks';
 
 describe('remove', () => {
     const boundRemove = makeRemove(compare);

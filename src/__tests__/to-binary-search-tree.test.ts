@@ -1,10 +1,10 @@
+import { toBST } from '../functions/to-binary-search-tree';
 import {
     compare,
     mockedArray,
     mockedBalancedTree,
     mockedUnbalancedTree,
-} from 'src/__tests__/_mocks';
-import { toBST } from 'src/functions/to-binary-search-tree';
+} from './_mocks';
 
 describe('toBST', () => {
     it('should return a correct balanced binary search tree', () => {

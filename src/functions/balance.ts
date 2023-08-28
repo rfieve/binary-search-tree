@@ -1,7 +1,7 @@
-import { isBalanced } from 'src/functions/is-balanced';
-import { toArrayInOrder } from 'src/functions/to-array';
-import { toBST } from 'src/functions/to-binary-search-tree';
-import { BST, CompareFunction } from 'src/types';
+import { BST, CompareFunction } from '../types';
+import { isBalanced } from './is-balanced';
+import { toArrayInOrder } from './to-array';
+import { toBST } from './to-binary-search-tree';
 
 /**
  * Balances the given binary search tree, depending on a given compare function.

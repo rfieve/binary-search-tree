@@ -1,4 +1,4 @@
-import { BST, BSTLeaf } from 'src/types';
+import { BST, BSTLeaf } from '../types';
 
 /**
  * Assesses if the given tree is a leaf (has neither left nor right).

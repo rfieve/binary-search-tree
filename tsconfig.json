@@ -1,22 +1,16 @@
 {
     "compilerOptions": {
-        "target": "es2020",
-        "module": "ESNext",
-        "moduleResolution": "node",
-        "declaration": true,
-        "declarationMap": true,
-        "sourceMap": true,
-        "outDir": "dist",
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
+        "lib": ["es2022"],
+        "module": "commonjs",
+        "target": "es2022",
+
         "strict": true,
+        "esModuleInterop": true,
         "skipLibCheck": true,
-        "baseUrl": ".",
-        "allowJs": true,
-        "resolveJsonModule": true,
-        "isolatedModules": true,
-        "jsx": "preserve",
-        "incremental": true
+        "forceConsistentCasingInFileNames": true,
+
+        "outDir": "dist",
+        "declaration": true
     },
     "include": ["src/**/*.ts"],
     "exclude": ["node_modules", "dist"]

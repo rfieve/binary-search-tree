@@ -1,3 +1,5 @@
+import { BinarySearchTree } from '../classes/binary-search-tree';
+import { makeCollectElementFromNode } from '../helpers/collect';
 import {
     compare,
     mockedArray,
@@ -11,9 +13,7 @@ import {
     mockedArrayPreOrderReverse,
     mockedBalancedTree,
     mockedUnbalancedTree,
-} from 'src/__tests__/_mocks';
-import { BinarySearchTree } from 'src/classes/binary-search-tree';
-import { makeCollectElementFromNode } from 'src/helpers/collect';
+} from './_mocks';
 
 describe('BinarySearchTree', () => {
     // ___ Init ___

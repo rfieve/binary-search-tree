@@ -1,4 +1,4 @@
-import { BST, BSTRightBranch } from 'src/types';
+import { BST, BSTRightBranch } from '../types';
 
 /**
  * Assesses if the given tree has a right branch (has right).

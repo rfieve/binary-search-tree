@@ -1,4 +1,4 @@
-import { BST } from 'src/types';
+import { BST } from '../types';
 
 /**
  * Finds the height of the maximal branch of the tree.

@@ -1,4 +1,4 @@
-import { BST, CompareFunction, Direction } from 'src/types';
+import { BST, CompareFunction, Direction } from '../types';
 
 /**
  * Finds a given element into the given binary search tree with the given compare function.

@@ -1,6 +1,6 @@
-import { findMaxHeight } from 'src/functions/find-max-height';
-import { findMinHeight } from 'src/functions/find-min-height';
-import { BST } from 'src/types';
+import { BST } from '../types';
+import { findMaxHeight } from './find-max-height';
+import { findMinHeight } from './find-min-height';
 
 /**
  * Assesses if the given tree is balanced.

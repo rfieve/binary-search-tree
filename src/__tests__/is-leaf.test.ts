@@ -1,5 +1,5 @@
-import { mockedLeaf, mockedUnbalancedTree } from 'src/__tests__/_mocks';
-import { isLeaf } from 'src/functions/is-leaf';
+import { isLeaf } from '../functions/is-leaf';
+import { mockedLeaf, mockedUnbalancedTree } from './_mocks';
 
 describe('isLeaf', () => {
     it('should return true when the given tree is a leaf', () => {

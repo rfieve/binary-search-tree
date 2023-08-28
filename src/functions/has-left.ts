@@ -1,4 +1,4 @@
-import { BST, BSTLeftBranch } from 'src/types';
+import { BST, BSTLeftBranch } from '../types';
 
 /**
  * Assesses if the given tree has a left branch (has left).

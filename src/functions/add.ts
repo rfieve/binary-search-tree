@@ -1,4 +1,4 @@
-import { BST, CompareFunction, Direction } from 'src/types';
+import { BST, CompareFunction, Direction } from '../types';
 
 function addElement<T>(tree: BST<T>, compare: CompareFunction<T>, element: T): BST<T> {
     if (tree.data === undefined) {
