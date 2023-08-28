@@ -14,6 +14,8 @@ import { remove as removeNode } from 'src/functions/remove';
 import {
     toArrayInOrder as toArrayTreeInOrder,
     toArrayInOrderReverse as toArrayTreeInOrderReverse,
+    toArrayPreOrder as toArrayTreePreOrder,
+    toArrayPreOrderReverse as toArrayTreePreOrderReverse,
     toArrayTopDown as toArrayTreeTopDown,
     toArrayTopDownReverse as toArrayTreeTopDownReverse,
 } from 'src/functions/to-array';
@@ -22,6 +24,10 @@ import {
     traverseInOrder as traverseTreeInOrder,
     traverseInOrderReverse as traverseTreeInOrderReverse,
 } from 'src/functions/traverse-in-order';
+import {
+    traversePreOrder as traverseTreePreOrder,
+    traversePreOrderReverse as traverseTreePreOrderReverse,
+} from 'src/functions/traverse-pre-order';
 import {
     traverseTopDown as traverseTreeTopDown,
     traverseTopDownReverse as traverseTreeTopDownReverse,
@@ -69,6 +75,16 @@ export class BinarySearchTree<T> {
         return this;
     };
 
+    public readonly traversePreOrder = (cb: (node: BST<T>) => void) => {
+        traverseTreePreOrder(cb, this.t);
+        return this;
+    };
+
+    public readonly traversePreOrderReverse = (cb: (node: BST<T>) => void) => {
+        traverseTreePreOrderReverse(cb, this.t);
+        return this;
+    };
+
     public readonly traverseTopDown = (cb: (node: BST<T>) => void) => {
         traverseTreeTopDown(cb, this.t);
         return this;
@@ -83,6 +99,10 @@ export class BinarySearchTree<T> {
     public readonly toArrayInOrder = () => toArrayTreeInOrder(this.t);
 
     public readonly toArrayInOrderReverse = () => toArrayTreeInOrderReverse(this.t);
+
+    public readonly toArrayPreOrder = () => toArrayTreePreOrder(this.t);
+
+    public readonly toArrayPreOrderReverse = () => toArrayTreePreOrderReverse(this.t);
 
     public readonly toArrayTopDown = () => toArrayTreeTopDown(this.t);
 

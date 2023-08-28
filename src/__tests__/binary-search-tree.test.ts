@@ -90,6 +90,40 @@ describe('BinarySearchTree', () => {
         expect(arr).toEqual(mockedArrayReversed);
     });
 
+    // Pre order
+    it('should be converted pre order correctly', () => {
+        const arr = new BinarySearchTree(mockedArray, compare, {
+            isBalanced : false,
+        }).toArrayPreOrder();
+        expect(arr).toEqual([10, 2, 5, 32, 13, 89, 50]);
+    });
+
+    it('should be traversed pre order correctly', () => {
+        const arr: number[] = [];
+        const collect = makeCollectElementFromNode(arr);
+        new BinarySearchTree(mockedArray, compare, { isBalanced: false }).traversePreOrder(collect);
+
+        expect(arr).toEqual([10, 2, 5, 32, 13, 89, 50]);
+    });
+
+    // Pre order reversed
+    it('should be converted pre order reversed correctly', () => {
+        const arr = new BinarySearchTree(mockedArray, compare, {
+            isBalanced : false,
+        }).toArrayPreOrderReverse();
+        expect(arr).toEqual([10, 32, 89, 50, 13, 2, 5]);
+    });
+
+    it('should be traversed pre order reversed correctly', () => {
+        const arr: number[] = [];
+        const collect = makeCollectElementFromNode(arr);
+        new BinarySearchTree(mockedArray, compare, { isBalanced: false }).traversePreOrderReverse(
+            collect
+        );
+
+        expect(arr).toEqual([10, 32, 89, 50, 13, 2, 5]);
+    });
+
     // Top down
     it('should be converted top down correctly', () => {
         const arr = new BinarySearchTree(mockedArray, compare, {

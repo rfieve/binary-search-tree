@@ -1,4 +1,5 @@
 import { traverseInOrder, traverseInOrderReverse } from 'src/functions/traverse-in-order';
+import { traversePreOrder, traversePreOrderReverse } from 'src/functions/traverse-pre-order';
 import { traverseTopDown, traverseTopDownReverse } from 'src/functions/traverse-top-down';
 import { makeToArrayFromTraversal } from 'src/helpers/make-to-array-from-traversal';
 
@@ -17,6 +18,22 @@ export const toArrayInOrder = makeToArrayFromTraversal(traverseInOrder);
  * @returns The array sorted from right to left.
  */
 export const toArrayInOrderReverse = makeToArrayFromTraversal(traverseInOrderReverse);
+
+/**
+ * Converts the given binary search tree to an array, with the elements sorted from left to right.
+ *
+ * @param tree The source binary search tree
+ * @returns The array sorted from left to right.
+ */
+export const toArrayPreOrder = makeToArrayFromTraversal(traversePreOrder);
+
+/**
+ * Converts the given binary search tree to an array, with the elements sorted from right to left.
+ *
+ * @param tree The source binary search tree
+ * @returns The array sorted from right to left.
+ */
+export const toArrayPreOrderReverse = makeToArrayFromTraversal(traversePreOrderReverse);
 
 /**
  * Converts the given binary search tree to an array, with the elements sorted from top to bottom, left to right.

@@ -268,10 +268,12 @@ const max = findMaxHeight(tree); // 3
 
 Traverses a tree, invoking the callback function on each visited node.
 
--   `traverseInOrder` (DFS)
--   `traverseInOrderReverse` (DFS)
--   `traverseTopDown` (BSF)
--   `traverseTopDownReverse` (BSF)
+-   (DFS) `traverseInOrder`
+-   (DFS) `traverseInOrderReverse`
+-   (DFS) `traversePreOrder`
+-   (DFS) `traversePreOrderReverse`
+-   (BSF) `traverseTopDown`
+-   (BSF) `traverseTopDownReverse`
 
 *   DFS: Depth-First Search traversal
 *   BFS: Breadth-First Search traversal
@@ -295,13 +297,14 @@ const elements = [];
 
 traverseInOrder(collect(elements), tree);
 // elements: [2, 5, 10, 13, 32, 50, 89]
-
 traverseInOrderReverse(collect(elements), tree);
 // elements: [89, 50, 32, 13, 10, 5, 2]
-
+traversePreOrder(collect(elements), tree);
+// elements: [10, 2, 5, 32, 13, 89, 50]
+traversePreOrderReverse(collect(elements), tree);
+// elements: [10, 32, 89, 50, 13, 2, 5]
 traverseTopDown(collect(elements), tree);
 // elements: [10, 2, 32, 5, 13, 89, 50]
-
 traverseTopDownReverse(collect(elements), tree);
 // elements: [10, 32, 2, 89, 13, 5, 50]
 ```
@@ -312,10 +315,12 @@ traverseTopDownReverse(collect(elements), tree);
 
 Converts the given binary search tree to an array sorted as traversed:
 
--   `toArrayInOrder` (DFS)
--   `toArrayInOrderReverse` (DFS)
--   `toArrayTopDown` (BSF)
--   `toArrayTopDownReverse` (BSF)
+-   (DFS) `toArrayInOrder`
+-   (DFS) `toArrayInOrderReverse`
+-   (DFS) `toArrayPreOrder`
+-   (DFS) `toArrayPreOrderReverse`
+-   (BFS) `toArrayTopDown`
+-   (BFS) `toArrayTopDownReverse`
 
 *   DFS: Depth-First Search traversal
 *   BFS: Breadth-First Search traversal
@@ -335,9 +340,13 @@ const a = toArrayInOrder(tree);
 // [2, 5, 10, 13, 32, 50, 89]
 const b = toArrayInOrderReverse(tree);
 // [89, 50, 32, 13, 10, 5, 2]
-const c = toArrayTopDown(tree);
+const c = toArrayPreOrder(tree);
+// [10, 2, 5, 32, 13, 89, 50]
+const d = toArrayPreOrderReverse(tree);
+// [10, 32, 89, 50, 13, 2, 5]
+const e = toArrayTopDown(tree);
 // [10, 2, 32, 5, 13, 89, 50]
-const d = toArrayTopDownReverse(tree);
+const f = toArrayTopDownReverse(tree);
 // [10, 32, 2, 89, 13, 5, 50]
 ```
 
