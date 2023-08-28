@@ -2,7 +2,7 @@ import { findMin } from 'src/functions/find-min';
 import { hasLeft } from 'src/functions/has-left';
 import { hasRight } from 'src/functions/has-right';
 import { isLeaf } from 'src/functions/is-leaf';
-import { BST, BSTNode, CompareFunction } from 'src/types';
+import { BST, BSTNode, CompareFunction, Direction } from 'src/types';
 
 function removeElement<T>(
     tree = {} as BST<T>,
@@ -45,7 +45,7 @@ function removeElement<T>(
         return (tree.left || tree.right) as BST<T>;
     }
 
-    const direction = comparison < 0 ? 'left' : 'right';
+    const direction = comparison < 0 ? Direction.Left : Direction.Right;
     const subTree = tree[direction];
 
     return subTree ? { ...tree, [direction]: removeElement(subTree, compare, element) } : tree;

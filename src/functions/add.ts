@@ -1,4 +1,4 @@
-import { BST, CompareFunction } from 'src/types';
+import { BST, CompareFunction, Direction } from 'src/types';
 
 function addElement<T>(tree: BST<T>, compare: CompareFunction<T>, element: T): BST<T> {
     if (tree.data === undefined) {
@@ -11,7 +11,7 @@ function addElement<T>(tree: BST<T>, compare: CompareFunction<T>, element: T): B
         return tree;
     }
 
-    const direction = comparison < 0 ? 'left' : 'right';
+    const direction = comparison < 0 ? Direction.Left : Direction.Right;
     const subTree = tree[direction];
 
     return {
@@ -35,7 +35,7 @@ function addElementImpure<T>(tree: BST<T>, compare: CompareFunction<T>, element:
             break;
         }
 
-        const direction = comparison < 0 ? 'left' : 'right';
+        const direction = comparison < 0 ? Direction.Left : Direction.Right;
 
         if (currentNode[direction]) {
             currentNode = currentNode[direction]!;

@@ -1,3 +1,8 @@
+export enum Direction {
+    Left = 'left',
+    Right = 'right',
+}
+
 export type CompareFunction<T> = (a: T, b: T) => number;
 
 export type BinarySearchTreeOptions = { isBalanced?: boolean; isPresorted?: boolean };
@@ -7,11 +12,11 @@ export type BSTLeaf<T> = {
 };
 
 export type BSTLeftBranch<T> = {
-    left : BSTNode<T>;
+    [Direction.Left] : BSTNode<T>;
 };
 
 export type BSTRightBranch<T> = {
-    right : BSTNode<T>;
+    [Direction.Right] : BSTNode<T>;
 };
 
 export type BSTBranch<T> = BSTLeaf<T> &
