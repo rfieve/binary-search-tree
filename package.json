@@ -1,5 +1,5 @@
 {
-    "name": "@rfieve/binary-tree",
+    "name": "@rfieve/binary-search-tree",
     "version": "1.0.0",
     "description": "",
     "main": "dist/index.js",
@@ -15,15 +15,19 @@
         "prepublish": "tsc --project tsconfig.build.json"
     },
     "author": "rfieve",
-    "license": "ISC",
+    "license": "MIT",
     "keywords": [
         "typescript",
-        "binary-tree",
+        "binary-search-tree",
         "utility"
     ],
     "repository": {
         "type": "git",
-        "url": "git+https://github.com/rfieve/binary-tree.git"
+        "url": "git+https://github.com/rfieve/binary-search-tree.git"
+    },
+    "homepage": "https://github.com/rfieve/binary-search-tree#readme",
+    "bugs": {
+        "url": "https://github.com/rfieve/binary-search-tree/issues"
     },
     "devDependencies": {
         "@jest/types": "^29.6.3",
