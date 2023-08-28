@@ -1,5 +1,5 @@
 {
-    "name": "@rfieve/binary-search-tree",
+    "name": "@romainfieve/binary-search-tree",
     "version": "1.0.0",
     "description": "",
     "main": "dist/index.js",
