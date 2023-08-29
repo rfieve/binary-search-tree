@@ -15,8 +15,7 @@ A zero-dependency TypeScript library to work with binary search trees and arrays
         -   [`remove`](#remove)
         -   [`find`](#find)
         -   [`find(Gt/Gte/Lt/Lte)`](#findgtgteltlte)
-        -   [`find(Min/Max)`](#findminmax)
-        -   [`find(Min/Max)Height`](#findminmaxheight)
+        -   [`find(Min/Max)(Height)`, `count`](#findminmaxheight-count)
         -   [`traverse`](#traverse)
         -   [`toArray`](#toarray)
         -   [`isLeaf`, `isBranch`](#isleaf-isbranch)
@@ -278,9 +277,11 @@ const results = safeFindGte(tree, 4).map(({ node, path: _path }) => node.data);
 
 ---
 
-### `find(Min/Max)`
+### `find(Min/Max)(Height)`, `count`
 
 Finds the min (`findMin`) or the max (`findMax`) node of the tree.
+Finds the height of the min (`findMinHeight`) or the max (`findMaxHeight`) branch of the tree.
+Counts (`count`) the nodes in the tree
 
 ```typescript
 // Schema of "tree"
@@ -295,29 +296,9 @@ Finds the min (`findMin`) or the max (`findMax`) node of the tree.
 
 const min = findMin(tree).data; // 2
 const max = findMax(tree).data; // 89
-```
-
----
-
-### `find(Min/Max)Height`
-
-Finds the height of the min (`findMinHeight`) or the max (`findMaxHeight`) branch of the tree.
-
-```typescript
-// Schema of "tree"
-//
-//       10
-//    /     \
-//   2      32
-//    \    /  \
-//     5  13  89
-//           /
-//         50
-
-const min = findMinHeight(tree); // 1
-const max = findMaxHeight(tree); // 3
-// tree is thus unbalanced as a balanced tree has at most a delta of 1.
-// adding '1' to the tree would render it balanced.
+const minHeight = findMinHeight(tree); // 1
+const maxHeight = findMaxHeight(tree); // 3
+const length = count(tree); // 7
 ```
 
 ---
