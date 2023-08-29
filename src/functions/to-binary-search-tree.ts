@@ -1,8 +1,7 @@
-import { add } from './add';
 import { makeCollectElement } from '../helpers/collect';
 import { forEachBalanced } from '../helpers/for-each-balanced';
-
 import { BinarySearchTreeOptions, BST, CompareFunction } from '../types';
+import { add } from './add';
 
 /**
  * Converts the given array to a binary search tree, depending on a given compare function.

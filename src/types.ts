@@ -5,19 +5,15 @@ export enum Direction {
 
 export type CompareFunction<T> = (a: T, b: T) => number;
 
+export type FoundResult<T> = { node: BST<T>; path: Direction[] };
+
 export type BinarySearchTreeOptions = { isBalanced?: boolean; isPresorted?: boolean };
 
-export type BSTLeaf<T> = {
-    data : T;
-};
+export type BSTLeaf<T> = { data: T };
 
-export type BSTLeftBranch<T> = {
-    [Direction.Left] : BSTNode<T>;
-};
+export type BSTLeftBranch<T> = { [Direction.Left]: BSTNode<T> };
 
-export type BSTRightBranch<T> = {
-    [Direction.Right] : BSTNode<T>;
-};
+export type BSTRightBranch<T> = { [Direction.Right]: BSTNode<T> };
 
 export type BSTBranch<T> = BSTLeaf<T> &
     (

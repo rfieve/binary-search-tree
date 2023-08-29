@@ -1,6 +1,10 @@
 import { add as addNode } from '../functions/add';
 import { balance as balanceTree } from '../functions/balance';
 import { find as findNode } from '../functions/find';
+import { findGt as findGtNode } from '../functions/find-gt';
+import { findGte as findGteNode } from '../functions/find-gte';
+import { findLt as findLtNode } from '../functions/find-lt';
+import { findLte as findLteNode } from '../functions/find-lte';
 import { findMax as findMaxNode } from '../functions/find-max';
 import { findMaxHeight as findMaxHeightTree } from '../functions/find-max-height';
 import { findMin as findMinNode } from '../functions/find-min';
@@ -131,19 +135,27 @@ export class BinarySearchTree<T> {
     public readonly isBalanced = () => isBalancedTree(this.t);
 
     public readonly hasLeft = (element: T) =>
-        hasLeftNode(findNode(this.t, this.compare, element).node);
+        hasLeftNode(findNode(this.t, this.compare, element)?.node);
 
     public readonly hasRight = (element: T) =>
-        hasRightNode(findNode(this.t, this.compare, element).node);
+        hasRightNode(findNode(this.t, this.compare, element)?.node);
 
     public readonly isBranch = (element: T) =>
-        isBranchNode(findNode(this.t, this.compare, element).node);
+        isBranchNode(findNode(this.t, this.compare, element)?.node);
 
     public readonly isLeaf = (element: T) =>
-        isLeafNode(findNode(this.t, this.compare, element).node);
+        isLeafNode(findNode(this.t, this.compare, element)?.node);
 
     // Finders
     public readonly find = (element: T) => findNode(this.t, this.compare, element);
+
+    public readonly findGt = (element: T) => findGtNode(this.t, this.compare, element);
+
+    public readonly findGte = (element: T) => findGteNode(this.t, this.compare, element);
+
+    public readonly findLt = (element: T) => findLtNode(this.t, this.compare, element);
+
+    public readonly findLte = (element: T) => findLteNode(this.t, this.compare, element);
 
     public readonly findMin = () => findMinNode(this.t);
 

@@ -1,7 +1,15 @@
-import { BST, CompareFunction, Direction, FoundResult } from '../types';
+import { makeFindManyFromTraversal } from '../helpers/make-find-many-from-traversal';
+import { makeFindManyTraversal } from '../helpers/make-find-many-traversal';
+import { BST, CompareFunction } from '../types';
+
+const traverseGt = makeFindManyTraversal({
+    shouldFindCurrent : (comparison: number) => comparison < 0,
+    shouldLookLeft    : (comparison: number) => comparison < 0,
+    shouldLookRight   : (_comparison: number) => true,
+});
 
 /**
- * Finds a given element into the given binary search tree with the given compare function.
+ * Finds all nodes greater than given element into the given binary search tree with the given compare function.
  *
  * @param tree The source binary search tree
  * @param compare The function used to determine the order of the elements.
@@ -18,31 +26,10 @@ import { BST, CompareFunction, Direction, FoundResult } from '../types';
  * @param element The element to be found
  * @returns The found result. { node: the found node, path:; the path to access it}
  */
-export function find<T>(
-    tree: BST<T>,
-    compare: CompareFunction<T>,
-    element: T,
-    path = [] as Direction[]
-): FoundResult<T> | undefined {
-    if (tree.data === undefined) {
-        return undefined;
-    }
-
-    const comparison = compare(element, tree.data);
-
-    if (comparison === 0) {
-        return { node: tree, path };
-    }
-
-    const direction = comparison < 0 ? Direction.Left : Direction.Right;
-    const subTree = tree[direction];
-    const newPath = path.slice().concat(direction);
-
-    return subTree ? find(subTree, compare, element, newPath) : undefined;
-}
+export const findGt = makeFindManyFromTraversal(traverseGt);
 
 /**
- * Creates an find function for the given binary search tree with the given compare function.
+ * Creates an find greater function for the given binary search tree with the given compare function.
  *
  * @param compare The function used to determine the order of the elements.
  *  Its first argument is the current element.
@@ -57,8 +44,8 @@ export function find<T>(
  *
  * @returns The bound find function
  */
-export function makeFind<T>(compare: CompareFunction<T>) {
+export function makeFindGt<T>(compare: CompareFunction<T>) {
     return function (tree: BST<T>, element: T) {
-        return find(tree, compare, element);
+        return findGt(tree, compare, element);
     };
 }
