@@ -209,6 +209,38 @@ describe('BinarySearchTree', () => {
         expect(node?.data).toEqual(10);
     });
 
+    it('should findGt correctly', () => {
+        const results = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).findGt(
+            10
+        );
+        const mapped = results.map(({ node }) => node?.data);
+        expect(mapped).toEqual([32, 13, 89, 50]);
+    });
+
+    it('should findGte correctly', () => {
+        const results = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).findGte(
+            10
+        );
+        const mapped = results.map(({ node }) => node?.data);
+        expect(mapped).toEqual([10, 32, 13, 89, 50]);
+    });
+
+    it('should findLt correctly', () => {
+        const results = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).findLt(
+            13
+        );
+        const mapped = results.map(({ node }) => node?.data);
+        expect(mapped).toEqual([10, 2, 5]);
+    });
+
+    it('should findLte correctly', () => {
+        const results = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).findLte(
+            13
+        );
+        const mapped = results.map(({ node }) => node?.data);
+        expect(mapped).toEqual([10, 2, 5, 13]);
+    });
+
     it('should findMin correctly', () => {
         const node = new BinarySearchTree(mockedArray, compare).findMin();
         expect(node?.data).toEqual(2);
