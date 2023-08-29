@@ -6,6 +6,7 @@ A zero-dependency TypeScript library to work with binary search trees and arrays
 
 -   [✌️🔍🌳 binary-search-tree](#️-binary-search-tree)
     -   [Table of Content](#table-of-content)
+    -   [Installation](#installation)
     -   [Usage](#usage)
     -   [Documentation](#documentation)
         -   [`toBST`](#tobst)
@@ -22,6 +23,18 @@ A zero-dependency TypeScript library to work with binary search trees and arrays
         -   [`hasLeft`, `hasRight`](#hasleft-hasright)
         -   [`makeCompareUtils`](#makecompareutils)
         -   [The infamous `BinarySearchTree` class](#the-infamous-binarysearchtree-class)
+
+## Installation
+
+```sh
+yarn add @romainfieve/binary-search-tree
+```
+
+or
+
+```sh
+npm install @romainfieve/binary-search-tree
+```
 
 ## Usage
 
@@ -117,9 +130,9 @@ const unbalancedTree = toBST(arr, compare, { isBalanced: false });
 
 ### `balance`, `isBalanced`
 
-`balance` balances the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
+Balances the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
 
-⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree. A safer approach consists of using `makeBalance`. It curries a `balance` closure function with the given compare function.
+> :warning: Using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree. A safer approach consists of using `makeBalance`. It curries a `balance` closure function with the given compare function.
 
 ```typescript
 isBalanced(unbalancedTree); // false
@@ -146,9 +159,9 @@ isBalanced(tree); // true
 
 ### `add`
 
-`add` adds a (or list of) given node(s) to the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
+Adds a (or list of) given node(s) to the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
 
-⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree. A safer approach consists of using `makeAdd`. It curries an `add` closure function with the given compare function.
+> :warning: Using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree. A safer approach consists of using `makeAdd`. It curries an `add` closure function with the given compare function.
 
 ```typescript
 const modifiedTree = add(tree, compare, 11);
@@ -173,9 +186,9 @@ const reModifiedTree = safeAdd(modifiedTree, [1, 100]);
 
 ### `remove`
 
-`remove` removes a (or list of) given node(s) from the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
+Removes a (or list of) given node(s) from the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
 
-⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree. A safer approach consists of using `makeRemove`. It curries a `remove` closure function with the given compare function.
+> :warning: Using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree. A safer approach consists of using `makeRemove`. It curries a `remove` closure function with the given compare function.
 
 ```typescript
 const modifiedTree = remove(tree, compare, 10);
@@ -200,9 +213,9 @@ const reModifiedTree = safeRemove(modifiedTree, [13, 5]);
 
 ### `find`
 
-`find` finds a given node into the given binary search tree with the given compare function.
+Finds a given node into the given binary search tree with the given compare function.
 
-⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the search. A safer approach consists of using `makeFind`. It curries a `find` closure function with the given compare function.
+> :warning: Using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the search. A safer approach consists of using `makeFind`. It curries a `find` closure function with the given compare function.
 
 ```typescript
 // Schema of "tree"
@@ -235,9 +248,9 @@ const {
 
 ### `find(Gt/Gte/Lt/Lte)`
 
-`find(Gt/Gte/Lt/Lte)` finds all Gt/Gte/Lt/Lte nodes into the given binary search tree with the given compare function.
+Finds all gt/gte/lt/lte nodes into the given binary search tree with the given compare function.
 
-⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the search. A safer approach consists of using `makeFind(Gt/Gte/Lt/Lte)`. It curries a `find(Gt/Gte/Lt/Lte)` closure function with the given compare function.
+> :warning: Using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the search. A safer approach consists of using `makeFind(Gt/Gte/Lt/Lte)`. It curries a `find(Gt/Gte/Lt/Lte)` closure function with the given compare function.
 
 -   `findGt`
 -   `findGte`
