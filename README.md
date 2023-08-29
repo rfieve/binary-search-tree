@@ -16,7 +16,6 @@ A zero-dependency TypeScript library to work with binary search trees and arrays
         -   [`find`](#find)
         -   [`find(Gt/Gte/Lt/Lte)`](#findgtgteltlte)
         -   [`find(Min/Max)(Height)`](#findminmaxheight)
-        -   [`count`](#count)
         -   [`traverse`](#traverse)
         -   [`toArray`](#toarray)
         -   [`isLeaf`, `isBranch`](#isleaf-isbranch)
@@ -299,26 +298,6 @@ const minHeight = findMinHeight(tree); // 1
 const maxHeight = findMaxHeight(tree); // 3
 // 'tree' is thus unbalanced as a balanced tree has at most a delta of 1.
 // adding '1' to the tree would render it balanced.
-```
-
----
-
-### `count`
-
-Counts the nodes in the tree.
-
-```typescript
-// Schema of "tree"
-//
-//       10
-//    /     \
-//   2      32
-//    \    /  \
-//     5  13  89
-//           /
-//         50
-
-const a = count(tree); // 7
 ```
 
 ---
