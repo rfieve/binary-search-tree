@@ -257,7 +257,7 @@ const {
 const results = findGte(tree, compare, 4).map(({ node, path: _path }) => node.data);
 // [10, 5, 32, 13, 89, 50]
 // or
-const safeFind = makeFindGte(compare);
+const safeFindGte = makeFindGte(compare);
 const results = safeFindGte(tree, 4).map(({ node, path: _path }) => node.data);
 // [10, 5, 32, 13, 89, 50]
 ```
