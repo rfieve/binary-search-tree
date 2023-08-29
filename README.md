@@ -20,6 +20,7 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
         -   [`toArray`](#toarray)
         -   [`isLeaf`, `isBranch`](#isleaf-isbranch)
         -   [`hasLeft`, `hasRight`](#hasleft-hasright)
+        -   [`makeCompareUtils`](#makecompareutils)
         -   [The infamous `BinarySearchTree` class](#the-infamous-binarysearchtree-class)
 
 ## Usage
@@ -452,6 +453,51 @@ const hasLeftB = hasLeft(tree.left); // false
 
 const hasRightA = hasRight(tree); // true
 const hasRightB = hasRight(tree.left.left); // false
+```
+
+---
+
+### `makeCompareUtils`
+
+As the compare function is centric, for both the creation and the traversals of the BTS, a good practice is to create all the necessary utils, along with it. This will be DRY and ensure reusability and consistency.
+
+```typescript
+// compare-alpha.ts
+export const compareAlpha = (a: Hero, b: Hero) => a.name.localeCompare(b.name);
+export const {
+    toBST: toBSTAlpha,
+    add: addAlpha,
+    remove: removeAlpha,
+    find: findAlpha,
+    findGt: findGtAlpha,
+    findGte: findGteAlpha,
+    findLt: findLtAlpha,
+    findLte: findLteAlpha,
+    balance: balanceAlpha,
+} = makeCompareUtils(compareAlpha);
+
+// other-file.ts
+import {
+    compareAlpha,
+    toBSTAlpha,
+    addAlpha,
+    removeAlpha,
+    findAlpha,
+    findGtAlpha,
+    findGteAlpha,
+    findLtAlpha,
+    findLteAlpha,
+    balanceAlpha,
+} from './compare-alpha';
+
+const tree = toBSTAlpha([{ name: 'Anakin' }]);
+
+const updatedTree = pipe(
+    (t) => addAlpha(t, { name: 'Yoda' }),
+    (t) => removeAlpha(t, { name: 'Luke' }),
+    (t) => balanceAlpha(t),
+    (t) => findGtAlpha({ name: 'Yoda' })
+)(tree);
 ```
 
 ---

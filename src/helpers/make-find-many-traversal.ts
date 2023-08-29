@@ -1,12 +1,6 @@
 import { hasLeft } from '../functions/has-left';
 import { hasRight } from '../functions/has-right';
-import { BST, CompareFunction, Direction, FoundResult } from '../types';
-
-type FindManyTraversalOptions = {
-    shouldFindCurrent : (comp: number) => boolean;
-    shouldLookLeft    : (comp: number) => boolean;
-    shouldLookRight   : (comp: number) => boolean;
-};
+import { BST, CompareFunction, Direction, FindManyTraversalOptions, FoundResult } from '../types';
 
 export function makeFindManyTraversal({
     shouldFindCurrent,

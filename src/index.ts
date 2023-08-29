@@ -15,6 +15,7 @@ export { hasRight } from './functions/has-right';
 export { isBalanced } from './functions/is-balanced';
 export { isBranch } from './functions/is-branch';
 export { isLeaf } from './functions/is-leaf';
+export { makeCompareUtils } from './functions/make-compare-utils';
 export { makeRemove, remove } from './functions/remove';
 export {
     toArrayInOrder,
@@ -26,7 +27,7 @@ export {
     toArrayPreOrder,
     toArrayPreOrderReverse,
 } from './functions/to-array';
-export { toBST } from './functions/to-binary-search-tree';
+export { makeToBST, toBST } from './functions/to-binary-search-tree';
 export { traverseInOrder, traverseInOrderReverse } from './functions/traverse-in-order';
 export { traverseLevelOrder, traverseLevelOrderReverse } from './functions/traverse-level-order';
 export { traversePostOrder, traversePostOrderReverse } from './functions/traverse-post-order';

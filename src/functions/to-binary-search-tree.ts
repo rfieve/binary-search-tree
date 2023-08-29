@@ -41,3 +41,9 @@ export function toBST<T>(
 
     return add({}, compare, balancedElements);
 }
+
+export function makeToBST<T>(compare: CompareFunction<T>) {
+    return function (elements: T[], options: BinarySearchTreeOptions) {
+        return toBST(elements, compare, options);
+    };
+}

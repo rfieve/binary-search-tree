@@ -7,6 +7,12 @@ export type CompareFunction<T> = (a: T, b: T) => number;
 
 export type FoundResult<T> = { node: BST<T>; path: Direction[] };
 
+export type FindManyTraversalOptions = {
+    shouldFindCurrent : (comp: number) => boolean;
+    shouldLookLeft    : (comp: number) => boolean;
+    shouldLookRight   : (comp: number) => boolean;
+};
+
 export type BinarySearchTreeOptions = { isBalanced?: boolean; isPresorted?: boolean };
 
 export type BSTLeaf<T> = { data: T };
