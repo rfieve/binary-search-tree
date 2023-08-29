@@ -1,5 +1,6 @@
 import { add as addNode } from '../functions/add';
 import { balance as balanceTree } from '../functions/balance';
+import { count as countNodes } from '../functions/count';
 import { find as findNode } from '../functions/find';
 import { findGt as findGtNode } from '../functions/find-gt';
 import { findGte as findGteNode } from '../functions/find-gte';
@@ -71,6 +72,11 @@ export class BinarySearchTree<T> {
 
     public readonly remove = (elements: T | T[]) => {
         this.t = removeNode(this.t, this.compare, elements) || {};
+        return this;
+    };
+
+    public readonly clear = () => {
+        this.t = {};
         return this;
     };
 
@@ -164,4 +170,6 @@ export class BinarySearchTree<T> {
     public readonly findMinHeight = () => findMinHeightTree(this.t);
 
     public readonly findMaxHeight = () => findMaxHeightTree(this.t);
+
+    public readonly count = () => countNodes(this.t);
 }

@@ -15,8 +15,8 @@ A zero-dependency TypeScript library to work with binary search trees and arrays
         -   [`remove`](#remove)
         -   [`find`](#find)
         -   [`find(Gt/Gte/Lt/Lte)`](#findgtgteltlte)
-        -   [`find(Min/Max)`](#findminmax)
-        -   [`find(Min/Max)Height`](#findminmaxheight)
+        -   [`find(Min/Max)(Height)`](#findminmaxheight)
+        -   [`count`](#count)
         -   [`traverse`](#traverse)
         -   [`toArray`](#toarray)
         -   [`isLeaf`, `isBranch`](#isleaf-isbranch)
@@ -104,8 +104,7 @@ const groguPath = findAlpha(updatedTree, { name: 'Grogu' }).path; // ['left', 'r
 
 Converts the given array to a balanced binary search tree (`toBST`), depending on a given compare function.
 
-> :warning: For obvious performance reasons, `toBST` will create a BALANCED binary search tree by default. Whilst passing the option `{ isBalanced: false }` will indeed respect the order of the source array for insertion, beware that performace will be greatly impacted.
-> Worst, if you pass an array presorted with the compare function, the BST will be linear, and the Big O notation will be `n!`.
+> For obvious performance reasons, `toBST` will create a BALANCED binary search tree by default. Whilst passing the option `{ isBalanced: false }` will indeed respect the order of the source array for insertion, beware that performace will be greatly impacted. Worst, if you pass an array presorted with the compare function, the BST will be linear, and the Big O notation will be `n!`.
 
 ```typescript
 const arr = [10, 32, 13, 2, 89, 5, 50];
@@ -278,9 +277,10 @@ const results = safeFindGte(tree, 4).map(({ node, path: _path }) => node.data);
 
 ---
 
-### `find(Min/Max)`
+### `find(Min/Max)(Height)`
 
 Finds the min (`findMin`) or the max (`findMax`) node of the tree.
+Finds the height of the min (`findMinHeight`) or the max (`findMaxHeight`) branch of the tree.
 
 ```typescript
 // Schema of "tree"
@@ -295,13 +295,17 @@ Finds the min (`findMin`) or the max (`findMax`) node of the tree.
 
 const min = findMin(tree).data; // 2
 const max = findMax(tree).data; // 89
+const minHeight = findMinHeight(tree); // 1
+const maxHeight = findMaxHeight(tree); // 3
+// 'tree' is thus unbalanced as a balanced tree has at most a delta of 1.
+// adding '1' to the tree would render it balanced.
 ```
 
 ---
 
-### `find(Min/Max)Height`
+### `count`
 
-Finds the height of the min (`findMinHeight`) or the max (`findMaxHeight`) branch of the tree.
+Counts the nodes in the tree.
 
 ```typescript
 // Schema of "tree"
@@ -314,10 +318,7 @@ Finds the height of the min (`findMinHeight`) or the max (`findMaxHeight`) branc
 //           /
 //         50
 
-const min = findMinHeight(tree); // 1
-const max = findMaxHeight(tree); // 3
-// tree is thus unbalanced as a balanced tree has at most a delta of 1.
-// adding '1' to the tree would render it balanced.
+const a = count(tree); // 7
 ```
 
 ---

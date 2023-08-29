@@ -261,6 +261,11 @@ describe('BinarySearchTree', () => {
         expect(result).toEqual(2);
     });
 
+    it('should count correctly', () => {
+        const result = new BinarySearchTree(mockedArray, compare).count();
+        expect(result).toEqual(7);
+    });
+
     // ___ Assesments ___
     it('should hasLeft correctly', () => {
         const bst = new BinarySearchTree(mockedArray, compare, { isBalanced: false });

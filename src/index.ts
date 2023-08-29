@@ -1,6 +1,7 @@
 export { BinarySearchTree } from './classes/binary-search-tree';
 export { add, makeAdd } from './functions/add';
 export { balance } from './functions/balance';
+export { count } from './functions/count';
 export { find, makeFind } from './functions/find';
 export { findGt, makeFindGt } from './functions/find-gt';
 export { findGte, makeFindGte } from './functions/find-gte';
