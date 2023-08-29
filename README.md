@@ -1,6 +1,6 @@
 # ✌️🔍🌳 binary-search-tree
 
-A bunch of TypeScript utility functions to work with binary search trees and arrays of any types, with a functional-programming and immutable approach.
+A zero-dependency TypeScript library to work with binary search trees and arrays of any types, with a functional-programming and immutable approach.
 
 ## Table of Content
 
