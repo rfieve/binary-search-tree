@@ -515,18 +515,20 @@ const updatedTree = pipe(
 
 ---
 
----
-
----
-
 ### The infamous `BinarySearchTree` class
 
 While diverging from the functional approach, the `BinarySearchTree` class offers many advantages, depending on the situation:
 
--   natural chaining
--   tree state encapsulation
--   compare function encapsulation
--   has all methods listed as functions before
+Pros:
+
+-   Natural chaining
+-   Tree state encapsulation
+-   Compare function encapsulation
+-   Has all methods listed as functions before
+
+Cons:
+
+-   No tree shaking of unused methods, obviously
 
 Let's rewrite the Star Wars example with this approach:
 
