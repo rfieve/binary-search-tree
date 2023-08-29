@@ -13,6 +13,7 @@ A bunch of TypeScript utility functions to work with binary search trees and arr
         -   [`add`](#add)
         -   [`remove`](#remove)
         -   [`find`](#find)
+        -   [`find(Gt/Gte/Lt/Lte)`](#findgtgteltlte)
         -   [`find(Min/Max)`](#findminmax)
         -   [`find(Min/Max)Height`](#findminmaxheight)
         -   [`traverse`](#traverse)
@@ -213,10 +214,52 @@ const reModifiedTree = safeRemove(modifiedTree, [13, 5]);
 //           /
 //         50
 
-const element = find(tree, compare, 13).node.data; // 13
+const {
+    node: { data },
+    path,
+} = find(tree, compare, 13);
+// data: 13
+// path: ['right', 'left']
 // or
 const safeFind = makeFind(compare);
-const element = safeFind(tree, 13).node.data; // 13
+const {
+    node: { data },
+    path,
+} = safeFind(tree, 13);
+// data: 13
+// path: ['right', 'left']
+```
+
+---
+
+### `find(Gt/Gte/Lt/Lte)`
+
+`find(Gt/Gte/Lt/Lte)` finds all Gt/Gte/Lt/Lte nodes into the given binary search tree with the given compare function.
+
+⚠️ Caveats: using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the search. A safer approach consists of using `makeFind(Gt/Gte/Lt/Lte)`. It curries a `find(Gt/Gte/Lt/Lte)` closure function with the given compare function.
+
+-   `findGt`
+-   `findGte`
+-   `findLt`
+-   `findLte`
+
+```typescript
+// Schema of "tree"
+//
+//       10
+//    /     \
+//   2      32
+//    \    /  \
+//     5  13  89
+//           /
+//         50
+
+const results = findGte(tree, compare, 4).map(({ node, path: _path }) => node.data);
+// [10, 5, 32, 13, 89, 50]
+// or
+const safeFind = makeFindGte(compare);
+const results = safeFindGte(tree, 4).map(({ node, path: _path }) => node.data);
+// [10, 5, 32, 13, 89, 50]
 ```
 
 ---
