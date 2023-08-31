@@ -29,7 +29,7 @@ export function toBST<T>(
     } as BinarySearchTreeOptions
 ): BST<T> {
     if (!isBalanced) {
-        return add({}, compare, elements);
+        return add({ data: [] }, compare, elements);
     }
 
     const sortedElements = isPresorted ? elements : elements.slice().sort(compare);
@@ -39,11 +39,11 @@ export function toBST<T>(
 
     forEachBalanced(collectElement, sortedElements);
 
-    return add({}, compare, balancedElements);
+    return add({ data: [] }, compare, balancedElements);
 }
 
 export function makeToBST<T>(compare: CompareFunction<T>) {
-    return function (elements: T[], options: BinarySearchTreeOptions) {
+    return function (elements: T[], options?: BinarySearchTreeOptions) {
         return toBST(elements, compare, options);
     };
 }

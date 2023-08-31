@@ -71,12 +71,12 @@ export class BinarySearchTree<T> {
     };
 
     public readonly remove = (elements: T | T[]) => {
-        this.t = removeNode(this.t, this.compare, elements) || {};
+        this.t = removeNode(this.t, this.compare, elements) || { data: [] };
         return this;
     };
 
     public readonly clear = () => {
-        this.t = {};
+        this.t = { data: [] };
         return this;
     };
 
@@ -141,16 +141,16 @@ export class BinarySearchTree<T> {
     public readonly isBalanced = () => isBalancedTree(this.t);
 
     public readonly hasLeft = (element: T) =>
-        hasLeftNode(findNode(this.t, this.compare, element)?.node);
+        hasLeftNode(findNode(this.t, this.compare, element)?.node || { data: [] });
 
     public readonly hasRight = (element: T) =>
-        hasRightNode(findNode(this.t, this.compare, element)?.node);
+        hasRightNode(findNode(this.t, this.compare, element)?.node || { data: [] });
 
     public readonly isBranch = (element: T) =>
-        isBranchNode(findNode(this.t, this.compare, element)?.node);
+        isBranchNode(findNode(this.t, this.compare, element)?.node || { data: [] });
 
     public readonly isLeaf = (element: T) =>
-        isLeafNode(findNode(this.t, this.compare, element)?.node);
+        isLeafNode(findNode(this.t, this.compare, element)?.node || { data: [] });
 
     // Finders
     public readonly find = (element: T) => findNode(this.t, this.compare, element);

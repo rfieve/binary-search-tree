@@ -1,14 +1,14 @@
 import { BST, CompareFunction, Direction } from '../types';
 
 function addElement<T>(tree: BST<T>, compare: CompareFunction<T>, element: T): BST<T> {
-    if (tree.data === undefined) {
-        return { data: element };
+    if (tree.data.length === 0) {
+        return { data: [element] };
     }
 
-    const comparison = compare(element, tree.data);
+    const comparison = compare(element, tree.data[0]);
 
     if (comparison === 0) {
-        return tree;
+        return { ...tree, data: [...tree.data, element] };
     }
 
     const direction = comparison < 0 ? Direction.Left : Direction.Right;
@@ -16,32 +16,33 @@ function addElement<T>(tree: BST<T>, compare: CompareFunction<T>, element: T): B
 
     return {
         ...tree,
-        [direction] : subTree ? addElement(subTree, compare, element) : { data: element },
+        [direction] : subTree ? addElement(subTree, compare, element) : { data: [element] },
     };
 }
 
 // Impure, but way more efficient, pass a precloned tree in order to ensure immutablibilty
 function addElementImpure<T>(tree: BST<T>, compare: CompareFunction<T>, element: T): void {
-    if (tree.data === undefined) {
-        tree.data = element;
-    }
+    if (tree.data.length === 0) {
+        tree.data = [element];
+    } else {
+        let currentNode = tree;
 
-    let currentNode = tree;
+        while (true) {
+            const comparison = compare(element, currentNode.data[0]);
 
-    while (true) {
-        const comparison = compare(element, currentNode.data as T);
+            if (comparison === 0) {
+                currentNode.data.push(element);
+                break;
+            }
 
-        if (comparison === 0) {
-            break;
-        }
+            const direction = comparison < 0 ? Direction.Left : Direction.Right;
 
-        const direction = comparison < 0 ? Direction.Left : Direction.Right;
-
-        if (currentNode[direction]) {
-            currentNode = currentNode[direction]!;
-        } else {
-            currentNode[direction] = { data: element };
-            break;
+            if (currentNode[direction]) {
+                currentNode = currentNode[direction]!;
+            } else {
+                currentNode[direction] = { data: [element] };
+                break;
+            }
         }
     }
 }

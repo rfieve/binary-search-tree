@@ -7,6 +7,6 @@ import { BST, BSTLeaf } from '../types';
  *
  * @returns true if it is, false if it isn't.
  */
-export function isLeaf<T>(tree?: BST<T>): tree is BSTLeaf<T> {
-    return tree?.data !== undefined && !tree.left && !tree.right;
+export function isLeaf<T>(tree: BST<T>): tree is BSTLeaf<T> {
+    return tree.data.length > 0 && !tree.left && !tree.right;
 }

@@ -14,11 +14,11 @@ export function makeFindManyTraversal({
         element: T,
         path = [] as Direction[]
     ): void {
-        if (tree.data === undefined) {
+        if (tree.data.length === 0) {
             return undefined;
         }
 
-        const comparison = compare(element, tree.data);
+        const comparison = compare(element, tree.data[0]);
 
         if (shouldFindCurrent(comparison)) {
             cb({ node: tree, path });

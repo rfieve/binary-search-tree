@@ -9,6 +9,6 @@ import { hasRight } from './has-right';
  *
  * @returns true if it is, false if it isn't.
  */
-export function isBranch<T>(tree?: BST<T>): tree is BSTBranch<T> {
+export function isBranch<T>(tree: BST<T>): tree is BSTBranch<T> {
     return hasLeft(tree) || hasRight(tree);
 }

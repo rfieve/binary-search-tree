@@ -1,4 +1,4 @@
-import { BST, BSTNode, CompareFunction, Direction } from '../types';
+import { BST, CompareFunction, Direction } from '../types';
 import { findMin } from './find-min';
 import { hasLeft } from './has-left';
 import { hasRight } from './has-right';
@@ -9,14 +9,25 @@ function removeElement<T>(
     compare: CompareFunction<T>,
     element: T
 ): BST<T> | undefined {
-    if (tree?.data === undefined) {
+    if (element == null || tree.data.length === 0) {
         return tree;
     }
 
-    const comparison = compare(element, tree.data);
+    const comparison = compare(element, tree.data[0]);
 
-    // This node should be removed
+    // This node matches
     if (comparison === 0) {
+        if (tree.data.length > 1 && typeof element === 'object') {
+            return {
+                ...tree,
+                data : tree.data.filter((el) =>
+                    Object.keys(element).some(
+                        (key) => el[key as keyof T] !== element[key as keyof T]
+                    )
+                ),
+            };
+        }
+
         if (isLeaf(tree)) {
             // If no children:
             // => Just delete.
@@ -33,10 +44,10 @@ function removeElement<T>(
                 ...tree,
                 data  : nextInOrder.data,
                 right : removeElement(
-                    tree.right as BSTNode<T>,
+                    tree.right as BST<T>,
                     compare,
                     nextInOrder.data as T
-                ) as BSTNode<T>,
+                ) as BST<T>,
             };
         }
 
@@ -56,7 +67,7 @@ function removeElements<T>(
     compare: CompareFunction<T>,
     elements: T[]
 ): BST<T> {
-    return elements.reduce((acc, curr) => removeElement(acc, compare, curr) || {}, tree);
+    return elements.reduce((acc, curr) => removeElement(acc, compare, curr) || { data: [] }, tree);
 }
 
 /**

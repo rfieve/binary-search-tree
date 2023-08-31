@@ -7,7 +7,7 @@ import { BST } from '../types';
  * @param tree the tree to traverse
  */
 export function traversePreOrder<T>(cb: (node: BST<T>) => void, tree?: BST<T>): void {
-    if (tree?.data !== undefined) {
+    if (!!tree?.data?.length) {
         cb(tree);
         traversePreOrder(cb, tree.left);
         traversePreOrder(cb, tree.right);
@@ -21,7 +21,7 @@ export function traversePreOrder<T>(cb: (node: BST<T>) => void, tree?: BST<T>): 
  * @param tree the tree to traverse
  */
 export function traversePreOrderReverse<T>(cb: (node: BST<T>) => void, tree?: BST<T>): void {
-    if (tree?.data !== undefined) {
+    if (!!tree?.data?.length) {
         cb(tree);
         traversePreOrderReverse(cb, tree.right);
         traversePreOrderReverse(cb, tree.left);

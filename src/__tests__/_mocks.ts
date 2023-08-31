@@ -22,49 +22,49 @@ export const mockedArrayLevelOrderReverse = [10, 32, 2, 89, 13, 5, 50];
 //          50
 
 export const mockedUnbalancedTree: BST<number> = {
-    data : 10,
+    data : [10],
     left : {
-        data  : 2,
+        data  : [2],
         right : {
-            data : 5,
+            data : [5],
         },
     },
     right : {
-        data : 32,
+        data : [32],
         left : {
-            data : 13,
+            data : [13],
         },
         right : {
-            data : 89,
+            data : [89],
             left : {
-                data : 50,
+                data : [50],
             },
         },
     },
 };
 
 export const mockedBalancedTree: BST<number> = {
-    data : 13,
+    data : [13],
     left : {
-        data : 5,
+        data : [5],
         left : {
-            data : 2,
+            data : [2],
         },
         right : {
-            data : 10,
+            data : [10],
         },
     },
     right : {
-        data : 50,
+        data : [50],
         left : {
-            data : 32,
+            data : [32],
         },
         right : {
-            data : 89,
+            data : [89],
         },
     },
 };
 
-export const mockedLeaf = (mockedUnbalancedTree.left as BST<number>).right;
-export const mockedStrictLeftLeaf = (mockedUnbalancedTree.right as BST<number>).right;
-export const mockedStrictRightLeaf = mockedUnbalancedTree.left;
+export const mockedLeaf = mockedUnbalancedTree.left?.right as BST<number>;
+export const mockedStrictLeftLeaf = mockedUnbalancedTree?.right?.right as BST<number>;
+export const mockedStrictRightLeaf = mockedUnbalancedTree.left as BST<number>;

@@ -33,4 +33,4 @@ export { traverseInOrder, traverseInOrderReverse } from './functions/traverse-in
 export { traverseLevelOrder, traverseLevelOrderReverse } from './functions/traverse-level-order';
 export { traversePostOrder, traversePostOrderReverse } from './functions/traverse-post-order';
 export { traversePreOrder, traversePreOrderReverse } from './functions/traverse-pre-order';
-export type { BST, BSTLeaf, BSTNode, CompareFunction } from './types';
+export type { BST, BSTLeaf, CompareFunction } from './types';

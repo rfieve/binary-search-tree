@@ -24,11 +24,11 @@ export function find<T>(
     element: T,
     path = [] as Direction[]
 ): FoundResult<T> | undefined {
-    if (tree.data === undefined) {
+    if (tree.data.length === 0) {
         return undefined;
     }
 
-    const comparison = compare(element, tree.data);
+    const comparison = compare(element, tree.data[0]);
 
     if (comparison === 0) {
         return { node: tree, path };
