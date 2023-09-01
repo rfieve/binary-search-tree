@@ -302,10 +302,22 @@ describe('BinarySearchTree', () => {
     });
 
     // ___ Assesments ___
+    it('should isBalanced correctly', () => {
+        const bst = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
+        const bstBalanced = new BinarySearchTree(mockedArray, compare);
+        expect(bst.isBalanced()).toEqual(false);
+        expect(bstBalanced.isBalanced()).toEqual(true);
+    });
+
     it('should hasLeft correctly', () => {
         const bst = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
         expect(bst.hasLeft(10)).toEqual(true);
         expect(bst.hasLeft(2)).toEqual(false);
+    });
+
+    it('should hasLeft correctly on absent node', () => {
+        const bst = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
+        expect(bst.hasLeft(100)).toEqual(false);
     });
 
     it('should hasRight correctly', () => {
@@ -314,11 +326,9 @@ describe('BinarySearchTree', () => {
         expect(bst.hasRight(89)).toEqual(false);
     });
 
-    it('should isBalanced correctly', () => {
+    it('should hasRight correctly on absent node', () => {
         const bst = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
-        const bstBalanced = new BinarySearchTree(mockedArray, compare);
-        expect(bst.isBalanced()).toEqual(false);
-        expect(bstBalanced.isBalanced()).toEqual(true);
+        expect(bst.hasRight(100)).toEqual(false);
     });
 
     it('should isBranch correctly', () => {
@@ -327,10 +337,20 @@ describe('BinarySearchTree', () => {
         expect(bst.isBranch(5)).toEqual(false);
     });
 
+    it('should isBranch correctly on absent node', () => {
+        const bst = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
+        expect(bst.isBranch(100)).toEqual(false);
+    });
+
     it('should isLeaf correctly', () => {
         const bst = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
         expect(bst.isLeaf(5)).toEqual(true);
         expect(bst.isLeaf(10)).toEqual(false);
+    });
+
+    it('should isLeaf correctly on absent node', () => {
+        const bst = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
+        expect(bst.isLeaf(100)).toEqual(false);
     });
 
     it('should clear correctly', () => {
