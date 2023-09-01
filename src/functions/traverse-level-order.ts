@@ -6,8 +6,8 @@ import { BST } from '../types';
  * @param cb the callback invoked uppon each node
  * @param tree the tree to traverse
  */
-export function traverseLevelOrder<T>(cb: (node: BST<T>) => void, tree?: BST<T>): void {
-    if (!!tree?.data?.length) {
+export function traverseLevelOrder<T>(cb: (node: BST<T>) => void, tree: BST<T>): void {
+    if (tree.data.length > 0) {
         const queue: BST<T>[] = [tree];
 
         while (queue.length > 0) {
@@ -32,8 +32,8 @@ export function traverseLevelOrder<T>(cb: (node: BST<T>) => void, tree?: BST<T>)
  * @param cb the callback invoked uppon each node
  * @param tree the tree to traverse
  */
-export function traverseLevelOrderReverse<T>(cb: (node: BST<T>) => void, tree?: BST<T>): void {
-    if (!!tree?.data?.length) {
+export function traverseLevelOrderReverse<T>(cb: (node: BST<T>) => void, tree: BST<T>): void {
+    if (tree.data.length > 0) {
         const queue: BST<T>[] = [tree];
 
         while (queue.length > 0) {
