@@ -1,8 +1,12 @@
-import { makeRemove, remove } from '../functions/remove';
+import { makeCompareUtils } from '../functions/make-compare-utils';
+import { remove } from '../functions/remove';
+import { toArrayInOrder } from '../functions/to-array';
+import { toBST } from '../functions/to-binary-search-tree';
+import { BST } from '../types';
 import { compare, mockedArray, mockedUnbalancedTree } from './_mocks';
 
 describe('remove', () => {
-    const boundRemove = makeRemove(compare);
+    const { remove: boundRemove } = makeCompareUtils(compare);
 
     it('should not remove a node which is not there', () => {
         const tree = remove(mockedUnbalancedTree, compare, 86);
@@ -18,6 +22,14 @@ describe('remove', () => {
 
         const treeBound = boundRemove({ data: [] }, 86);
         expect(treeBound).toEqual({ data: [] });
+    });
+
+    it('should not mutate the original tree', () => {
+        const tree = remove(mockedUnbalancedTree, compare, [10, 2]);
+        const updatedTree = remove(tree as BST<number>, compare, [89, 50]);
+
+        expect(toArrayInOrder(tree).length).toBe(5);
+        expect(toArrayInOrder(updatedTree).length).toBe(3);
     });
 
     it('should remove a leaf correctly', () => {
@@ -100,5 +112,25 @@ describe('remove', () => {
 
         const treeBound = boundRemove(mockedUnbalancedTree, mockedArray);
         expect(treeBound).toEqual({ data: [] });
+    });
+
+    it('should preserve the node if the comparison does not match all elements of the node', () => {
+        type Hero = { age: number; name: string };
+        const compareNameAlpha = (a: Hero, b: Hero) => a.name.localeCompare(b.name);
+
+        const removerElement = { name: 'Anakin', age: 28 };
+
+        const tree = toBST(
+            [
+                { name: 'Anakin', age: 28 },
+                { name: 'Anakin', age: 27 },
+                { name: 'Leia', age: 2 },
+            ],
+            (a, b) => a.name.localeCompare(b.name)
+        );
+
+        const modifiedTree = remove(tree, compareNameAlpha, removerElement);
+
+        expect(modifiedTree?.data?.[0]).toEqual({ name: 'Anakin', age: 27 });
     });
 });

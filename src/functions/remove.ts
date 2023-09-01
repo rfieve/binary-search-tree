@@ -4,6 +4,10 @@ import { hasLeft } from './has-left';
 import { hasRight } from './has-right';
 import { isLeaf } from './is-leaf';
 
+function matchesElement<T extends object>(source: T, target: T): boolean {
+    return !Object.keys(source).some((key) => target[key as keyof T] !== source[key as keyof T]);
+}
+
 function removeElement<T>(
     tree = {} as BST<T>,
     compare: CompareFunction<T>,
@@ -17,15 +21,13 @@ function removeElement<T>(
 
     // This node matches
     if (comparison === 0) {
-        if (tree.data.length > 1 && typeof element === 'object') {
-            return {
-                ...tree,
-                data : tree.data.filter((el) =>
-                    Object.keys(element).some(
-                        (key) => el[key as keyof T] !== element[key as keyof T]
-                    )
-                ),
-            };
+        const newData =
+            typeof element === 'object'
+                ? tree.data.filter((target) => !matchesElement(element, target as object))
+                : [];
+
+        if (newData.length > 0) {
+            return { ...tree, data: newData };
         }
 
         if (isLeaf(tree)) {
@@ -33,6 +35,7 @@ function removeElement<T>(
             // => Just delete.
             return undefined;
         }
+
         if (hasLeft(tree) && hasRight(tree)) {
             // If two children:
             // => Determine the next inorder successor in the right subtree.
@@ -46,7 +49,7 @@ function removeElement<T>(
                 right : removeElement(
                     tree.right as BST<T>,
                     compare,
-                    nextInOrder.data as T
+                    nextInOrder.data[0] as T
                 ) as BST<T>,
             };
         }

@@ -1,4 +1,5 @@
 import { add, makeAdd } from '../functions/add';
+import { toArrayInOrder } from '../functions/to-array';
 import { compare, mockedUnbalancedTree } from './_mocks';
 
 describe('add', () => {
@@ -18,6 +19,14 @@ describe('add', () => {
 
         const treeWithBound = boundAdd({ data: [] }, 10);
         expect(treeWithBound?.data?.[0]).toBe(10);
+    });
+
+    it('should not mutate the original tree', () => {
+        const tree = add({ data: [] }, compare, [10, 20, 30]);
+        const updatedTree = add(tree, compare, [40, 50]);
+
+        expect(toArrayInOrder(tree).length).toBe(3);
+        expect(toArrayInOrder(updatedTree).length).toBe(5);
     });
 
     it('should add a random node to the tree at the correct position', () => {
