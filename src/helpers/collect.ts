@@ -2,8 +2,8 @@ import { BST, FoundResult } from '../types';
 
 export function makeCollectElementFromNode<T>(elements: T[]) {
     return function collectElementFromNode(node?: BST<T>) {
-        if (node?.data) {
-            elements.push(node.data);
+        if (!!node?.data.length) {
+            node.data.forEach((e) => elements.push(e));
         }
     };
 }

@@ -39,7 +39,7 @@ describe('BinarySearchTree', () => {
 
     it('should add a node correctly', () => {
         const { tree } = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).add(11);
-        expect(tree.right?.left?.left?.data).toBe(11);
+        expect(tree.right?.left?.left?.data[0]).toBe(11);
     });
 
     it('should fill the tree correctly', () => {
@@ -51,13 +51,13 @@ describe('BinarySearchTree', () => {
         const { tree } = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).remove(
             50
         );
-        expect(tree?.right?.right?.data).toBe(89);
-        expect(tree?.right?.right?.left?.data).toBe(undefined);
+        expect(tree?.right?.right?.data[0]).toBe(89);
+        expect(tree?.right?.right?.left?.data[0]).toBe(undefined);
     });
 
     it('should empty the tree correctly', () => {
         const { tree } = new BinarySearchTree(mockedArray, compare).remove(mockedArray);
-        expect(tree).toEqual({});
+        expect(tree).toEqual({ data: [] });
     });
 
     // ___ Traversals ___
@@ -206,49 +206,84 @@ describe('BinarySearchTree', () => {
 
     it('should find correctly', () => {
         const node = new BinarySearchTree(mockedArray, compare).find(10)?.node;
-        expect(node?.data).toEqual(10);
+        expect(node?.data[0]).toEqual(10);
+    });
+
+    it('should not find correctly', () => {
+        const node = new BinarySearchTree(mockedArray, compare).find(20)?.node;
+        expect(node?.data[0]).toEqual(undefined);
     });
 
     it('should findGt correctly', () => {
         const results = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).findGt(
             10
         );
-        const mapped = results.map(({ node }) => node?.data);
+        const mapped = results.flatMap(({ node }) => node?.data[0]);
         expect(mapped).toEqual([32, 13, 89, 50]);
+    });
+
+    it('should not findGt correctly', () => {
+        const results = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).findGt(
+            100
+        );
+        const mapped = results.flatMap(({ node }) => node?.data[0]);
+        expect(mapped).toEqual([]);
     });
 
     it('should findGte correctly', () => {
         const results = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).findGte(
             10
         );
-        const mapped = results.map(({ node }) => node?.data);
+        const mapped = results.flatMap(({ node }) => node?.data[0]);
         expect(mapped).toEqual([10, 32, 13, 89, 50]);
+    });
+
+    it('should not findGte correctly', () => {
+        const results = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).findGte(
+            100
+        );
+        const mapped = results.flatMap(({ node }) => node?.data[0]);
+        expect(mapped).toEqual([]);
     });
 
     it('should findLt correctly', () => {
         const results = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).findLt(
             13
         );
-        const mapped = results.map(({ node }) => node?.data);
+        const mapped = results.flatMap(({ node }) => node?.data[0]);
         expect(mapped).toEqual([10, 2, 5]);
+    });
+
+    it('should not findLt correctly', () => {
+        const results = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).findLt(0);
+        const mapped = results.flatMap(({ node }) => node?.data[0]);
+        expect(mapped).toEqual([]);
     });
 
     it('should findLte correctly', () => {
         const results = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).findLte(
             13
         );
-        const mapped = results.map(({ node }) => node?.data);
+        const mapped = results.flatMap(({ node }) => node?.data[0]);
         expect(mapped).toEqual([10, 2, 5, 13]);
+    });
+
+    it('should not findLte correctly', () => {
+        const results = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).findLte(
+            0
+        );
+        const mapped = results.flatMap(({ node }) => node?.data[0]);
+        expect(mapped).toEqual([]);
     });
 
     it('should findMin correctly', () => {
         const node = new BinarySearchTree(mockedArray, compare).findMin();
-        expect(node?.data).toEqual(2);
+        expect(node?.data[0]).toEqual(2);
     });
 
     it('should findMax correctly', () => {
         const node = new BinarySearchTree(mockedArray, compare).findMax();
-        expect(node?.data).toEqual(89);
+        expect(node?.data[0]).toEqual(89);
     });
 
     it('should findMinHeight correctly', () => {
@@ -296,5 +331,10 @@ describe('BinarySearchTree', () => {
         const bst = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
         expect(bst.isLeaf(5)).toEqual(true);
         expect(bst.isLeaf(10)).toEqual(false);
+    });
+
+    it('should clear correctly', () => {
+        const bst = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
+        expect(bst.clear().tree).toEqual({ data: [] });
     });
 });

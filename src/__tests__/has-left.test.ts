@@ -23,11 +23,7 @@ describe('hasLeft', () => {
         expect(hasLeft(mockedLeaf)).toBe(false);
     });
 
-    it('should return false when the given tree is undefined', () => {
-        expect(hasLeft()).toBe(false);
-    });
-
     it('should return false when the given tree has no data', () => {
-        expect(hasLeft({ data: undefined })).toBe(false);
+        expect(hasLeft({ data: [] })).toBe(false);
     });
 });

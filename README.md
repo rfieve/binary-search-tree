@@ -65,33 +65,33 @@ const updatedTree = pipe(
     (t) => removeAlpha(t, { name: 'Luke' })
 )(unbalancedTree);
 
-// unbalancedTree:                           | Schema of "unbalancedTree"
-//                                           |
-// {                                         |             Han
-//     data: { name: 'Han' },                |           /     \
-//     left: {                               |     Anakin       Leia
-//         data: { name: 'Anakin' },         |           \     /    \
-//         right: {                          |       Chewie  Lando   Luke
-//             data : { name: 'Chewie' },    |                         \
-//         },                                |                        Padme
-//     },                                    |
-//     right: {                              | Schema of "updatedTree"
-//         data: { name: 'Leia' },           |
-//         left: {                           |            Lando
-//             data: { name: 'Lando' },      |           /     \
-//         },                                |     Anakin       Leia
-//         right: {                          |         \            \
-//             data: { name: 'Luke' },       |       Chewie        Obiwan
-//             right: {                      |        /    \            \
-//                 data : { name: 'Padme' }, |      Boba  Grogu        Yoda
-//             },                            |
-//         },                                |
-//     },                                    |
-// };                                        |
+// unbalancedTree:                             | Schema of "unbalancedTree"
+//                                             |
+// {                                           |             Han
+//     data: [{ name: 'Han' }],                |           /     \
+//     left: {                                 |     Anakin       Leia
+//         data: [{ name: 'Anakin' }],         |           \     /    \
+//         right: {                            |       Chewie  Lando   Luke
+//             data : [{ name: 'Chewie' }],    |                         \
+//         },                                  |                        Padme
+//     },                                      |
+//     right: {                                | Schema of "updatedTree"
+//         data: [{ name: 'Leia' }],           |
+//         left: {                             |            Lando
+//             data: [{ name: 'Lando' }],      |           /     \
+//         },                                  |     Anakin       Leia
+//         right: {                            |         \            \
+//             data: [{ name: 'Luke' }],       |       Chewie        Obiwan
+//             right: {                        |        /    \            \
+//                 data : [{ name: 'Padme' }], |      Boba  Grogu        Yoda
+//             },                              |
+//         },                                  |
+//     },                                      |
+// };                                          |
 
-const min = findMin(updatedTree).data.name; // Anakin
-const max = findMax(updatedTree).data.name; // Yoda
-const grogu = findAlpha(updatedTree, { name: 'Grogu' }).node.data.name; // Grogu
+const min = findMin(updatedTree).data[0].name; // Anakin
+const max = findMax(updatedTree).data[0].name; // Yoda
+const grogu = findAlpha(updatedTree, { name: 'Grogu' }).node.data[0].name; // Grogu
 const groguPath = findAlpha(updatedTree, { name: 'Grogu' }).path; // ['left', 'right', 'right']
 // Thanks to the compare function, the search will traverse like this:
 // Lando -> Anakin -> Chewie -> Grogu
@@ -231,7 +231,7 @@ const {
     node: { data },
     path,
 } = find(tree, compare, 13);
-// data: 13
+// data: [13]
 // path: ['right', 'left']
 // or
 const safeFind = makeFind(compare);
@@ -239,7 +239,7 @@ const {
     node: { data },
     path,
 } = safeFind(tree, 13);
-// data: 13
+// data: [13]
 // path: ['right', 'left']
 ```
 
@@ -267,11 +267,11 @@ Finds all gt/gte/lt/lte nodes into the given binary search tree with the given c
 //           /
 //         50
 
-const results = findGte(tree, compare, 4).map(({ node, path: _path }) => node.data);
+const results = findGte(tree, compare, 4).flatMap(({ node, path: _path }) => node.data[0]);
 // [10, 5, 32, 13, 89, 50]
 // or
 const safeFindGte = makeFindGte(compare);
-const results = safeFindGte(tree, 4).map(({ node, path: _path }) => node.data);
+const results = safeFindGte(tree, 4).flatMap(({ node, path: _path }) => node.data[0]);
 // [10, 5, 32, 13, 89, 50]
 ```
 
@@ -294,8 +294,8 @@ Counts (`count`) the nodes in the tree
 //           /
 //         50
 
-const min = findMin(tree).data; // 2
-const max = findMax(tree).data; // 89
+const min = findMin(tree).data[0]; // 2
+const max = findMax(tree).data[0]; // 89
 const minHeight = findMinHeight(tree); // 1
 const maxHeight = findMaxHeight(tree); // 3
 const length = count(tree); // 7
@@ -330,8 +330,8 @@ Traverses a tree, invoking the callback function on each visited node.
 //           /
 //         50
 
-const collect = (collection: number[]) => (node: { data: number }) => {
-    collection.push(node.data);
+const collect = (collection: number[]) => (node: { data: number[] }) => {
+    node.data.forEach((e) => collection.push(e));
 };
 
 const elements = [];
@@ -555,9 +555,9 @@ bst.add({ name: 'Yoda' })
 //        /    \            \
 //      Boba  Grogu        Yoda
 
-bst.findMin().data.name; // Anakin
-bst.findMax().data.name; // Yoda
-bst.find({ name: 'Grogu' }).node.data.name; // Grogu
+bst.findMin().data[0].name; // Anakin
+bst.findMax().data[0].name; // Yoda
+bst.find({ name: 'Grogu' }).node.data[0].name; // Grogu
 bst.find({ name: 'Grogu' }).path; // ['left', 'right', 'right']
 // Thanks to the compare function, the search will traverse like this:
 // Lando -> Anakin -> Chewie -> Grogu

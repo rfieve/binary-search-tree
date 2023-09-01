@@ -4,6 +4,7 @@
     "testEnvironment": "node",
     "moduleDirectories": ["node_modules", "test"],
     "testMatch": ["**/*.test.ts"],
+    "collectCoverageFrom": ["./src/functions/**/*.ts", "./src/classes/**/*.ts"],
     "transform": {
         "`^.+\\.tsx?$`": [
             "ts-jest",

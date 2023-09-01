@@ -1,27 +1,41 @@
-import { BST, BSTNode, CompareFunction, Direction } from '../types';
+import { BST, CompareFunction, Direction } from '../types';
 import { findMin } from './find-min';
 import { hasLeft } from './has-left';
 import { hasRight } from './has-right';
 import { isLeaf } from './is-leaf';
+
+function matchesElement<T extends object>(source: T, target: T): boolean {
+    return !Object.keys(source).some((key) => target[key as keyof T] !== source[key as keyof T]);
+}
 
 function removeElement<T>(
     tree = {} as BST<T>,
     compare: CompareFunction<T>,
     element: T
 ): BST<T> | undefined {
-    if (tree?.data === undefined) {
+    if (element == null || tree.data.length === 0) {
         return tree;
     }
 
-    const comparison = compare(element, tree.data);
+    const comparison = compare(element, tree.data[0]);
 
-    // This node should be removed
+    // This node matches
     if (comparison === 0) {
+        const newData =
+            typeof element === 'object'
+                ? tree.data.filter((target) => !matchesElement(element, target as object))
+                : [];
+
+        if (newData.length > 0) {
+            return { ...tree, data: newData };
+        }
+
         if (isLeaf(tree)) {
             // If no children:
             // => Just delete.
             return undefined;
         }
+
         if (hasLeft(tree) && hasRight(tree)) {
             // If two children:
             // => Determine the next inorder successor in the right subtree.
@@ -33,10 +47,10 @@ function removeElement<T>(
                 ...tree,
                 data  : nextInOrder.data,
                 right : removeElement(
-                    tree.right as BSTNode<T>,
+                    tree.right as BST<T>,
                     compare,
-                    nextInOrder.data as T
-                ) as BSTNode<T>,
+                    nextInOrder.data[0] as T
+                ) as BST<T>,
             };
         }
 
@@ -56,7 +70,7 @@ function removeElements<T>(
     compare: CompareFunction<T>,
     elements: T[]
 ): BST<T> {
-    return elements.reduce((acc, curr) => removeElement(acc, compare, curr) || {}, tree);
+    return elements.reduce((acc, curr) => removeElement(acc, compare, curr) || { data: [] }, tree);
 }
 
 /**

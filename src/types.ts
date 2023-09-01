@@ -15,18 +15,21 @@ export type FindManyTraversalOptions = {
 
 export type BinarySearchTreeOptions = { isBalanced?: boolean; isPresorted?: boolean };
 
-export type BSTLeaf<T> = { data: T };
+export type BST<T> = {
+    data               : T[];
+    [Direction.Left]?  : BST<T>;
+    [Direction.Right]? : BST<T>;
+};
 
-export type BSTLeftBranch<T> = { [Direction.Left]: BSTNode<T> };
+export type BSTLeaf<T> = Omit<BST<T>, Direction> & {
+    [Direction.Left]?  : never;
+    [Direction.Right]? : never;
+};
 
-export type BSTRightBranch<T> = { [Direction.Right]: BSTNode<T> };
+export type BSTBranchWithLeft<T> = Omit<BST<T>, Direction.Left> & { [Direction.Left]: BST<T> };
 
-export type BSTBranch<T> = BSTLeaf<T> &
-    (
-        | (BSTLeftBranch<T> & Partial<BSTRightBranch<T>>)
-        | (BSTRightBranch<T> & Partial<BSTLeftBranch<T>>)
-    );
+export type BSTBranchWithRight<T> = Omit<BST<T>, Direction.Right> & { [Direction.Right]: BST<T> };
 
-export type BSTNode<T> = BSTLeaf<T> & Omit<Partial<BSTBranch<T>>, 'data'>;
-
-export type BST<T> = Partial<BSTNode<T>>;
+export type BSTBranch<T> =
+    | (BSTBranchWithLeft<T> & Partial<BSTBranchWithRight<T>>)
+    | (BSTBranchWithRight<T> & Partial<BSTBranchWithLeft<T>>);

@@ -23,11 +23,7 @@ describe('isBranch', () => {
         expect(isBranch(mockedLeaf)).toBe(false);
     });
 
-    it('should return false when the given tree is undefined', () => {
-        expect(isBranch()).toBe(false);
-    });
-
     it('should return false when the given tree has no data', () => {
-        expect(isBranch({ data: undefined })).toBe(false);
+        expect(isBranch({ data: [] })).toBe(false);
     });
 });

@@ -10,19 +10,15 @@ describe('isLeaf', () => {
         expect(isLeaf(mockedUnbalancedTree)).toBe(false);
     });
 
-    it('should return false when the given tree is undefined', () => {
-        expect(isLeaf()).toBe(false);
-    });
-
     it('should return false when the given tree has no data', () => {
-        expect(isLeaf({ data: undefined })).toBe(false);
+        expect(isLeaf({ data: [] })).toBe(false);
     });
 
     it('should return false when the given tree has no left branch', () => {
-        expect(isLeaf({ data: 0, right: { data: 1 } })).toBe(false);
+        expect(isLeaf({ data: [0], right: { data: [1] } })).toBe(false);
     });
 
     it('should return false when the given tree has no right branch', () => {
-        expect(isLeaf({ data: 0, left: { data: 1 } })).toBe(false);
+        expect(isLeaf({ data: [0], left: { data: [1] } })).toBe(false);
     });
 });
