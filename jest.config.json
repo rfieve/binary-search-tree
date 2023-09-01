@@ -5,6 +5,9 @@
     "moduleDirectories": ["node_modules", "test"],
     "testMatch": ["**/*.test.ts"],
     "collectCoverageFrom": ["./src/functions/**/*.ts", "./src/classes/**/*.ts"],
+    "snapshotFormat": {
+        "printBasicPrototype": false
+    },
     "transform": {
         "`^.+\\.tsx?$`": [
             "ts-jest",
