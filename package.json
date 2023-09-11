@@ -5,6 +5,7 @@
     "main": "dist/index.js",
     "types": "dist/index.d.ts",
     "scripts": {
+        "docs": "typedoc src/index.ts",
         "build": "tsc --project tsconfig.build.json",
         "lint": "eslint --fix ./src/ --ext .js --ext .ts --ext .tsx --format table",
         "test": "NODE_PATH=./ jest --coverage --passWithNoTests",
