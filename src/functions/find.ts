@@ -5,7 +5,7 @@ import { BST, CompareFunction, Direction, FoundResult } from '../types';
  * @param tree The source binary search tree
  * @param {CompareFunction} compare
  * @param element The element to be found
- * @returns The found result. { node: the found node, path:; the path to access it}
+ * @returns {FoundResult} The found result.
  */
 export function find<T>(
     tree: BST<T>,

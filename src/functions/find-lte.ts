@@ -13,7 +13,7 @@ const traverseLte = makeFindManyTraversal({
  * @param tree The source binary search tree
  * @param {CompareFunction} compare
  * @param element The element to be found
- * @returns The found result. { node: the found node, path:; the path to access it}
+ * @returns The found result.
  */
 export const findLte = makeFindManyFromTraversal(traverseLte);
 
