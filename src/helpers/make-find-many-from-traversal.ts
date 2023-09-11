@@ -9,7 +9,11 @@ export function makeFindManyFromTraversal<T>(
         element: T
     ) => void
 ) {
-    return function findMany(tree: BST<T>, compare: CompareFunction<T>, element: T) {
+    return function findMany(
+        tree: BST<T>,
+        compare: CompareFunction<T>,
+        element: T
+    ): FoundResult<T>[] {
         const results: FoundResult<T>[] = [];
         const collectFoundResult = makeCollectFoundResult(results);
 

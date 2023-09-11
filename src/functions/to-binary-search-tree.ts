@@ -6,17 +6,16 @@ import { add } from './add';
 /**
  * Converts the given array to a binary search tree, depending on a given compare function.
  * @param elements The source array
- * @param {CompareFunction} compare
+ * @param compare The compare function
  * @returns The elements of the elements array organized as a binary search tree.
  */
 export function toBST<T>(
     elements: T[],
     compare: CompareFunction<T>,
-    { isBalanced, isPresorted } = {
-        isBalanced  : true,
-        isPresorted : false,
-    } as BinarySearchTreeOptions
+    options = { isBalanced: true, isPresorted: false } as BinarySearchTreeOptions
 ): BST<T> {
+    const { isBalanced, isPresorted } = options;
+
     if (!isBalanced) {
         return add({ data: [] }, compare, elements);
     }
@@ -33,7 +32,7 @@ export function toBST<T>(
 
 /**
  * Creates an toBST function for the given compare function.
- * @param {CompareFunction} compare
+ * @param compare The compare function
  * @returns The bound toBST function
  */
 export function makeToBST<T>(compare: CompareFunction<T>) {

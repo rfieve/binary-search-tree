@@ -28,8 +28,8 @@ describe('remove', () => {
         const tree = remove(mockedUnbalancedTree, compare, [10, 2]);
         const updatedTree = remove(tree as BST<number>, compare, [89, 50]);
 
-        expect(toArrayInOrder(tree).length).toBe(5);
-        expect(toArrayInOrder(updatedTree).length).toBe(3);
+        expect(toArrayInOrder(tree as BST<number>).length).toBe(5);
+        expect(toArrayInOrder(updatedTree as BST<number>).length).toBe(3);
     });
 
     it('should remove a leaf correctly', () => {
@@ -68,7 +68,7 @@ describe('remove', () => {
         //          50     |          50      |
 
         const tree = remove(mockedUnbalancedTree, compare, 10);
-        const treeUpdated = remove(tree, compare, 13);
+        const treeUpdated = remove(tree as BST<number>, compare, 13);
 
         expect(tree?.data[0]).toBe(13);
         expect(tree?.left?.data[0]).toBe(2);
@@ -83,7 +83,7 @@ describe('remove', () => {
         expect(treeUpdated?.right?.left?.data[0]).toBe(50);
 
         const treeBound = boundRemove(mockedUnbalancedTree, 10);
-        const treeUpdatedBound = boundRemove(treeBound, 13);
+        const treeUpdatedBound = boundRemove(treeBound as BST<number>, 13);
 
         expect(treeBound?.data[0]).toBe(13);
         expect(treeBound?.left?.data[0]).toBe(2);

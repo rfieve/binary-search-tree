@@ -3,9 +3,9 @@ import { BST, CompareFunction, Direction, FoundResult } from '../types';
 /**
  * Finds a given element into the given binary search tree with the given compare function.
  * @param tree The source binary search tree
- * @param {CompareFunction} compare
+ * @param compare The compare function
  * @param element The element to be found
- * @returns {FoundResult} The found result.
+ * @returns The found result.
  */
 export function find<T>(
     tree: BST<T>,
@@ -32,7 +32,7 @@ export function find<T>(
 
 /**
  * Creates an find function for the given binary search tree with the given compare function.
- * @param {CompareFunction} compare
+ * @param compare The compare function
  * @returns The bound find function
  */
 export function makeFind<T>(compare: CompareFunction<T>) {
