@@ -3,7 +3,21 @@ export enum Direction {
     Right = 'right',
 }
 
-export type CompareFunction<T> = (a: T, b: T) => number;
+/**
+ * The function used to determine the order of the elements.
+ * @callback CompareFunction
+ * @template T
+ * @param {T} current The current element
+ * @param {T} compared The element compared to
+ * @return {number} The comparison result. It can be negative, zero or positive:
+ *
+ *  => Negative : the current element should be placed as left node of its compared element
+ *
+ *  => Positive : the current element should be placed as right node of its compared element
+ *
+ *  => Zero     : the current element should be placed here in the tree
+ */
+export type CompareFunction<T> = (current: T, compared: T) => number;
 
 export type FoundResult<T> = { node: BST<T>; path: Direction[] };
 

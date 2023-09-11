@@ -76,19 +76,8 @@ function removeElements<T>(
 /**
  * Removes a given node from the given binary search tree with the given compare function,
  * and returns a new tree, without modifing the original tree in place.
- *
  * @param tree The source binary search tree
- * @param compare The function used to determine the order of the elements (similar to Array.sort).
- *  Its first argument is the current element.
- *  Its second argument is the parent element.
- *  Its return value can be negative, zero or positive:
- *
- *  => Negative : the current element should be placed as left node of its parent
- *
- *  => Positive : the current element should be placed as right node of its parent
- *
- *  => Zero     : the current element should not be placed in the tree
- *
+ * @param {CompareFunction} compare
  * @param element The element to be removed
  * @returns The new binary search tree
  */
@@ -104,18 +93,7 @@ export function remove<T>(
 
 /**
  * Creates an removeElement function for the given binary search tree with the given compare function.
- *
- * @param compare The function used to determine the order of the elements.
- *  Its first argument is the current element.
- *  Its second argument is the parent element.
- *  Its return value can be negative, zero or positive:
- *
- *  => Negative : the current element should be placed as left node of its parent
- *
- *  => Positive : the current element should be placed as right node of its parent
- *
- *  => Zero     : the current element should not be placed in the tree
- *
+ * @param {CompareFunction} compare
  * @returns The bound removeElement function
  */
 export function makeRemove<T>(compare: CompareFunction<T>) {

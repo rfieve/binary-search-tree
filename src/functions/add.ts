@@ -60,19 +60,8 @@ function addElements<T>(tree: BST<T>, compare: CompareFunction<T>, elements: T[]
 /**
  * Adds the given elements to the given binary search tree with the given compare function,
  * and returns a new tree, without modifing the original tree in place.
- *
  * @param tree The source binary search tree
- * @param compare The function used to determine the order of the elements.
- *  Its first argument is the current element.
- *  Its second argument is the parent element.
- *  Its return value can be negative, zero or positive:
- *
- *  => Negative : the current element should be placed as left node of its parent
- *
- *  => Positive : the current element should be placed as right node of its parent
- *
- *  => Zero     : the current element should not be placed in the tree
- *
+ * @param {CompareFunction} compare
  * @param nodes The nodes to be added
  * @returns The new binary search tree
  */
@@ -84,18 +73,7 @@ export function add<T>(tree: BST<T>, compare: CompareFunction<T>, elements: T | 
 
 /**
  * Creates an add function for the given binary search tree with the given compare function.
- *
- * @param compare The function used to determine the order of the elements.
- *  Its first argument is the current element.
- *  Its second argument is the parent element.
- *  Its return value can be negative, zero or positive:
- *
- *  => Negative : the current element should be placed as left node of its parent
- *
- *  => Positive : the current element should be placed as right node of its parent
- *
- *  => Zero     : the current element should not be placed in the tree
- *
+ * @param {CompareFunction} compare
  * @returns The bound add function
  */
 export function makeAdd<T>(compare: CompareFunction<T>) {

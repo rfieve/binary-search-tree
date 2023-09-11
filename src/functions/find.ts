@@ -2,19 +2,8 @@ import { BST, CompareFunction, Direction, FoundResult } from '../types';
 
 /**
  * Finds a given element into the given binary search tree with the given compare function.
- *
  * @param tree The source binary search tree
- * @param compare The function used to determine the order of the elements.
- *  Its first argument is the current element.
- *  Its second argument is the parent element.
- *  Its return value can be negative, zero or positive:
- *
- *  => Negative : the current element should be found as left node of its parent
- *
- *  => Positive : the current element should be found as right node of its parent
- *
- *  => Zero     : the current element is similar to the searched node
- *
+ * @param {CompareFunction} compare
  * @param element The element to be found
  * @returns The found result. { node: the found node, path:; the path to access it}
  */
@@ -43,18 +32,7 @@ export function find<T>(
 
 /**
  * Creates an find function for the given binary search tree with the given compare function.
- *
- * @param compare The function used to determine the order of the elements.
- *  Its first argument is the current element.
- *  Its second argument is the parent element.
- *  Its return value can be negative, zero or positive:
- *
- *  => Negative : the current element should be found as left node of its parent
- *
- *  => Positive : the current element should be found as right node of its parent
- *
- *  => Zero     : the current element is similar to the searched node
- *
+ * @param {CompareFunction} compare
  * @returns The bound find function
  */
 export function makeFind<T>(compare: CompareFunction<T>) {
