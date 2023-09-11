@@ -11,6 +11,9 @@ yarn-error.log*
 # Test
 coverage
 
+# Docs
+docs
+
 # Dependency directories
 node_modules
 
