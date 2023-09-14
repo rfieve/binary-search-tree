@@ -4,24 +4,24 @@ A zero-dependency TypeScript library to work with binary search trees and arrays
 
 ## Table of Content
 
--   [✌️🔍🌳 binary-search-tree](#️-binary-search-tree)
-    -   [Table of Content](#table-of-content)
-    -   [Installation](#installation)
-    -   [Usage](#usage)
-    -   [Documentation](#documentation)
-        -   [`toBST`](#tobst)
-        -   [`balance`, `isBalanced`](#balance-isbalanced)
-        -   [`add`](#add)
-        -   [`remove`](#remove)
-        -   [`find`](#find)
-        -   [`find(Gt/Gte/Lt/Lte)`](#findgtgteltlte)
-        -   [`find(Min/Max)(Height)`, `count`](#findminmaxheight-count)
-        -   [`traverse`](#traverse)
-        -   [`toArray`](#toarray)
-        -   [`isLeaf`, `isBranch`](#isleaf-isbranch)
-        -   [`hasLeft`, `hasRight`](#hasleft-hasright)
-        -   [`makeCompareUtils`](#makecompareutils)
-        -   [The infamous `BinarySearchTree` class](#the-infamous-binarysearchtree-class)
+- [✌️🔍🌳 binary-search-tree](#️-binary-search-tree)
+  - [Table of Content](#table-of-content)
+  - [Installation](#installation)
+  - [Usage](#usage)
+  - [Documentation](#documentation)
+    - [`toBST`](#tobst)
+    - [`balance`, `isBalanced`, `getBalance`](#balance-isbalanced-getbalance)
+    - [`add`](#add)
+    - [`remove`](#remove)
+    - [`find`](#find)
+    - [`find(Gt/Gte/Lt/Lte)`](#findgtgteltlte)
+    - [`find(Min/Max)(Height)`, `count`](#findminmaxheight-count)
+    - [`traverse`](#traverse)
+    - [`toArray`](#toarray)
+    - [`isLeaf`, `isBranch`](#isleaf-isbranch)
+    - [`hasLeft`, `hasRight`](#hasleft-hasright)
+    - [`makeCompareUtils`](#makecompareutils)
+    - [The infamous `BinarySearchTree` class](#the-infamous-binarysearchtree-class)
 
 ## Installation
 
@@ -127,13 +127,14 @@ const unbalancedTree = toBST(arr, compare, { isBalanced: false });
 
 ---
 
-### `balance`, `isBalanced`
+### `balance`, `isBalanced`, `getBalance`
 
 Balances the given binary search tree with the given compare function and returns a new tree, without modifing the original tree in place.
 
 > :warning: Using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the tree. A safer approach consists of using `makeBalance`. It curries a `balance` closure function with the given compare function.
 
 ```typescript
+getBalance(unbalancedTree); // 2
 isBalanced(unbalancedTree); // false
 
 const tree = balance(unbalancedTree, compare);
@@ -141,6 +142,7 @@ const tree = balance(unbalancedTree, compare);
 const safeBalance = makeBalance(compare);
 const tree = safeBalance(unbalancedTree);
 
+getBalance(tree); // 0
 isBalanced(tree); // true
 
 // Schema of "unbalancedTree"  =>        "tree"

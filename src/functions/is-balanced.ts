@@ -1,6 +1,5 @@
 import { BST } from '../types';
-import { findMaxHeight } from './find-max-height';
-import { findMinHeight } from './find-min-height';
+import { getBalance } from './get-balance';
 
 /**
  * Assesses if the given tree is balanced.
@@ -8,5 +7,5 @@ import { findMinHeight } from './find-min-height';
  * @returns True if it is, false if it isn't.
  */
 export function isBalanced<T>(tree: BST<T>): boolean {
-    return findMinHeight(tree) >= findMaxHeight(tree) - 1;
+    return getBalance(tree) <= 1;
 }

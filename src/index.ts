@@ -11,6 +11,7 @@ export { findMax } from './functions/find-max';
 export { findMaxHeight } from './functions/find-max-height';
 export { findMin } from './functions/find-min';
 export { findMinHeight } from './functions/find-min-height';
+export { getBalance } from './functions/get-balance';
 export { hasLeft } from './functions/has-left';
 export { hasRight } from './functions/has-right';
 export { isBalanced } from './functions/is-balanced';
