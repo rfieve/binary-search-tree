@@ -6,7 +6,7 @@ export { find, makeFind } from './functions/find';
 export { findFromPath } from './functions/find-from-path';
 export { findGt, makeFindGt } from './functions/find-gt';
 export { findGte, makeFindGte } from './functions/find-gte';
-export { findLowestAncestor } from './functions/find-lowest-ancestor';
+export { findLowestAncestor, makeFindLowestAncestor } from './functions/find-lowest-ancestor';
 export { findLt, makeFindLt } from './functions/find-lt';
 export { findLte, makeFindLte } from './functions/find-lte';
 export { findMax } from './functions/find-max';
@@ -14,6 +14,10 @@ export { findMaxHeight } from './functions/find-max-height';
 export { findMin } from './functions/find-min';
 export { findMinHeight } from './functions/find-min-height';
 export { getBalance } from './functions/get-balance';
+export {
+    getDistanceBetweenNodes,
+    makeGetDistanceBetweenNodes,
+} from './functions/get-distance-between-nodes';
 export { hasLeft } from './functions/has-left';
 export { hasRight } from './functions/has-right';
 export { isBalanced } from './functions/is-balanced';

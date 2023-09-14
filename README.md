@@ -17,6 +17,7 @@ A zero-dependency TypeScript library to work with binary search trees and arrays
         -   [`findLowestAncestor`](#findlowestancestor)
         -   [`find(Gt/Gte/Lt/Lte)`](#findgtgteltlte)
         -   [`find(Min/Max)(Height)`, `count`](#findminmaxheight-count)
+        -   [`getDistanceBetweenNodes`](#getdistancebetweennodes)
         -   [`traverse`](#traverse)
         -   [`toArray`](#toarray)
         -   [`isLeaf`, `isBranch`](#isleaf-isbranch)
@@ -325,6 +326,31 @@ const length = count(tree); // 7
 
 ---
 
+### `getDistanceBetweenNodes`
+
+Gets the distance between two given elements into the given binary search tree with the given compare function.
+
+> :warning: Using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the search. A safer approach consists of using `makeGetDistanceBetweenNodes`. It curries a `getDistanceBetweenNodes` closure function with the given compare function.
+
+```typescript
+// Schema of "tree"
+//
+//       10
+//    /     \
+//   2      32
+//    \    /  \
+//     5  13  89
+//           /
+//         50
+
+const result = getDistanceBetweenNodes(tree, compare, 13, 50); // 3
+// or
+const safeFind = makeGetDistanceBetweenNodes(compare);
+const result = safeFind(tree, 13, 50); // 3
+```
+
+---
+
 ### `traverse`
 
 Traverses a tree, invoking the callback function on each visited node.
@@ -491,6 +517,7 @@ export const {
     findLt: findLtAlpha,
     findLte: findLteAlpha,
     balance: balanceAlpha,
+    getDistanceBetweenNodes: getDistanceBetweenNodesAlpha,
 } = makeCompareUtils(compareAlpha);
 
 // other-file.ts
@@ -506,6 +533,7 @@ import {
     findLtAlpha,
     findLteAlpha,
     balanceAlpha,
+    getDistanceBetweenNodesAlpha,
 } from './compare-alpha';
 
 const tree = toBSTAlpha([{ name: 'Anakin' }]);

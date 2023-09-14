@@ -14,7 +14,7 @@ export function findLowestAncestor<T>(
     elementA: T,
     elementB: T,
     path = [] as Path
-): FoundResult<T> | undefined {
+): FoundResult<T> {
     const comparisonA = compare(elementA, tree.data[0]);
     const comparisonB = compare(elementB, tree.data[0]);
 

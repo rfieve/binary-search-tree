@@ -325,6 +325,11 @@ describe('BinarySearchTree', () => {
         expect(result).toEqual(0);
     });
 
+    it('should getDistanceBetweenNodes correctly', () => {
+        const result = new BinarySearchTree(mockedArray, compare).getDistanceBetweenNodes(13, 10);
+        expect(result).toEqual(2);
+    });
+
     // ___ Assesments ___
     it('should isBalanced correctly', () => {
         const bst = new BinarySearchTree(mockedArray, compare, { isBalanced: false });
