@@ -19,3 +19,11 @@ node_modules
 
 # source generated files
 src
+
+# Other
+.prettierrc
+.eslintrc.json
+.gitignore
+jest.config.json
+tsconfig.json
+tsconfig.build.json
