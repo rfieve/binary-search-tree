@@ -1,6 +1,13 @@
 import { hasLeft } from '../functions/has-left';
 import { hasRight } from '../functions/has-right';
-import { BST, CompareFunction, Direction, FindManyTraversalOptions, FoundResult } from '../types';
+import {
+    BST,
+    CompareFunction,
+    Direction,
+    FindManyTraversalOptions,
+    FoundResult,
+    Path,
+} from '../types';
 
 export function makeFindManyTraversal({
     shouldFindCurrent,
@@ -12,7 +19,7 @@ export function makeFindManyTraversal({
         tree: BST<T>,
         compare: CompareFunction<T>,
         element: T,
-        path = [] as Direction[]
+        path = [] as Path
     ): void {
         if (tree.data.length === 0) {
             return undefined;

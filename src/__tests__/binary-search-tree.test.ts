@@ -1,5 +1,6 @@
 import { BinarySearchTree } from '../classes/binary-search-tree';
 import { makeCollectElementFromNode } from '../helpers/collect';
+import { Direction } from '../types';
 import {
     compare,
     mockedArray,
@@ -214,6 +215,24 @@ describe('BinarySearchTree', () => {
         expect(node?.data[0]).toEqual(undefined);
     });
 
+    it('should findFromPath correctly', () => {
+        const node = new BinarySearchTree(mockedArray, compare).findFromPath([
+            Direction.Left,
+            Direction.Right,
+        ])?.node;
+        expect(node?.data[0]).toEqual(10);
+    });
+
+    it('should findLowestAncestor correctly', () => {
+        const node = new BinarySearchTree(mockedArray, compare).findLowestAncestor(10, 2)?.node;
+        expect(node?.data[0]).toEqual(5);
+    });
+
+    it('should find correctly', () => {
+        const node = new BinarySearchTree(mockedArray, compare).find(10)?.node;
+        expect(node?.data[0]).toEqual(10);
+    });
+
     it('should findGt correctly', () => {
         const results = new BinarySearchTree(mockedArray, compare, { isBalanced: false }).findGt(
             10
@@ -299,6 +318,11 @@ describe('BinarySearchTree', () => {
     it('should count correctly', () => {
         const result = new BinarySearchTree(mockedArray, compare).count();
         expect(result).toEqual(7);
+    });
+
+    it('should getBalance correctly', () => {
+        const result = new BinarySearchTree(mockedArray, compare).getBalance();
+        expect(result).toEqual(0);
     });
 
     // ___ Assesments ___

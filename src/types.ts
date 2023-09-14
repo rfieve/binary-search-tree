@@ -3,6 +3,8 @@ export enum Direction {
     Right = 'right',
 }
 
+export type Path = Direction[];
+
 /**
  * The function used to determine the order of the elements.
  * @param current The current element
@@ -17,7 +19,7 @@ export enum Direction {
  */
 export type CompareFunction<T> = (current: T, compared: T) => number;
 
-export type FoundResult<T> = { node: BST<T>; path: Direction[] };
+export type FoundResult<T> = { node: BST<T>; path: Path };
 
 export type FindManyTraversalOptions = {
     shouldFindCurrent : (comp: number) => boolean;

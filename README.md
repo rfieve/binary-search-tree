@@ -4,24 +4,25 @@ A zero-dependency TypeScript library to work with binary search trees and arrays
 
 ## Table of Content
 
-- [✌️🔍🌳 binary-search-tree](#️-binary-search-tree)
-  - [Table of Content](#table-of-content)
-  - [Installation](#installation)
-  - [Usage](#usage)
-  - [Documentation](#documentation)
-    - [`toBST`](#tobst)
-    - [`balance`, `isBalanced`, `getBalance`](#balance-isbalanced-getbalance)
-    - [`add`](#add)
-    - [`remove`](#remove)
-    - [`find`](#find)
-    - [`find(Gt/Gte/Lt/Lte)`](#findgtgteltlte)
-    - [`find(Min/Max)(Height)`, `count`](#findminmaxheight-count)
-    - [`traverse`](#traverse)
-    - [`toArray`](#toarray)
-    - [`isLeaf`, `isBranch`](#isleaf-isbranch)
-    - [`hasLeft`, `hasRight`](#hasleft-hasright)
-    - [`makeCompareUtils`](#makecompareutils)
-    - [The infamous `BinarySearchTree` class](#the-infamous-binarysearchtree-class)
+-   [✌️🔍🌳 binary-search-tree](#️-binary-search-tree)
+    -   [Table of Content](#table-of-content)
+    -   [Installation](#installation)
+    -   [Usage](#usage)
+    -   [Documentation](#documentation)
+        -   [`toBST`](#tobst)
+        -   [`balance`, `isBalanced`, `getBalance`](#balance-isbalanced-getbalance)
+        -   [`add`](#add)
+        -   [`remove`](#remove)
+        -   [`find`, `findFromPath`](#find-findfrompath)
+        -   [`findLowestAncestor`](#findlowestancestor)
+        -   [`find(Gt/Gte/Lt/Lte)`](#findgtgteltlte)
+        -   [`find(Min/Max)(Height)`, `count`](#findminmaxheight-count)
+        -   [`traverse`](#traverse)
+        -   [`toArray`](#toarray)
+        -   [`isLeaf`, `isBranch`](#isleaf-isbranch)
+        -   [`hasLeft`, `hasRight`](#hasleft-hasright)
+        -   [`makeCompareUtils`](#makecompareutils)
+        -   [The infamous `BinarySearchTree` class](#the-infamous-binarysearchtree-class)
 
 ## Installation
 
@@ -212,7 +213,7 @@ const reModifiedTree = safeRemove(modifiedTree, [13, 5]);
 
 ---
 
-### `find`
+### `find`, `findFromPath`
 
 Finds a given node into the given binary search tree with the given compare function.
 
@@ -229,20 +230,39 @@ Finds a given node into the given binary search tree with the given compare func
 //           /
 //         50
 
-const {
-    node: { data },
-    path,
-} = find(tree, compare, 13);
-// data: [13]
-// path: ['right', 'left']
+const result = find(tree, compare, 13); // { node: { data: [13] }, path: ['right', 'left'] }
+const resultFromPath = findFromPath(tree, compare, ['right', 'left']); // { node: { data: [13] }, path: ['right', 'left'] }
 // or
 const safeFind = makeFind(compare);
-const {
-    node: { data },
-    path,
-} = safeFind(tree, 13);
-// data: [13]
-// path: ['right', 'left']
+const result = safeFind(tree, 13); // { node: { data: [13] }, path: ['right', 'left'] }
+
+const safeFindFromPath = makeFindFromPath(compare);
+const resultFromPath = safeFindFromPath(tree, ['right', 'left']); // { node: { data: [13] }, path: ['right', 'left'] }
+```
+
+---
+
+### `findLowestAncestor`
+
+Finds the lowest common ancestor of two given nodes into the given binary search tree with the given compare function.
+
+> :warning: Using another compare function than the one used to create the tree with `toBST` will of course f\*\*k up the search. A safer approach consists of using `makeFindLowestAncestor`. It curries a `findLowestAncestor` closure function with the given compare function.
+
+```typescript
+// Schema of "tree"
+//
+//       10
+//    /     \
+//   2      32
+//    \    /  \
+//     5  13  89
+//           /
+//         50
+
+const result = findLowestAncestor(tree, compare, 13, 50); // { node: { data: [32], ... }, path: ['right'] }
+// or
+const safeFind = makeFindLowestAncestor(compare);
+const result = safeFind(tree, 13, 50); // { node: { data: [32], ... }, path: ['right'] }
 ```
 
 ---

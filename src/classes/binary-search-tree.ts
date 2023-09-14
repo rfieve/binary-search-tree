@@ -2,8 +2,10 @@ import { add as addNode } from '../functions/add';
 import { balance as balanceTree } from '../functions/balance';
 import { count as countNodes } from '../functions/count';
 import { find as findNode } from '../functions/find';
+import { findFromPath as findTreeFromPath } from '../functions/find-from-path';
 import { findGt as findGtNode } from '../functions/find-gt';
 import { findGte as findGteNode } from '../functions/find-gte';
+import { findLowestAncestor as findLowestTreeAncestor } from '../functions/find-lowest-ancestor';
 import { findLt as findLtNode } from '../functions/find-lt';
 import { findLte as findLteNode } from '../functions/find-lte';
 import { findMax as findMaxNode } from '../functions/find-max';
@@ -44,7 +46,7 @@ import {
     traversePreOrder as traverseTreePreOrder,
     traversePreOrderReverse as traverseTreePreOrderReverse,
 } from '../functions/traverse-pre-order';
-import { BinarySearchTreeOptions, BST, CompareFunction } from '../types';
+import { BinarySearchTreeOptions, BST, CompareFunction, Path } from '../types';
 
 export class BinarySearchTree<T> {
     private t! : BST<T>;
@@ -155,6 +157,11 @@ export class BinarySearchTree<T> {
 
     // Finders
     public readonly find = (element: T) => findNode(this.t, this.compare, element);
+
+    public readonly findFromPath = (path: Path) => findTreeFromPath(this.t, path);
+
+    public readonly findLowestAncestor = (elementA: T, elementB: T) =>
+        findLowestTreeAncestor(this.t, this.compare, elementA, elementB);
 
     public readonly findGt = (element: T) => findGtNode(this.t, this.compare, element);
 
