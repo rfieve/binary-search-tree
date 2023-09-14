@@ -10,6 +10,7 @@ import { findMax as findMaxNode } from '../functions/find-max';
 import { findMaxHeight as findMaxHeightTree } from '../functions/find-max-height';
 import { findMin as findMinNode } from '../functions/find-min';
 import { findMinHeight as findMinHeightTree } from '../functions/find-min-height';
+import { getBalance as getTreeBalance } from '../functions/get-balance';
 import { hasLeft as hasLeftNode } from '../functions/has-left';
 import { hasRight as hasRightNode } from '../functions/has-right';
 import { isBalanced as isBalancedTree } from '../functions/is-balanced';
@@ -172,4 +173,6 @@ export class BinarySearchTree<T> {
     public readonly findMaxHeight = () => findMaxHeightTree(this.t);
 
     public readonly count = () => countNodes(this.t);
+
+    public readonly getBalance = () => getTreeBalance(this.t);
 }
