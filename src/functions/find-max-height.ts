@@ -2,7 +2,7 @@ import { BST } from '../types';
 
 /**
  * Finds the height of the maximal branch of the tree.
- * @param tree The source binary search tree
+ * @param tree The source binary search tree.
  * @returns the height.
  */
 export function findMaxHeight<T>(tree?: BST<T>): number {

@@ -4,10 +4,10 @@ import { findLowestAncestor } from './find-lowest-ancestor';
 
 /**
  * Gets the distance between two given elements into the given binary search tree with the given compare function.
- * @param tree The source binary search tree
- * @param compare The compare function
- * @param elementA The first element to match
- * @param elementB The second element to match
+ * @param tree The source binary search tree.
+ * @param compare The compare function.
+ * @param elementA The first element to match.
+ * @param elementB The second element to match.
  * @returns The found result.
  */
 export function getDistanceBetweenNodes<T>(
@@ -28,9 +28,9 @@ export function getDistanceBetweenNodes<T>(
 }
 
 /**
- * Creates an getDistanceBetweenNodes function for the given binary search tree with the given compare function.
- * @param compare The compare function
- * @returns The bound getDistanceBetweenNodes function
+ * Creates a getDistanceBetweenNodes function for the given binary search tree with the given compare function.
+ * @param compare The compare function.
+ * @returns The bound getDistanceBetweenNodes function.
  */
 export function makeGetDistanceBetweenNodes<T>(compare: CompareFunction<T>) {
     return function (tree: BST<T>, elementA: T, elementB: T) {

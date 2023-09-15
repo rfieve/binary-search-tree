@@ -5,8 +5,8 @@ import { add } from './add';
 
 /**
  * Converts the given array to a binary search tree, depending on a given compare function.
- * @param elements The source array
- * @param compare The compare function
+ * @param elements The source array.
+ * @param compare The compare function.
  * @returns The elements of the elements array organized as a binary search tree.
  */
 export function toBST<T>(
@@ -31,9 +31,9 @@ export function toBST<T>(
 }
 
 /**
- * Creates an toBST function for the given compare function.
- * @param compare The compare function
- * @returns The bound toBST function
+ * Creates a toBST function for the given compare function.
+ * @param compare The compare function.
+ * @returns The bound toBST function.
  */
 export function makeToBST<T>(compare: CompareFunction<T>) {
     return function (elements: T[], options?: BinarySearchTreeOptions) {

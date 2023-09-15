@@ -70,12 +70,12 @@ function removeElements<T>(tree: BST<T>, compare: CompareFunction<T>, elements: 
 }
 
 /**
- * Removes a given node from the given binary search tree with the given compare function,
+ * Removes a given node from the given binary search tree with the given compare function.
  * and returns a new tree, without modifing the original tree in place.
- * @param tree The source binary search tree
- * @param compare The compare function
- * @param element The element to be removed
- * @returns The new binary search tree
+ * @param tree The source binary search tree.
+ * @param compare The compare function.
+ * @param element The element to be removed.
+ * @returns The new binary search tree.
  */
 export function remove<T>(
     tree: BST<T>,
@@ -88,9 +88,9 @@ export function remove<T>(
 }
 
 /**
- * Creates an removeElement function for the given binary search tree with the given compare function.
- * @param compare The compare function
- * @returns The bound removeElement function
+ * Creates a removeElement function for the given binary search tree with the given compare function.
+ * @param compare The compare function.
+ * @returns The bound removeElement function.
  */
 export function makeRemove<T>(compare: CompareFunction<T>) {
     return function (tree: BST<T>, elements: T | T[]) {

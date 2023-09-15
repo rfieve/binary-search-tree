@@ -20,7 +20,7 @@ function addElement<T>(tree: BST<T>, compare: CompareFunction<T>, element: T): B
     };
 }
 
-// Impure, but way more efficient, pass a precloned tree in order to ensure immutablibilty
+// Impure, but way more efficient, pass a precloned tree in order to ensure immutablibilty.
 function addElementImpure<T>(tree: BST<T>, compare: CompareFunction<T>, element: T): void {
     if (tree.data.length === 0) {
         tree.data = [element];
@@ -58,12 +58,12 @@ function addElements<T>(tree: BST<T>, compare: CompareFunction<T>, elements: T[]
 }
 
 /**
- * Adds the given elements to the given binary search tree with the given compare function,
+ * Adds the given elements to the given binary search tree with the given compare function.
  * and returns a new tree, without modifing the original tree in place.
- * @param tree The source binary search tree
- * @param compare The compare function
- * @param nodes The nodes to be added
- * @returns The new binary search tree
+ * @param tree The source binary search tree.
+ * @param compare The compare function.
+ * @param elements The elements to be added.
+ * @returns The new binary search tree.
  */
 export function add<T>(tree: BST<T>, compare: CompareFunction<T>, elements: T | T[]): BST<T> {
     return Array.isArray(elements)
@@ -73,8 +73,8 @@ export function add<T>(tree: BST<T>, compare: CompareFunction<T>, elements: T | 
 
 /**
  * Creates an add function for the given binary search tree with the given compare function.
- * @param compare The compare function
- * @returns The bound add function
+ * @param compare The compare function.
+ * @returns The bound add function.
  */
 export function makeAdd<T>(compare: CompareFunction<T>) {
     return function (tree: BST<T>, elements: T | T[]) {

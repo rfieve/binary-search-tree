@@ -11,6 +11,11 @@ import { makeGetDistanceBetweenNodes } from './get-distance-between-nodes';
 import { makeRemove } from './remove';
 import { makeToBST } from './to-binary-search-tree';
 
+/**
+ * With the given compare function, creates all bound functions to work with a binary search tree made with the same compare.
+ * @param compare The compare function.
+ * @returns The bound functions.
+ */
 export function makeCompareUtils<T>(compare: CompareFunction<T>) {
     return {
         toBST                   : makeToBST(compare),

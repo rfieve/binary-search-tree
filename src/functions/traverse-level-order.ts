@@ -2,8 +2,8 @@ import { BST } from '../types';
 
 /**
  * Traverses the tree with a Breadth-First Search Level-Order algorithm, from left to right. left to right.
- * @param cb the callback invoked uppon each node
- * @param tree the tree to traverse
+ * @param cb the callback invoked uppon each node.
+ * @param tree the tree to traverse.
  */
 export function traverseLevelOrder<T>(cb: (node: BST<T>) => void, tree: BST<T>): void {
     if (tree.data.length > 0) {
@@ -27,8 +27,8 @@ export function traverseLevelOrder<T>(cb: (node: BST<T>) => void, tree: BST<T>):
 
 /**
  * Traverses the tree with a Breadth-First Search Level-Order algorithm, from right to left. right to left.
- * @param cb the callback invoked uppon each node
- * @param tree the tree to traverse
+ * @param cb the callback invoked uppon each node.
+ * @param tree the tree to traverse.
  */
 export function traverseLevelOrderReverse<T>(cb: (node: BST<T>) => void, tree: BST<T>): void {
     if (tree.data.length > 0) {

@@ -2,10 +2,10 @@ import { BST, CompareFunction, Direction, FoundResult, Path } from '../types';
 
 /**
  * Finds the lowest common ancestor of two given elements into the given binary search tree with the given compare function.
- * @param tree The source binary search tree
- * @param compare The compare function
- * @param elementA The first element to match
- * @param elementB The second element to match
+ * @param tree The source binary search tree.
+ * @param compare The compare function.
+ * @param elementA The first element to match.
+ * @param elementB The second element to match.
  * @returns The found result.
  */
 export function findLowestAncestor<T>(
@@ -34,9 +34,9 @@ export function findLowestAncestor<T>(
 }
 
 /**
- * Creates an findLowestAncestor function for the given binary search tree with the given compare function.
- * @param compare The compare function
- * @returns The bound findLowestAncestor function
+ * Creates a findLowestAncestor function for the given binary search tree with the given compare function.
+ * @param compare The compare function.
+ * @returns The bound findLowestAncestor function.
  */
 export function makeFindLowestAncestor<T>(compare: CompareFunction<T>) {
     return function (tree: BST<T>, elementA: T, elementB: T) {

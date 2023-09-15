@@ -2,7 +2,7 @@ import { BST } from '../types';
 
 /**
  * Finds the height of the minimal branch of the tree.
- * @param tree The source binary search tree
+ * @param tree The source binary search tree.
  * @returns the height.
  */
 export function findMinHeight<T>(tree?: BST<T>): number {

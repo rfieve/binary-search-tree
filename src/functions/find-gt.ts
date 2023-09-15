@@ -10,17 +10,17 @@ const traverseGt = makeFindManyTraversal({
 
 /**
  * Finds all nodes greater than given element into the given binary search tree with the given compare function.
- * @param tree The source binary search tree
- * @param compare The compare function
- * @param element The element to be found
+ * @param tree The source binary search tree.
+ * @param compare The compare function.
+ * @param element The element to be found.
  * @returns The found result.
  */
 export const findGt = makeFindManyFromTraversal(traverseGt);
 
 /**
- * Creates an find greater function for the given binary search tree with the given compare function.
- * @param compare The compare function
- * @returns The bound find function
+ * Creates a find greater function for the given binary search tree with the given compare function.
+ * @param compare The compare function.
+ * @returns The bound find function.
  */
 export function makeFindGt<T>(compare: CompareFunction<T>) {
     return function (tree: BST<T>, element: T) {
