@@ -4,12 +4,12 @@ import { compare, mockedUnbalancedTree } from './_mocks';
 describe('find', () => {
     it('should not find a node which is not into the tree', () => {
         const node = find(mockedUnbalancedTree, compare, 11)?.node;
-        expect(node?.data[0]).toBe(undefined);
+        expect(node?.data[0]).toBeUndefined();
     });
 
     it('should not find a node in an empty tree', () => {
         const node = find({ data: [] }, compare, 0)?.node;
-        expect(node?.data[0]).toBe(undefined);
+        expect(node?.data[0]).toBeUndefined();
     });
 
     it('should find a random node into the tree at the correct position', () => {
@@ -34,12 +34,12 @@ describe('makeFind', () => {
 
     it('should not find a node which is not into the tree', () => {
         const node = boundFind(mockedUnbalancedTree, 11)?.node;
-        expect(node?.data[0]).toBe(undefined);
+        expect(node?.data[0]).toBeUndefined();
     });
 
     it('should not find a node in an empty tree', () => {
         const node = boundFind({ data: [] }, 0)?.node;
-        expect(node?.data[0]).toBe(undefined);
+        expect(node?.data[0]).toBeUndefined();
     });
 
     it('should find a random node into the tree at the correct position', () => {

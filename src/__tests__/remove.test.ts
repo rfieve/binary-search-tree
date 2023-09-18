@@ -35,11 +35,11 @@ describe('remove', () => {
     it('should remove a leaf correctly', () => {
         const tree = remove(mockedUnbalancedTree, compare, 50);
         expect(tree?.right?.right?.data[0]).toBe(89);
-        expect(tree?.right?.right?.left?.data[0]).toBe(undefined);
+        expect(tree?.right?.right?.left?.data[0]).toBeUndefined();
 
         const treeBound = boundRemove(mockedUnbalancedTree, 50);
         expect(treeBound?.right?.right?.data[0]).toBe(89);
-        expect(treeBound?.right?.right?.left?.data[0]).toBe(undefined);
+        expect(treeBound?.right?.right?.left?.data[0]).toBeUndefined();
     });
 
     it('should remove a single branch with left node correctly', () => {

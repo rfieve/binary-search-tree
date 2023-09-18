@@ -12,7 +12,7 @@ describe('getDistanceBetweenNodes ', () => {
 
     it('should return undefined when one has no match', () => {
         const result = getDistanceBetweenNodes(mockedUnbalancedTree, compare, 13, 20);
-        expect(result).toBe(undefined);
+        expect(result).toBeUndefined();
     });
 });
 
@@ -26,6 +26,6 @@ describe('makeGetDistanceBetweenNodes', () => {
 
     it('should return undefined when one has no match', () => {
         const result = bound(mockedUnbalancedTree, 13, 20);
-        expect(result).toBe(undefined);
+        expect(result).toBeUndefined();
     });
 });

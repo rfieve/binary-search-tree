@@ -53,7 +53,7 @@ describe('BinarySearchTree', () => {
             50
         );
         expect(tree?.right?.right?.data[0]).toBe(89);
-        expect(tree?.right?.right?.left?.data[0]).toBe(undefined);
+        expect(tree?.right?.right?.left?.data[0]).toBeUndefined();
     });
 
     it('should empty the tree correctly', () => {
@@ -212,7 +212,7 @@ describe('BinarySearchTree', () => {
 
     it('should not find correctly', () => {
         const node = new BinarySearchTree(mockedArray, compare).find(20)?.node;
-        expect(node?.data[0]).toEqual(undefined);
+        expect(node?.data[0]).toBeUndefined();
     });
 
     it('should findFromPath correctly', () => {

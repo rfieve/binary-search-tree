@@ -24,6 +24,6 @@ describe('findFromPath', () => {
             Direction.Right,
             Direction.Right,
         ]);
-        expect(result?.node?.data?.[0]).toBe(undefined);
+        expect(result?.node?.data?.[0]).toBeUndefined();
     });
 });
