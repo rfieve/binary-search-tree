@@ -27,3 +27,5 @@ src
 jest.config.json
 tsconfig.json
 tsconfig.build.json
+README.md
+yarn.lock
