@@ -1,4 +1,9 @@
 {
     "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "module": "NodeNext",
+        "moduleResolution": "NodeNext",
+        "target": "ESNext"
+    },
     "exclude": ["src/**/__tests__/**/*.ts", "**/*.test.ts", "node_modules", "dist"]
 }
