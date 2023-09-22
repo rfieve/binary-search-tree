@@ -1,16 +1,20 @@
 {
     "name": "@romainfieve/binary-search-tree",
-    "version": "2.3.5",
+    "version": "2.3.6",
     "description": "",
-    "main": "dist/index.js",
-    "types": "dist/index.d.ts",
+    "main": "./dist/index.js",
+    "module": "./dist/index.mjs",
+    "types": "./dist/index.d.ts",
+    "files": [
+        "dist"
+    ],
     "scripts": {
         "docs": "typedoc src/index.ts",
-        "build": "tsc --project tsconfig.build.json",
+        "build": "tsup",
         "lint": "eslint --fix ./src/ --ext .js --ext .ts --ext .tsx --format table",
         "test": "NODE_PATH=./ jest --coverage --passWithNoTests",
         "test:watch": "NODE_PATH=./ jest --watch --coverage --passWithNoTests",
-        "prepublish": "tsc --project tsconfig.build.json"
+        "prepublish": "tsup"
     },
     "author": "rfieve",
     "license": "MIT",
@@ -42,6 +46,7 @@
         "prettier": "^3.0.2",
         "ts-jest": "^29.1.1",
         "ts-node": "^10.9.1",
+        "tsup": "^7.2.0",
         "typedoc": "^0.25.1",
         "typescript": "^5.1.6"
     }
