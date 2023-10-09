@@ -11,8 +11,8 @@ function addElement<T>(tree: BST<T>, compare: CompareFunction<T>, element: T): B
         return { ...tree, data: [...tree.data, element] };
     }
 
-    const direction = comparison < 0 ? Direction.Left : Direction.Right;
-    const subTree = tree[direction];
+    const direction = comparison < 0 ? Direction.Left : Direction.Right,
+          subTree = tree[direction];
 
     return {
         ...tree,

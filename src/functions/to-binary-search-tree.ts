@@ -20,8 +20,8 @@ export function toBST<T>(
         return add({ data: [] }, compare, elements);
     }
 
-    const sortedElements = isPresorted ? elements : elements.slice().sort(compare);
-    const balancedElements: T[] = [];
+    const sortedElements = isPresorted ? elements : elements.slice().sort(compare),
+          balancedElements: T[] = [];
 
     const collectElement = makeCollectElement(balancedElements);
 

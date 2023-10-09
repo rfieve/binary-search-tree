@@ -23,9 +23,9 @@ export function find<T>(
         return { node: tree, path };
     }
 
-    const direction = comparison < 0 ? Direction.Left : Direction.Right;
-    const subTree = tree[direction];
-    const newPath = path.slice().concat(direction);
+    const direction = comparison < 0 ? Direction.Left : Direction.Right,
+          subTree = tree[direction],
+          newPath = path.slice().concat(direction);
 
     return subTree ? find(subTree, compare, element, newPath) : undefined;
 }

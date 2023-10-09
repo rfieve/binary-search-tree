@@ -14,8 +14,8 @@ export function makeFindManyFromTraversal<T>(
         compare: CompareFunction<T>,
         element: T
     ): FoundResult<T>[] {
-        const results: FoundResult<T>[] = [];
-        const collectFoundResult = makeCollectFoundResult(results);
+        const results: FoundResult<T>[] = [],
+              collectFoundResult = makeCollectFoundResult(results);
 
         traverse(collectFoundResult, tree, compare, element);
 

@@ -3,8 +3,8 @@ export function forEachBalanced<T>(
     sortedElements: T[],
     range?: [number, number]
 ): void {
-    const l = range?.[0] === undefined ? 0 : range[0];
-    const r = range?.[1] === undefined ? sortedElements.length - 1 : range[1];
+    const l = range?.[0] === undefined ? 0 : range[0],
+          r = range?.[1] === undefined ? sortedElements.length - 1 : range[1];
 
     if (l > r) {
         return;

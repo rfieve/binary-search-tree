@@ -59,8 +59,8 @@ function removeElement<T>(
         return (tree.left || tree.right) as BST<T>;
     }
 
-    const direction = comparison < 0 ? Direction.Left : Direction.Right;
-    const subTree = tree[direction];
+    const direction = comparison < 0 ? Direction.Left : Direction.Right,
+          subTree = tree[direction];
 
     return subTree ? { ...tree, [direction]: removeElement(subTree, compare, element) } : tree;
 }

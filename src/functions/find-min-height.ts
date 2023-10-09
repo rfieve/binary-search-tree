@@ -10,8 +10,8 @@ export function findMinHeight<T>(tree?: BST<T>): number {
         return -1;
     }
 
-    const left = findMinHeight(tree?.left);
-    const right = findMinHeight(tree?.right);
+    const left = findMinHeight(tree?.left),
+          right = findMinHeight(tree?.right);
 
     return left < right ? left + 1 : right + 1;
 }

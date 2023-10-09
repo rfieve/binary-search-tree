@@ -25,8 +25,8 @@ describe('remove', () => {
     });
 
     it('should not mutate the original tree', () => {
-        const tree = remove(mockedUnbalancedTree, compare, [10, 2]);
-        const updatedTree = remove(tree as BST<number>, compare, [89, 50]);
+        const tree = remove(mockedUnbalancedTree, compare, [10, 2]),
+              updatedTree = remove(tree as BST<number>, compare, [89, 50]);
 
         expect(toArrayInOrder(tree as BST<number>).length).toBe(5);
         expect(toArrayInOrder(updatedTree as BST<number>).length).toBe(3);
@@ -67,8 +67,8 @@ describe('remove', () => {
         //            /    |            /     |     5  50
         //          50     |          50      |
 
-        const tree = remove(mockedUnbalancedTree, compare, 10);
-        const treeUpdated = remove(tree as BST<number>, compare, 13);
+        const tree = remove(mockedUnbalancedTree, compare, 10),
+              treeUpdated = remove(tree as BST<number>, compare, 13);
 
         expect(tree?.data[0]).toBe(13);
         expect(tree?.left?.data[0]).toBe(2);
@@ -82,8 +82,8 @@ describe('remove', () => {
         expect(treeUpdated?.right?.data[0]).toBe(89);
         expect(treeUpdated?.right?.left?.data[0]).toBe(50);
 
-        const treeBound = boundRemove(mockedUnbalancedTree, 10);
-        const treeUpdatedBound = boundRemove(treeBound as BST<number>, 13);
+        const treeBound = boundRemove(mockedUnbalancedTree, 10),
+              treeUpdatedBound = boundRemove(treeBound as BST<number>, 13);
 
         expect(treeBound?.data[0]).toBe(13);
         expect(treeBound?.left?.data[0]).toBe(2);
@@ -118,7 +118,7 @@ describe('remove', () => {
         type Hero = { age: number; name: string };
         const compareNameAlpha = (a: Hero, b: Hero) => a.name.localeCompare(b.name);
 
-        const removerElement = { name: 'Anakin', age: 28 };
+        const removedElement = { name: 'Anakin', age: 28 };
 
         const tree = toBST(
             [
@@ -129,7 +129,7 @@ describe('remove', () => {
             (a, b) => a.name.localeCompare(b.name)
         );
 
-        const modifiedTree = remove(tree, compareNameAlpha, removerElement);
+        const modifiedTree = remove(tree, compareNameAlpha, removedElement);
 
         expect(modifiedTree?.data?.[0]).toEqual({ name: 'Anakin', age: 27 });
     });

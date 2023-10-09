@@ -15,18 +15,17 @@ export function findLowestAncestor<T>(
     elementB: T,
     path = [] as Path
 ): FoundResult<T> {
-    const comparisonA = compare(elementA, tree.data[0]);
-    const comparisonB = compare(elementB, tree.data[0]);
-
-    const directionA = comparisonA < 0 ? Direction.Left : Direction.Right;
-    const directionB = comparisonB < 0 ? Direction.Left : Direction.Right;
+    const comparisonA = compare(elementA, tree.data[0]),
+          comparisonB = compare(elementB, tree.data[0]),
+          directionA = comparisonA < 0 ? Direction.Left : Direction.Right,
+          directionB = comparisonB < 0 ? Direction.Left : Direction.Right;
 
     if (directionA !== directionB || comparisonA === 0 || comparisonB === 0) {
         return { node: tree, path };
     }
 
-    const subTree = tree[directionA];
-    const newPath = path.slice().concat(directionA);
+    const subTree = tree[directionA],
+          newPath = path.slice().concat(directionA);
 
     return subTree
         ? findLowestAncestor(subTree, compare, elementA, elementB, newPath)

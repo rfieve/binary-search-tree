@@ -16,9 +16,9 @@ export function getDistanceBetweenNodes<T>(
     elementA: T,
     elementB: T
 ): number | undefined {
-    const commonAncestor = findLowestAncestor(tree, compare, elementA, elementB);
-    const resultA = find(commonAncestor.node, compare, elementA);
-    const resultB = find(commonAncestor.node, compare, elementB);
+    const commonAncestor = findLowestAncestor(tree, compare, elementA, elementB),
+          resultA = find(commonAncestor.node, compare, elementA),
+          resultB = find(commonAncestor.node, compare, elementB);
 
     if (!resultA || !resultB) {
         return undefined;

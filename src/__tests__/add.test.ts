@@ -22,8 +22,8 @@ describe('add', () => {
     });
 
     it('should not mutate the original tree', () => {
-        const tree = add({ data: [] }, compare, [10, 20, 30]);
-        const updatedTree = add(tree, compare, [40, 50]);
+        const tree = add({ data: [] }, compare, [10, 20, 30]),
+              updatedTree = add(tree, compare, [40, 50]);
 
         expect(toArrayInOrder(tree).length).toBe(3);
         expect(toArrayInOrder(updatedTree).length).toBe(5);

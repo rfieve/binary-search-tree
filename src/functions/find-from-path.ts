@@ -11,8 +11,8 @@ export function findFromPath<T>(tree: BST<T>, path: Path, offset = 0): FoundResu
         return { node: tree, path };
     }
 
-    const direction = path[offset];
-    const subTree = tree[direction as Direction];
+    const direction = path[offset],
+          subTree = tree[direction as Direction];
 
     return subTree ? findFromPath(subTree, path, offset + 1) : undefined;
 }

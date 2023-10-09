@@ -10,8 +10,8 @@ export function findMaxHeight<T>(tree?: BST<T>): number {
         return -1;
     }
 
-    const left = findMaxHeight(tree?.left);
-    const right = findMaxHeight(tree?.right);
+    const left = findMaxHeight(tree?.left),
+          right = findMaxHeight(tree?.right);
 
     return left > right ? left + 1 : right + 1;
 }
