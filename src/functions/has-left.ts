@@ -1,4 +1,4 @@
-import { BST, BSTBranchWithLeft } from '../types';
+import { BST, BSTBranchWithLeft } from '../types'
 
 /**
  * Assesses if the given tree has a left branch (has left).
@@ -6,5 +6,5 @@ import { BST, BSTBranchWithLeft } from '../types';
  * @returns True if it has, false if it hasn't.
  */
 export function hasLeft<T>(tree: BST<T>): tree is BSTBranchWithLeft<T> {
-    return tree.data.length > 0 && !!tree.left;
+    return tree.data.length > 0 && !!tree.left
 }

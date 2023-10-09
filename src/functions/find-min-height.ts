@@ -1,4 +1,4 @@
-import { BST } from '../types';
+import { BST } from '../types'
 
 /**
  * Finds the height of the minimal branch of the tree.
@@ -7,11 +7,11 @@ import { BST } from '../types';
  */
 export function findMinHeight<T>(tree?: BST<T>): number {
     if (tree?.data === undefined) {
-        return -1;
+        return -1
     }
 
     const left = findMinHeight(tree?.left),
-          right = findMinHeight(tree?.right);
+          right = findMinHeight(tree?.right)
 
-    return left < right ? left + 1 : right + 1;
+    return left < right ? left + 1 : right + 1
 }

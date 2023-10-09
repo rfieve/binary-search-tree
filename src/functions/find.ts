@@ -1,4 +1,4 @@
-import { BST, CompareFunction, Direction, FoundResult, Path } from '../types';
+import { BST, CompareFunction, Direction, FoundResult, Path } from '../types'
 
 /**
  * Finds a given element into the given binary search tree with the given compare function.
@@ -14,20 +14,20 @@ export function find<T>(
     path = [] as Path
 ): FoundResult<T> | undefined {
     if (tree.data.length === 0) {
-        return undefined;
+        return undefined
     }
 
-    const comparison = compare(element, tree.data[0]);
+    const comparison = compare(element, tree.data[0])
 
     if (comparison === 0) {
-        return { node: tree, path };
+        return { node: tree, path }
     }
 
     const direction = comparison < 0 ? Direction.Left : Direction.Right,
           subTree = tree[direction],
-          newPath = path.slice().concat(direction);
+          newPath = path.slice().concat(direction)
 
-    return subTree ? find(subTree, compare, element, newPath) : undefined;
+    return subTree ? find(subTree, compare, element, newPath) : undefined
 }
 
 /**
@@ -37,6 +37,6 @@ export function find<T>(
  */
 export function makeFind<T>(compare: CompareFunction<T>) {
     return function (tree: BST<T>, element: T) {
-        return find(tree, compare, element);
-    };
+        return find(tree, compare, element)
+    }
 }

@@ -1,5 +1,5 @@
-import { BST, CompareFunction, FoundResult } from '../types';
-import { makeCollectFoundResult } from './collect';
+import { BST, CompareFunction, FoundResult } from '../types'
+import { makeCollectFoundResult } from './collect'
 
 export function makeFindManyFromTraversal<T>(
     traverse: (
@@ -15,10 +15,10 @@ export function makeFindManyFromTraversal<T>(
         element: T
     ): FoundResult<T>[] {
         const results: FoundResult<T>[] = [],
-              collectFoundResult = makeCollectFoundResult(results);
+              collectFoundResult = makeCollectFoundResult(results)
 
-        traverse(collectFoundResult, tree, compare, element);
+        traverse(collectFoundResult, tree, compare, element)
 
-        return results;
-    };
+        return results
+    }
 }

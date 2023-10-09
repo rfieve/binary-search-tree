@@ -1,16 +1,16 @@
-import { makeCollectElementFromNode } from '../helpers/collect';
-import { BST } from '../types';
+import { makeCollectElementFromNode } from '../helpers/collect'
+import { BST } from '../types'
 
 export function makeToArrayFromTraversal<T>(
     traverse: (cb: (node: BST<T>) => void, tree: BST<T>) => void
 ) {
     return function toArray(tree: BST<T>) {
         const elements: T[] = [],
-              collectElementFromNode = makeCollectElementFromNode(elements);
+              collectElementFromNode = makeCollectElementFromNode(elements)
 
         if (tree.data?.length) {
-            traverse(collectElementFromNode, tree);
+            traverse(collectElementFromNode, tree)
         }
-        return elements;
-    };
+        return elements
+    }
 }

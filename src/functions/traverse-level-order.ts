@@ -1,4 +1,4 @@
-import { BST } from '../types';
+import { BST } from '../types'
 
 /**
  * Traverses the tree with a Breadth-First Search Level-Order algorithm, from left to right. left to right.
@@ -7,20 +7,20 @@ import { BST } from '../types';
  */
 export function traverseLevelOrder<T>(cb: (node: BST<T>) => void, tree: BST<T>): void {
     if (tree.data.length > 0) {
-        const queue: BST<T>[] = [tree];
+        const queue: BST<T>[] = [tree]
 
         while (queue.length > 0) {
-            const current = queue.shift() as BST<T>;
+            const current = queue.shift() as BST<T>
 
             if (current.left) {
-                queue.push(current.left);
+                queue.push(current.left)
             }
 
             if (current.right) {
-                queue.push(current.right);
+                queue.push(current.right)
             }
 
-            cb(current);
+            cb(current)
         }
     }
 }
@@ -32,20 +32,20 @@ export function traverseLevelOrder<T>(cb: (node: BST<T>) => void, tree: BST<T>):
  */
 export function traverseLevelOrderReverse<T>(cb: (node: BST<T>) => void, tree: BST<T>): void {
     if (tree.data.length > 0) {
-        const queue: BST<T>[] = [tree];
+        const queue: BST<T>[] = [tree]
 
         while (queue.length > 0) {
-            const current = queue.shift() as BST<T>;
+            const current = queue.shift() as BST<T>
 
             if (current.right) {
-                queue.push(current.right);
+                queue.push(current.right)
             }
 
             if (current.left) {
-                queue.push(current.left);
+                queue.push(current.left)
             }
 
-            cb(current);
+            cb(current)
         }
     }
 }

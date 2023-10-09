@@ -1,5 +1,5 @@
-import { BST } from '../types';
-import { traverseInOrder } from './traverse-in-order';
+import { BST } from '../types'
+import { traverseInOrder } from './traverse-in-order'
 
 /**
  * Counts the nodes in the binary search tree.
@@ -7,9 +7,9 @@ import { traverseInOrder } from './traverse-in-order';
  * @returns The count of nodes.
  */
 export function count<T>(tree: BST<T>) {
-    let counter = 0;
+    let counter = 0
 
-    traverseInOrder(() => counter++, tree);
+    traverseInOrder(() => counter++, tree)
 
-    return counter;
+    return counter
 }

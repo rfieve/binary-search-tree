@@ -1,4 +1,4 @@
-import { BST } from '../types';
+import { BST } from '../types'
 
 /**
  * Finds the minimal node in the tree, beeing the bottom-left node.
@@ -6,5 +6,5 @@ import { BST } from '../types';
  * @returns The node considered the minimal.
  */
 export function findMin<T>(tree: BST<T>): BST<T> {
-    return tree.left ? findMin(tree.left) : tree;
+    return tree.left ? findMin(tree.left) : tree
 }

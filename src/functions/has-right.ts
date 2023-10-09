@@ -1,4 +1,4 @@
-import { BST, BSTBranchWithRight } from '../types';
+import { BST, BSTBranchWithRight } from '../types'
 
 /**
  * Assesses if the given tree has a right branch (has right).
@@ -6,5 +6,5 @@ import { BST, BSTBranchWithRight } from '../types';
  * @returns True if it has, false if it hasn't.
  */
 export function hasRight<T>(tree: BST<T>): tree is BSTBranchWithRight<T> {
-    return tree.data.length > 0 && !!tree.right;
+    return tree.data.length > 0 && !!tree.right
 }

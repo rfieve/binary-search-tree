@@ -1,5 +1,5 @@
-import { hasLeft } from '../functions/has-left';
-import { hasRight } from '../functions/has-right';
+import { hasLeft } from '../functions/has-left'
+import { hasRight } from '../functions/has-right'
 import {
     BST,
     CompareFunction,
@@ -7,7 +7,7 @@ import {
     FindManyTraversalOptions,
     FoundResult,
     Path,
-} from '../types';
+} from '../types'
 
 export function makeFindManyTraversal({
     shouldFindCurrent,
@@ -22,21 +22,21 @@ export function makeFindManyTraversal({
         path = [] as Path
     ): void {
         if (tree.data.length === 0) {
-            return undefined;
+            return undefined
         }
 
-        const comparison = compare(element, tree.data[0]);
+        const comparison = compare(element, tree.data[0])
 
         if (shouldFindCurrent(comparison)) {
-            cb({ node: tree, path });
+            cb({ node: tree, path })
         }
 
         if (hasLeft(tree) && shouldLookLeft(comparison)) {
-            traverse(cb, tree.left, compare, element, path.slice().concat(Direction.Left));
+            traverse(cb, tree.left, compare, element, path.slice().concat(Direction.Left))
         }
 
         if (hasRight(tree) && shouldLookRight(comparison)) {
-            traverse(cb, tree.right, compare, element, path.slice().concat(Direction.Right));
+            traverse(cb, tree.right, compare, element, path.slice().concat(Direction.Right))
         }
-    };
+    }
 }

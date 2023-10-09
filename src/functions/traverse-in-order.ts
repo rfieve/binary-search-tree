@@ -1,4 +1,4 @@
-import { BST } from '../types';
+import { BST } from '../types'
 
 /**
  * Traverses the tree with a Depth-First Search In-Order algorithm, from left to right.
@@ -7,9 +7,9 @@ import { BST } from '../types';
  */
 export function traverseInOrder<T>(cb: (node: BST<T>) => void, tree?: BST<T>): void {
     if (!!tree?.data?.length) {
-        traverseInOrder(cb, tree.left);
-        cb(tree);
-        traverseInOrder(cb, tree.right);
+        traverseInOrder(cb, tree.left)
+        cb(tree)
+        traverseInOrder(cb, tree.right)
     }
 }
 
@@ -20,8 +20,8 @@ export function traverseInOrder<T>(cb: (node: BST<T>) => void, tree?: BST<T>): v
  */
 export function traverseInOrderReverse<T>(cb: (node: BST<T>) => void, tree?: BST<T>): void {
     if (!!tree?.data?.length) {
-        traverseInOrderReverse(cb, tree.right);
-        cb(tree);
-        traverseInOrderReverse(cb, tree.left);
+        traverseInOrderReverse(cb, tree.right)
+        cb(tree)
+        traverseInOrderReverse(cb, tree.left)
     }
 }

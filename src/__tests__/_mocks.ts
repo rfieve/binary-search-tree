@@ -1,7 +1,7 @@
-import { BST } from '../types';
+import { BST } from '../types'
 
 export function compare(a: number, b: number) {
-    return a - b;
+    return a - b
 }
 
 export const mockedArray = [10, 32, 13, 2, 89, 5, 50],
@@ -12,7 +12,7 @@ export const mockedArray = [10, 32, 13, 2, 89, 5, 50],
              mockedArrayPostOrder = [5, 2, 13, 50, 89, 32, 10],
              mockedArrayPostOrderReverse = [50, 89, 13, 32, 5, 2, 10],
              mockedArrayLevelOrder = [10, 2, 32, 5, 13, 89, 50],
-             mockedArrayLevelOrderReverse = [10, 32, 2, 89, 13, 5, 50];
+             mockedArrayLevelOrderReverse = [10, 32, 2, 89, 13, 5, 50]
 //       10
 //    /     \
 //   2      32
@@ -41,7 +41,7 @@ export const mockedUnbalancedTree: BST<number> = {
             },
         },
     },
-};
+}
 
 export const mockedBalancedTree: BST<number> = {
     data : [13],
@@ -63,8 +63,8 @@ export const mockedBalancedTree: BST<number> = {
             data : [89],
         },
     },
-};
+}
 
 export const mockedLeaf = mockedUnbalancedTree.left?.right as BST<number>,
              mockedStrictLeftLeaf = mockedUnbalancedTree?.right?.right as BST<number>,
-             mockedStrictRightLeaf = mockedUnbalancedTree.left as BST<number>;
+             mockedStrictRightLeaf = mockedUnbalancedTree.left as BST<number>

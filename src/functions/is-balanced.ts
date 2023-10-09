@@ -1,5 +1,5 @@
-import { BST } from '../types';
-import { getBalance } from './get-balance';
+import { BST } from '../types'
+import { getBalance } from './get-balance'
 
 /**
  * Assesses if the given tree is balanced.
@@ -7,5 +7,5 @@ import { getBalance } from './get-balance';
  * @returns True if it is, false if it isn't.
  */
 export function isBalanced<T>(tree: BST<T>): boolean {
-    return getBalance(tree) <= 1;
+    return getBalance(tree) <= 1
 }

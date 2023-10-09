@@ -1,7 +1,7 @@
-import { BST, CompareFunction } from '../types';
-import { isBalanced } from './is-balanced';
-import { toArrayInOrder } from './to-array';
-import { toBST } from './to-binary-search-tree';
+import { BST, CompareFunction } from '../types'
+import { isBalanced } from './is-balanced'
+import { toArrayInOrder } from './to-array'
+import { toBST } from './to-binary-search-tree'
 
 /**
  * Balances the given binary search tree, depending on a given compare function.
@@ -12,7 +12,7 @@ import { toBST } from './to-binary-search-tree';
 export function balance<T>(tree: BST<T>, compare: CompareFunction<T>) {
     return isBalanced(tree)
         ? tree
-        : toBST(toArrayInOrder(tree), compare, { isBalanced: true, isPresorted: true });
+        : toBST(toArrayInOrder(tree), compare, { isBalanced: true, isPresorted: true })
 }
 
 /**
@@ -22,6 +22,6 @@ export function balance<T>(tree: BST<T>, compare: CompareFunction<T>) {
  */
 export function makeBalance<T>(compare: CompareFunction<T>) {
     return function (tree: BST<T>) {
-        return balance(tree, compare);
-    };
+        return balance(tree, compare)
+    }
 }

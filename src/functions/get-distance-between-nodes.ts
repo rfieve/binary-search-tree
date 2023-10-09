@@ -1,6 +1,6 @@
-import { BST, CompareFunction } from '../types';
-import { find } from './find';
-import { findLowestAncestor } from './find-lowest-ancestor';
+import { BST, CompareFunction } from '../types'
+import { find } from './find'
+import { findLowestAncestor } from './find-lowest-ancestor'
 
 /**
  * Gets the distance between two given elements into the given binary search tree with the given compare function.
@@ -18,13 +18,13 @@ export function getDistanceBetweenNodes<T>(
 ): number | undefined {
     const commonAncestor = findLowestAncestor(tree, compare, elementA, elementB),
           resultA = find(commonAncestor.node, compare, elementA),
-          resultB = find(commonAncestor.node, compare, elementB);
+          resultB = find(commonAncestor.node, compare, elementB)
 
     if (!resultA || !resultB) {
-        return undefined;
+        return undefined
     }
 
-    return resultA.path.length + resultB.path.length;
+    return resultA.path.length + resultB.path.length
 }
 
 /**
@@ -34,6 +34,6 @@ export function getDistanceBetweenNodes<T>(
  */
 export function makeGetDistanceBetweenNodes<T>(compare: CompareFunction<T>) {
     return function (tree: BST<T>, elementA: T, elementB: T) {
-        return getDistanceBetweenNodes(tree, compare, elementA, elementB);
-    };
+        return getDistanceBetweenNodes(tree, compare, elementA, elementB)
+    }
 }

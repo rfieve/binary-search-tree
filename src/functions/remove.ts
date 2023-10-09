@@ -1,11 +1,11 @@
-import { BST, CompareFunction, Direction } from '../types';
-import { findMin } from './find-min';
-import { hasLeft } from './has-left';
-import { hasRight } from './has-right';
-import { isLeaf } from './is-leaf';
+import { BST, CompareFunction, Direction } from '../types'
+import { findMin } from './find-min'
+import { hasLeft } from './has-left'
+import { hasRight } from './has-right'
+import { isLeaf } from './is-leaf'
 
 function matchesElement<T extends object>(source: T, target: T): boolean {
-    return !Object.keys(source).some((key) => target[key as keyof T] !== source[key as keyof T]);
+    return !Object.keys(source).some((key) => target[key as keyof T] !== source[key as keyof T])
 }
 
 function removeElement<T>(
@@ -14,26 +14,26 @@ function removeElement<T>(
     element: T
 ): BST<T> | undefined {
     if (element == null || tree.data.length === 0) {
-        return tree;
+        return tree
     }
 
-    const comparison = compare(element, tree.data[0]);
+    const comparison = compare(element, tree.data[0])
 
     // This node matches
     if (comparison === 0) {
         const newData =
             typeof element === 'object'
                 ? tree.data.filter((target) => !matchesElement(element, target as object))
-                : [];
+                : []
 
         if (newData.length > 0) {
-            return { ...tree, data: newData };
+            return { ...tree, data: newData }
         }
 
         if (isLeaf(tree)) {
             // If no children:
             // => Just delete.
-            return undefined;
+            return undefined
         }
 
         if (hasLeft(tree) && hasRight(tree)) {
@@ -41,7 +41,7 @@ function removeElement<T>(
             // => Determine the next inorder successor in the right subtree.
             // => Replace the node to be removed with the inorder successor.
             // => Delete the inorder successor duplicate.
-            const nextInOrder = findMin(tree.right);
+            const nextInOrder = findMin(tree.right)
 
             return {
                 ...tree,
@@ -51,22 +51,22 @@ function removeElement<T>(
                     compare,
                     nextInOrder.data[0] as T
                 ) as BST<T>,
-            };
+            }
         }
 
         // If a single child:
         // => Copy that child to the node.
-        return (tree.left || tree.right) as BST<T>;
+        return (tree.left || tree.right) as BST<T>
     }
 
     const direction = comparison < 0 ? Direction.Left : Direction.Right,
-          subTree = tree[direction];
+          subTree = tree[direction]
 
-    return subTree ? { ...tree, [direction]: removeElement(subTree, compare, element) } : tree;
+    return subTree ? { ...tree, [direction]: removeElement(subTree, compare, element) } : tree
 }
 
 function removeElements<T>(tree: BST<T>, compare: CompareFunction<T>, elements: T[]): BST<T> {
-    return elements.reduce((acc, curr) => removeElement(acc, compare, curr) || { data: [] }, tree);
+    return elements.reduce((acc, curr) => removeElement(acc, compare, curr) || { data: [] }, tree)
 }
 
 /**
@@ -84,7 +84,7 @@ export function remove<T>(
 ): BST<T> | undefined {
     return Array.isArray(elements)
         ? removeElements(tree, compare, elements)
-        : removeElement(tree, compare, elements);
+        : removeElement(tree, compare, elements)
 }
 
 /**
@@ -94,6 +94,6 @@ export function remove<T>(
  */
 export function makeRemove<T>(compare: CompareFunction<T>) {
     return function (tree: BST<T>, elements: T | T[]) {
-        return remove(tree, compare, elements);
-    };
+        return remove(tree, compare, elements)
+    }
 }
