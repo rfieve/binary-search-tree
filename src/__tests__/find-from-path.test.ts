@@ -1,6 +1,6 @@
+import { mockedUnbalancedTree } from './_mocks'
 import { findFromPath } from '../functions/find-from-path'
 import { Direction } from '../types'
-import { mockedUnbalancedTree } from './_mocks'
 
 describe('findFromPath', () => {
     it('should return the correct node at path', () => {

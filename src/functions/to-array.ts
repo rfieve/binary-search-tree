@@ -1,8 +1,8 @@
-import { makeToArrayFromTraversal } from '../helpers/make-to-array-from-traversal'
 import { traverseInOrder, traverseInOrderReverse } from './traverse-in-order'
 import { traverseLevelOrder, traverseLevelOrderReverse } from './traverse-level-order'
 import { traversePostOrder, traversePostOrderReverse } from './traverse-post-order'
 import { traversePreOrder, traversePreOrderReverse } from './traverse-pre-order'
+import { makeToArrayFromTraversal } from '../helpers/make-to-array-from-traversal'
 
 /**
  * Converts the given binary search tree to an array, with a In-Order tree traversal.

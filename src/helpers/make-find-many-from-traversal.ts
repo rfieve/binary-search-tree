@@ -1,5 +1,5 @@
-import { BST, CompareFunction, FoundResult } from '../types'
 import { makeCollectFoundResult } from './collect'
+import { BST, CompareFunction, FoundResult } from '../types'
 
 export function makeFindManyFromTraversal<T>(
     traverse: (

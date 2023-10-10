@@ -1,4 +1,3 @@
-import { CompareFunction } from '../types'
 import { makeAdd } from './add'
 import { makeBalance } from './balance'
 import { makeFind } from './find'
@@ -10,6 +9,7 @@ import { makeFindLte } from './find-lte'
 import { makeGetDistanceBetweenNodes } from './get-distance-between-nodes'
 import { makeRemove } from './remove'
 import { makeToBST } from './to-binary-search-tree'
+import { CompareFunction } from '../types'
 
 /**
  * With the given compare function, creates all bound functions to work with a binary search tree made with the same compare.

@@ -1,10 +1,10 @@
-import { hasLeft } from '../functions/has-left'
 import {
     mockedLeaf,
     mockedStrictLeftLeaf,
     mockedStrictRightLeaf,
     mockedUnbalancedTree,
 } from './_mocks'
+import { hasLeft } from '../functions/has-left'
 
 describe('hasLeft', () => {
     it('should return true when the given tree is a branch', () => {

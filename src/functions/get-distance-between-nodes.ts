@@ -1,6 +1,6 @@
-import { BST, CompareFunction } from '../types'
 import { find } from './find'
 import { findLowestAncestor } from './find-lowest-ancestor'
+import { BST, CompareFunction } from '../types'
 
 /**
  * Gets the distance between two given elements into the given binary search tree with the given compare function.

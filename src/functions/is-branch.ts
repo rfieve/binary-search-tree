@@ -1,6 +1,6 @@
-import { BST, BSTBranch } from '../types'
 import { hasLeft } from './has-left'
 import { hasRight } from './has-right'
+import { BST, BSTBranch } from '../types'
 
 /**
  * Assesses if the given tree is a branch (has either left or right).

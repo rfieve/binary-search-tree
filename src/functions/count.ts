@@ -1,5 +1,5 @@
-import { BST } from '../types'
 import { traverseInOrder } from './traverse-in-order'
+import { BST } from '../types'
 
 /**
  * Counts the nodes in the binary search tree.

@@ -1,5 +1,5 @@
-import { findLowestAncestor, makeFindLowestAncestor } from '../functions/find-lowest-ancestor'
 import { compare, mockedUnbalancedTree } from './_mocks'
+import { findLowestAncestor, makeFindLowestAncestor } from '../functions/find-lowest-ancestor'
 
 describe('findLowestAncestor', () => {
     it('should return the correct ancestor', () => {

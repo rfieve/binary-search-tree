@@ -1,5 +1,5 @@
-import { findGt, makeFindGt } from '../functions/find-gt'
 import { compare, mockedUnbalancedTree } from './_mocks'
+import { findGt, makeFindGt } from '../functions/find-gt'
 
 describe('findGt', () => {
     it('should findGt all nodes which are greater than the element', () => {

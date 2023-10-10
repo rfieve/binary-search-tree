@@ -1,8 +1,8 @@
-import { BST, CompareFunction, Direction } from '../types'
 import { findMin } from './find-min'
 import { hasLeft } from './has-left'
 import { hasRight } from './has-right'
 import { isLeaf } from './is-leaf'
+import { BST, CompareFunction, Direction } from '../types'
 
 function matchesElement<T extends object>(source: T, target: T): boolean {
     return !Object.keys(source).some((key) => target[key as keyof T] !== source[key as keyof T])

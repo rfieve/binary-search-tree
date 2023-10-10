@@ -1,9 +1,9 @@
+import { compare, mockedArray, mockedUnbalancedTree } from './_mocks'
 import { makeCompareUtils } from '../functions/make-compare-utils'
 import { remove } from '../functions/remove'
 import { toArrayInOrder } from '../functions/to-array'
 import { toBST } from '../functions/to-binary-search-tree'
 import { BST } from '../types'
-import { compare, mockedArray, mockedUnbalancedTree } from './_mocks'
 
 describe('remove', () => {
     const { remove: boundRemove } = makeCompareUtils(compare)

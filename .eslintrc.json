@@ -1,6 +1,6 @@
 {
     "extends": ["plugin:@typescript-eslint/recommended", "plugin:unicorn/recommended"],
-    "plugins": ["unicorn", "simple-import-sort", "import", "typescript-sort-keys"],
+    "plugins": ["unicorn", "import", "typescript-sort-keys"],
     "parser": "@typescript-eslint/parser",
     "parserOptions": {
         "tsconfigRootDir": ".",
@@ -38,8 +38,25 @@
         "unicorn/no-nested-ternary": "off",
         "unicorn/prefer-logical-operator-over-ternary": "off",
         "unicorn/prefer-native-coercion-functions": "off",
-        "simple-import-sort/imports": "error",
-        "simple-import-sort/exports": "error",
+        "import/order": [
+            "error",
+            {
+                "warnOnUnassignedImports": true,
+                "newlines-between": "always",
+                "groups": [
+                    "builtin",
+                    "external",
+                    "internal",
+                    ["parent", "sibling", "index"],
+                    "object",
+                    "type"
+                ],
+                "alphabetize": {
+                    "order": "asc",
+                    "caseInsensitive": true
+                }
+            }
+        ],
         "typescript-sort-keys/interface": "error",
         "typescript-sort-keys/string-enum": "error",
         "no-duplicate-imports": "error",

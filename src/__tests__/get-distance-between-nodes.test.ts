@@ -1,8 +1,8 @@
+import { compare, mockedUnbalancedTree } from './_mocks'
 import {
     getDistanceBetweenNodes,
     makeGetDistanceBetweenNodes,
 } from '../functions/get-distance-between-nodes'
-import { compare, mockedUnbalancedTree } from './_mocks'
 
 describe('getDistanceBetweenNodes ', () => {
     it('should return the correct distance', () => {

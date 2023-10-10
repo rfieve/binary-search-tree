@@ -1,14 +1,4 @@
 import {
-    toArrayInOrder,
-    toArrayInOrderReverse,
-    toArrayLevelOrder,
-    toArrayLevelOrderReverse,
-    toArrayPostOrder,
-    toArrayPostOrderReverse,
-    toArrayPreOrder,
-    toArrayPreOrderReverse,
-} from '../functions/to-array'
-import {
     mockedArrayInOrder,
     mockedArrayInOrderReversed,
     mockedArrayLevelOrder,
@@ -19,6 +9,16 @@ import {
     mockedArrayPreOrderReverse,
     mockedUnbalancedTree,
 } from './_mocks'
+import {
+    toArrayInOrder,
+    toArrayInOrderReverse,
+    toArrayLevelOrder,
+    toArrayLevelOrderReverse,
+    toArrayPostOrder,
+    toArrayPostOrderReverse,
+    toArrayPreOrder,
+    toArrayPreOrderReverse,
+} from '../functions/to-array'
 
 describe('toArrayInOrder', () => {
     it('should convert binary search tree to an array correctly', () => {

@@ -1,5 +1,5 @@
-import { BST } from '../types'
 import { getBalance } from './get-balance'
+import { BST } from '../types'
 
 /**
  * Assesses if the given tree is balanced.

@@ -1,6 +1,3 @@
-import { BinarySearchTree } from '../classes/binary-search-tree'
-import { makeCollectElementFromNode } from '../helpers/collect'
-import { Direction } from '../types'
 import {
     compare,
     mockedArray,
@@ -15,6 +12,9 @@ import {
     mockedBalancedTree,
     mockedUnbalancedTree,
 } from './_mocks'
+import { BinarySearchTree } from '../classes/binary-search-tree'
+import { makeCollectElementFromNode } from '../helpers/collect'
+import { Direction } from '../types'
 
 describe('BinarySearchTree', () => {
     // ___ Init ___

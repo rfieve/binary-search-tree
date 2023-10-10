@@ -1,5 +1,5 @@
-import { find, makeFind } from '../functions/find'
 import { compare, mockedUnbalancedTree } from './_mocks'
+import { find, makeFind } from '../functions/find'
 
 describe('find', () => {
     it('should not find a node which is not into the tree', () => {

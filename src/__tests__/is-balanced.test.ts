@@ -1,5 +1,5 @@
-import { isBalanced } from '../functions/is-balanced'
 import { mockedBalancedTree, mockedUnbalancedTree } from './_mocks'
+import { isBalanced } from '../functions/is-balanced'
 
 describe('isBalanced', () => {
     it('should return true with a balanced tree', () => {

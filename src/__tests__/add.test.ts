@@ -1,6 +1,6 @@
+import { compare, mockedUnbalancedTree } from './_mocks'
 import { add, makeAdd } from '../functions/add'
 import { toArrayInOrder } from '../functions/to-array'
-import { compare, mockedUnbalancedTree } from './_mocks'
 
 describe('add', () => {
     const boundAdd = makeAdd(compare)

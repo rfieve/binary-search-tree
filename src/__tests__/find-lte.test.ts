@@ -1,5 +1,5 @@
-import { findLte, makeFindLte } from '../functions/find-lte'
 import { compare, mockedUnbalancedTree } from './_mocks'
+import { findLte, makeFindLte } from '../functions/find-lte'
 
 describe('findLte', () => {
     it('should findLte all nodes which are lesser or equal than the element', () => {

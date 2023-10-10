@@ -1,5 +1,5 @@
-import { getBalance } from '../functions/get-balance'
 import { mockedBalancedTree, mockedUnbalancedTree } from './_mocks'
+import { getBalance } from '../functions/get-balance'
 
 describe('getBalance', () => {
     it('should return the balance of a balanced tree', () => {
