@@ -64,126 +64,174 @@ export class BinarySearchTree<T> {
     }
 
     // Updates
-    public readonly balance = () => {
+    public balance() {
         this.t = balanceTree(this.t, this.compare)
         return this
     }
 
-    public readonly add = (elements: T | T[]) => {
+    public add(elements: T | T[]) {
         this.t = addNode(this.t, this.compare, elements)
         return this
     }
 
-    public readonly remove = (elements: T | T[]) => {
+    public remove(elements: T | T[]) {
         this.t = removeNode(this.t, this.compare, elements) || { data: [] }
         return this
     }
 
-    public readonly clear = () => {
+    public clear() {
         this.t = { data: [] }
         return this
     }
 
     // Traversals
-    public readonly traverseInOrder = (cb: (node: BST<T>) => void) => {
+    public traverseInOrder(cb: (node: BST<T>) => void) {
         traverseTreeInOrder(cb, this.t)
         return this
     }
 
-    public readonly traverseInOrderReverse = (cb: (node: BST<T>) => void) => {
+    public traverseInOrderReverse(cb: (node: BST<T>) => void) {
         traverseTreeInOrderReverse(cb, this.t)
         return this
     }
 
-    public readonly traversePreOrder = (cb: (node: BST<T>) => void) => {
+    public traversePreOrder(cb: (node: BST<T>) => void) {
         traverseTreePreOrder(cb, this.t)
         return this
     }
 
-    public readonly traversePreOrderReverse = (cb: (node: BST<T>) => void) => {
+    public traversePreOrderReverse(cb: (node: BST<T>) => void) {
         traverseTreePreOrderReverse(cb, this.t)
         return this
     }
-    public readonly traversePostOrder = (cb: (node: BST<T>) => void) => {
+    public traversePostOrder(cb: (node: BST<T>) => void) {
         traverseTreePostOrder(cb, this.t)
         return this
     }
 
-    public readonly traversePostOrderReverse = (cb: (node: BST<T>) => void) => {
+    public traversePostOrderReverse(cb: (node: BST<T>) => void) {
         traverseTreePostOrderReverse(cb, this.t)
         return this
     }
 
-    public readonly traverseLevelOrder = (cb: (node: BST<T>) => void) => {
+    public traverseLevelOrder(cb: (node: BST<T>) => void) {
         traverseTreeLevelOrder(cb, this.t)
         return this
     }
 
-    public readonly traverseLevelOrderReverse = (cb: (node: BST<T>) => void) => {
+    public traverseLevelOrderReverse(cb: (node: BST<T>) => void) {
         traverseTreeLevelOrderReverse(cb, this.t)
         return this
     }
 
     // To array conversions
-    public readonly toArrayInOrder = () => toArrayTreeInOrder(this.t)
+    public toArrayInOrder() {
+        return toArrayTreeInOrder(this.t)
+    }
 
-    public readonly toArrayInOrderReverse = () => toArrayTreeInOrderReverse(this.t)
+    public toArrayInOrderReverse() {
+        return toArrayTreeInOrderReverse(this.t)
+    }
 
-    public readonly toArrayPreOrder = () => toArrayTreePreOrder(this.t)
+    public toArrayPreOrder() {
+        return toArrayTreePreOrder(this.t)
+    }
 
-    public readonly toArrayPreOrderReverse = () => toArrayTreePreOrderReverse(this.t)
+    public toArrayPreOrderReverse() {
+        return toArrayTreePreOrderReverse(this.t)
+    }
 
-    public readonly toArrayPostOrder = () => toArrayTreePostOrder(this.t)
+    public toArrayPostOrder() {
+        return toArrayTreePostOrder(this.t)
+    }
 
-    public readonly toArrayPostOrderReverse = () => toArrayTreePostOrderReverse(this.t)
+    public toArrayPostOrderReverse() {
+        return toArrayTreePostOrderReverse(this.t)
+    }
 
-    public readonly toArrayLevelOrder = () => toArrayTreeLevelOrder(this.t)
+    public toArrayLevelOrder() {
+        return toArrayTreeLevelOrder(this.t)
+    }
 
-    public readonly toArrayLevelOrderReverse = () => toArrayTreeLevelOrderReverse(this.t)
+    public toArrayLevelOrderReverse() {
+        return toArrayTreeLevelOrderReverse(this.t)
+    }
 
     // Assessments
-    public readonly isBalanced = () => isBalancedTree(this.t)
+    public isBalanced() {
+        return isBalancedTree(this.t)
+    }
 
-    public readonly hasLeft = (element: T) =>
-        hasLeftNode(findNode(this.t, this.compare, element)?.node || { data: [] })
+    public hasLeft(element: T) {
+        return hasLeftNode(findNode(this.t, this.compare, element)?.node || { data: [] })
+    }
 
-    public readonly hasRight = (element: T) =>
-        hasRightNode(findNode(this.t, this.compare, element)?.node || { data: [] })
+    public hasRight(element: T) {
+        return hasRightNode(findNode(this.t, this.compare, element)?.node || { data: [] })
+    }
 
-    public readonly isBranch = (element: T) =>
-        isBranchNode(findNode(this.t, this.compare, element)?.node || { data: [] })
+    public isBranch(element: T) {
+        return isBranchNode(findNode(this.t, this.compare, element)?.node || { data: [] })
+    }
 
-    public readonly isLeaf = (element: T) =>
-        isLeafNode(findNode(this.t, this.compare, element)?.node || { data: [] })
+    public isLeaf(element: T) {
+        return isLeafNode(findNode(this.t, this.compare, element)?.node || { data: [] })
+    }
 
     // Finders
-    public readonly find = (element: T) => findNode(this.t, this.compare, element)
+    public find(element: T) {
+        return findNode(this.t, this.compare, element)
+    }
 
-    public readonly findFromPath = (path: Path) => findTreeFromPath(this.t, path)
+    public findFromPath(path: Path) {
+        return findTreeFromPath(this.t, path)
+    }
 
-    public readonly findLowestAncestor = (elementA: T, elementB: T) =>
-        findLowestTreeAncestor(this.t, this.compare, elementA, elementB)
+    public findLowestAncestor(elementA: T, elementB: T) {
+        return findLowestTreeAncestor(this.t, this.compare, elementA, elementB)
+    }
 
-    public readonly findGt = (element: T) => findGtNode(this.t, this.compare, element)
+    public findGt(element: T) {
+        return findGtNode(this.t, this.compare, element)
+    }
 
-    public readonly findGte = (element: T) => findGteNode(this.t, this.compare, element)
+    public findGte(element: T) {
+        return findGteNode(this.t, this.compare, element)
+    }
 
-    public readonly findLt = (element: T) => findLtNode(this.t, this.compare, element)
+    public findLt(element: T) {
+        return findLtNode(this.t, this.compare, element)
+    }
 
-    public readonly findLte = (element: T) => findLteNode(this.t, this.compare, element)
+    public findLte(element: T) {
+        return findLteNode(this.t, this.compare, element)
+    }
 
-    public readonly findMin = () => findMinNode(this.t)
+    public findMin() {
+        return findMinNode(this.t)
+    }
 
-    public readonly findMax = () => findMaxNode(this.t)
+    public findMax() {
+        return findMaxNode(this.t)
+    }
 
-    public readonly findMinHeight = () => findMinHeightTree(this.t)
+    public findMinHeight() {
+        return findMinHeightTree(this.t)
+    }
 
-    public readonly findMaxHeight = () => findMaxHeightTree(this.t)
+    public findMaxHeight() {
+        return findMaxHeightTree(this.t)
+    }
 
-    public readonly count = () => countNodes(this.t)
+    public count() {
+        return countNodes(this.t)
+    }
 
-    public readonly getBalance = () => getTreeBalance(this.t)
+    public getBalance() {
+        return getTreeBalance(this.t)
+    }
 
-    public readonly getDistanceBetweenNodes = (elementA: T, elementB: T) =>
-        getDistanceBetweenTreeNodes(this.t, this.compare, elementA, elementB)
+    public getDistanceBetweenNodes(elementA: T, elementB: T) {
+        return getDistanceBetweenTreeNodes(this.t, this.compare, elementA, elementB)
+    }
 }
